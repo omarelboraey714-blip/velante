@@ -1,0 +1,295 @@
+@import "tailwindcss";
+
+@layer base {
+  [dir="rtl"] {
+    @apply text-right;
+  }
+}
+
+.vc-page {
+  @apply bg-white;
+}
+
+.vc-header {
+  @apply relative perspective-distant mt-12;
+}
+
+.vc-header__background {
+  @apply h-80 sm:h-96 bg-gradient-to-r from-[#1a2421] to-[#2a3a36] relative overflow-hidden;
+}
+
+.vc-header__animation {
+  @apply absolute inset-0;
+  background: radial-gradient(
+      circle at 20% 30%,
+      rgba(109, 255, 0, 0.15) 0%,
+      transparent 25%
+    ),
+    radial-gradient(
+      circle at 80% 70%,
+      rgba(164, 255, 0, 0.15) 0%,
+      transparent 25%
+    ),
+    linear-gradient(
+      45deg,
+      transparent 48%,
+      rgba(109, 255, 0, 0.08) 50%,
+      transparent 52%
+    ),
+    linear-gradient(
+      -45deg,
+      transparent 48%,
+      rgba(109, 255, 0, 0.08) 50%,
+      transparent 52%
+    );
+  background-size: 150px 150px, 200px 200px, 30px 30px, 30px 30px;
+  animation: vc-animation-move 20s linear infinite;
+}
+
+@keyframes vc-animation-move {
+  0% {
+    background-position: 0 0, 0 0, 0 0, 0 0;
+  }
+  100% {
+    background-position: 150px 150px, 200px 200px, 30px 30px, 30px 30px;
+  }
+}
+
+.vc-header__overlay {
+  @apply absolute inset-0 bg-black/40 flex items-center justify-center;
+}
+
+.vc-header__content {
+  @apply text-center text-white max-w-4xl mx-auto px-4 sm:px-6;
+}
+
+.vc-header__title {
+  @apply text-2xl sm:text-3xl md:text-4xl font-bold mb-4 leading-tight;
+}
+
+.vc-header__subtitle {
+  @apply text-lg sm:text-xl md:text-2xl font-semibold mb-4;
+}
+
+.vc-header__description {
+  @apply text-base sm:text-lg opacity-90;
+}
+
+.vc-info {
+  @apply py-12 sm:py-16 bg-gray-50 perspective-distant;
+}
+
+.vc-container {
+  @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+}
+
+.vc-section-title {
+  @apply text-2xl sm:text-3xl font-bold text-center text-gray-900 mb-8 sm:mb-12;
+}
+
+.vc-info__grid {
+  @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8;
+}
+
+.vc-info__card {
+  @apply bg-white rounded-xl shadow-lg p-4 sm:p-6 text-center border border-gray-100 transform-gpu;
+}
+
+.vc-info__icon {
+  @apply text-4xl mb-4;
+}
+
+.vc-info__title {
+  @apply text-lg sm:text-xl font-bold text-gray-900 mb-3;
+}
+
+.vc-info__details {
+  @apply mb-3;
+}
+
+.vc-info__text {
+  @apply text-sm sm:text-base text-gray-600 mb-1 cursor-pointer relative;
+}
+
+.vc-info__text:hover {
+  @apply text-[#6dff00];
+}
+
+.vc-copy-confirmation {
+  @apply absolute top-0 right-0 bg-green-500 text-white text-xs px-2 py-1 rounded ml-2;
+}
+
+.vc-info__description {
+  @apply text-sm text-gray-500 mb-4;
+}
+
+.vc-info__button {
+  @apply w-full py-2 text-sm;
+}
+
+.vc-btn {
+  @apply px-4 sm:px-6 py-2 sm:py-3 rounded-lg font-semibold transition-colors duration-200;
+}
+
+.vc-btn--primary {
+  @apply bg-[#6dff00] text-white hover:bg-[#5ac400];
+}
+
+.vc-form-section {
+  @apply py-12 sm:py-16 perspective-distant;
+}
+
+.vc-form-container {
+  @apply max-w-4xl mx-auto;
+}
+
+.vc-form {
+  @apply bg-white rounded-xl shadow-lg p-6 sm:p-8 border border-gray-100;
+}
+
+.vc-form__row {
+  @apply grid grid-cols-1 md:grid-cols-2 gap-6 mb-6;
+}
+
+.vc-form__group {
+  @apply mb-6;
+}
+
+.vc-form__label {
+  @apply block text-gray-700 font-bold mb-2 flex items-center;
+}
+
+.vc-form__icon {
+  @apply mr-2;
+}
+
+.vc-form__input,
+.vc-form__select,
+.vc-form__textarea {
+  @apply w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#6dff00] focus:border-transparent transition-colors duration-200;
+}
+
+.vc-form__input--error,
+.vc-form__select--error {
+  @apply border-red-500;
+}
+
+.vc-form__phone-group {
+  @apply flex;
+}
+
+.vc-form__country-code {
+  @apply w-20 p-3 border border-gray-300 rounded-l-lg border-l-0 focus:ring-2 focus:ring-[#6dff00] focus:border-transparent;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.vc-form__input {
+  @apply flex-1 rounded-l-none;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.vc-form__error {
+  @apply text-red-500 text-sm mt-1;
+}
+
+.vc-form__textarea {
+  @apply resize-none;
+}
+
+.vc-form__submit {
+  @apply w-full py-3 sm:py-4 text-base sm:text-lg flex items-center justify-center;
+}
+
+.vc-form__loading-spinner {
+  @apply w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin mr-2;
+}
+
+.vc-form__success-message {
+  @apply mt-4 p-4 bg-green-100 text-green-700 rounded-lg text-center;
+}
+
+.vc-faq {
+  @apply py-12 sm:py-16 bg-gray-50 perspective-distant;
+}
+
+.vc-faq__list {
+  @apply max-w-4xl mx-auto;
+}
+
+.vc-faq__item {
+  @apply mb-4 border border-gray-200 rounded-lg overflow-hidden transform-gpu;
+}
+
+.vc-faq__question {
+  @apply w-full text-right p-4 sm:p-6 bg-white flex justify-between items-center cursor-pointer hover:bg-gray-50 transition-colors duration-200;
+}
+
+.vc-faq__toggle {
+  @apply transition-transform duration-200;
+}
+
+.vc-faq__toggle--open {
+  @apply rotate-180;
+}
+
+.vc-faq__answer {
+  @apply bg-gray-50 p-4 sm:p-6 text-gray-700 transition-all duration-300;
+}
+
+.vc-faq__answer--open {
+  @apply pb-6;
+}
+
+.vc-map {
+  @apply py-12 sm:py-16 perspective-distant;
+}
+
+.vc-map__container {
+  @apply mb-4;
+}
+
+.vc-map__placeholder {
+  @apply h-96 bg-gray-200 rounded-xl flex items-center justify-center text-gray-500;
+}
+
+.vc-map__note {
+  @apply text-center text-gray-600;
+}
+
+.vc-social {
+  @apply py-12 sm:py-16 bg-gray-900 perspective-distant;
+}
+
+.vc-social__description {
+  @apply text-center text-gray-300 mb-8 sm:mb-12 text-base sm:text-lg;
+}
+
+.vc-social__grid {
+  @apply grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto;
+}
+
+.vc-social__card {
+  @apply grid justify-center bg-white/10 rounded-xl p-4 sm:p-6 text-center text-white transform-gpu;
+}
+
+.vc-social__icon {
+  @apply flex items-center justify-center text-3xl sm:text-4xl mb-3;
+}
+
+.vc-social__name {
+  @apply font-medium;
+}
+
+.vc-sticky-bar {
+  @apply fixed bottom-5 right-5 w-fit  shadow-lg p-4 flex items-center justify-center z-50 md:hidden;
+}
+
+.vc-sticky-bar__phones {
+  @apply flex flex-col sm:flex-row gap-2 text-sm text-gray-700 mb-2 sm:mb-0;
+}
+
+.vc-sticky-bar__whatsapp {
+  @apply bg-green-500 text-white px-4 py-2 rounded-lg hover:bg-green-600 transition-colors duration-200;
+}

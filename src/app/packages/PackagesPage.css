@@ -1,0 +1,320 @@
+@import "tailwindcss";
+
+@layer base {
+  [dir="rtl"] {
+    @apply text-right;
+  }
+}
+
+.vp-page {
+  @apply bg-white;
+}
+
+.vp-header {
+  @apply relative perspective-distant mt-12;
+}
+
+.vp-header__background {
+  @apply h-80 sm:h-96 bg-gradient-to-r from-gray-100 to-gray-200 relative overflow-hidden;
+}
+
+.vp-header__geometric-shape {
+  @apply absolute inset-0;
+  background: radial-gradient(
+      circle at 10% 20%,
+      rgba(109, 255, 0, 0.1) 0%,
+      transparent 20%
+    ),
+    radial-gradient(
+      circle at 90% 80%,
+      rgba(164, 255, 0, 0.1) 0%,
+      transparent 20%
+    ),
+    linear-gradient(
+      45deg,
+      transparent 48%,
+      rgba(109, 255, 0, 0.05) 50%,
+      transparent 52%
+    ),
+    linear-gradient(
+      -45deg,
+      transparent 48%,
+      rgba(164, 255, 0, 0.05) 50%,
+      transparent 52%
+    );
+  background-size: 200px 200px, 300px 300px, 40px 40px, 40px 40px;
+  animation: vp-geometric-move 25s linear infinite;
+}
+
+@keyframes vp-geometric-move {
+  0% {
+    background-position: 0 0, 0 0, 0 0, 0 0;
+  }
+  100% {
+    background-position: 200px 200px, 300px 300px, 40px 40px, 40px 40px;
+  }
+}
+
+.vp-header__overlay {
+  @apply absolute inset-0 bg-black/30 flex items-center justify-center;
+}
+
+.vp-header__content {
+  @apply text-center text-white max-w-4xl mx-auto px-4 sm:px-6;
+}
+
+.vp-header__title {
+  @apply text-2xl sm:text-3xl md:text-4xl font-bold mb-4 leading-tight;
+}
+
+.vp-header__subtitle {
+  @apply text-lg sm:text-xl md:text-2xl font-semibold mb-4;
+}
+
+.vp-header__description {
+  @apply text-base sm:text-lg mb-6 opacity-90;
+}
+
+.vp-header__faq-trigger {
+  @apply inline-flex items-center;
+}
+
+.vp-selector {
+  @apply py-12 sm:py-16 bg-gray-50 perspective-distant;
+}
+
+.vp-container {
+  @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+}
+
+.vp-section-title {
+  @apply text-2xl sm:text-3xl font-bold text-center text-gray-900 mb-8 sm:mb-12;
+}
+
+.vp-business-types {
+  @apply flex flex-col md:flex-row justify-center gap-4 sm:gap-6 mb-8;
+}
+
+.vp-business-type {
+  @apply bg-white p-4 sm:p-6 rounded-xl shadow-md border border-gray-200 text-center transform-gpu;
+}
+
+.vp-business-type--selected {
+  @apply border-2 border-[#6dff00] bg-gradient-to-r from-[#6dff00] to-[#a4ff00] text-white;
+}
+
+.vp-business-type-label {
+  @apply text-lg sm:text-xl font-bold block mb-2;
+}
+
+.vp-business-type-desc {
+  @apply text-sm sm:text-base opacity-80;
+}
+
+.vp-recommendation {
+  @apply text-center mt-6;
+}
+
+.vp-recommendation-text {
+  @apply text-base sm:text-lg font-semibold text-[#6dff00] bg-white p-4 rounded-lg shadow-md inline-block;
+}
+
+.vp-comparison {
+  @apply py-12 sm:py-16 perspective-distant;
+}
+
+.vp-packages__grid {
+  @apply grid grid-cols-1 gap-16 md:grid-cols-2 lg:grid-cols-3 md:gap-8;
+}
+
+.vp-package-card {
+  @apply relative bg-white rounded-xl shadow-lg border border-gray-200 p-4 sm:p-6 transform-gpu;
+}
+
+.vp-package-card--blue {
+  @apply border-blue-200;
+}
+
+.vp-package-card--orange {
+  @apply border-orange-200;
+}
+
+.vp-package-card--purple {
+  @apply border-purple-200;
+}
+
+.vp-package-card--popular {
+  @apply border-2 border-orange-400 scale-105;
+}
+
+.vp-popular-badge {
+  @apply absolute -top-3 right-4 bg-orange-500 text-white px-3 sm:px-4 py-1 rounded-full text-xs sm:text-sm font-bold;
+}
+
+.vp-package-header {
+  @apply text-center mb-4 sm:mb-6;
+}
+
+.vp-package-name {
+  @apply text-lg sm:text-xl font-bold text-gray-900 mb-2;
+}
+
+.vp-package-subtitle {
+  @apply text-base sm:text-lg font-semibold text-gray-600 mb-2;
+}
+
+.vp-package-description {
+  @apply text-sm sm:text-base text-gray-500 mb-4;
+}
+
+.vp-package-price {
+  @apply text-lg sm:text-xl font-bold text-[#6dff00] mb-4;
+}
+
+.vp-price-note {
+  @apply block text-xs sm:text-sm text-gray-500 font-normal;
+}
+
+.vp-package-features {
+  @apply mb-4 sm:mb-6;
+}
+
+.vp-feature-category {
+  @apply mb-4 pb-4 border-b border-gray-100 last:border-b-0;
+}
+
+.vp-feature-category-title {
+  @apply text-base sm:text-lg font-bold text-gray-800 mb-3;
+}
+
+.vp-feature-item {
+  @apply flex justify-between items-center py-2;
+}
+
+.vp-feature-name {
+  @apply text-sm sm:text-base text-gray-600;
+}
+
+.vp-feature-check {
+  @apply text-green-500 font-bold;
+}
+
+.vp-feature-cross {
+  @apply text-red-500 font-bold;
+}
+
+.vp-feature-value {
+  @apply text-[#6dff00] font-medium;
+}
+
+.vp-package-cta {
+  @apply w-full py-2 sm:py-3 text-base sm:text-lg;
+}
+
+.vp-btn {
+  @apply px-4 sm:px-6 py-2 sm:py-3 rounded-lg font-semibold transition-colors duration-200;
+}
+
+.vp-btn--primary {
+  @apply bg-[#6dff00] text-white hover:bg-[#5ac400];
+}
+
+.vp-btn--secondary {
+  @apply bg-gray-200 text-gray-900 hover:bg-gray-300;
+}
+
+.vp-addons {
+  @apply py-12 sm:py-16 bg-gray-50 perspective-distant;
+}
+
+.vp-addons__grid {
+  @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8;
+}
+
+.vp-addon-card {
+  @apply bg-white rounded-lg shadow-md p-4 sm:p-6 text-center border border-gray-100;
+}
+
+.vp-addon-title {
+  @apply text-base sm:text-lg font-bold text-gray-900 mb-3;
+}
+
+.vp-addon-price {
+  @apply text-lg sm:text-xl font-bold text-[#6dff00] mb-4;
+}
+
+.vp-addon-add {
+  @apply w-full py-2 sm:py-2;
+}
+
+.vp-faq {
+  @apply py-12 sm:py-16 perspective-distant;
+}
+
+.vp-faq__list {
+  @apply max-w-4xl mx-auto;
+}
+
+.vp-faq__item {
+  @apply mb-4 border border-gray-200 rounded-lg overflow-hidden transform-gpu;
+}
+
+.vp-faq__question {
+  @apply w-full text-right p-4 sm:p-6 bg-white flex justify-between items-center cursor-pointer hover:bg-gray-50 transition-colors duration-200;
+}
+
+.vp-faq__toggle {
+  @apply transition-transform duration-200;
+}
+
+.vp-faq__toggle--open {
+  @apply rotate-180;
+}
+
+.vp-faq__answer {
+  @apply bg-gray-50 p-4 sm:p-6 text-gray-700 transition-all duration-400;
+}
+
+.vp-faq__answer--open {
+  @apply pb-6;
+}
+
+.vp-final-cta {
+  @apply py-12 sm:py-16 bg-gradient-to-r from-[#1a2421] to-[#2a3a36];
+}
+
+.vp-final-cta__content {
+  @apply text-center text-white max-w-3xl mx-auto px-4 sm:px-6;
+}
+
+.vp-final-cta__title {
+  @apply text-2xl sm:text-3xl font-bold mb-4;
+}
+
+.vp-final-cta__subtitle {
+  @apply text-base sm:text-lg mb-6 sm:mb-8 opacity-90;
+}
+
+.vp-final-cta__button {
+  @apply text-base sm:text-lg px-6 sm:px-8 py-3 sm:py-4;
+}
+
+.vp-sticky-cta {
+  @apply fixed bottom-4 right-4 left-4 bg-white shadow-lg rounded-lg p-4 flex gap-8 items-center justify-between z-40 md:hidden;
+}
+
+.vp-sticky-cta__button {
+  @apply flex-1 mr-2;
+}
+
+.vp-whatsapp-button {
+  @apply w-12 h-12 rounded-full bg-green-500 text-white flex items-center justify-center hover:bg-green-600 transition-colors duration-200;
+}
+
+.vp-chat-widget {
+  @apply fixed bottom-6 left-6 z-30;
+}
+
+.vp-chat-button {
+  @apply w-14 h-14 rounded-full bg-[#6dff00] text-white shadow-lg flex items-center justify-center hover:bg-[#5ac400] transition-colors duration-200;
+}

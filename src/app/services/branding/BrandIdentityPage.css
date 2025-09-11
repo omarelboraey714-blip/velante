@@ -1,0 +1,203 @@
+@import "tailwindcss";
+
+@layer base {
+  [dir="rtl"] {
+    @apply text-right;
+  }
+}
+
+.vbi-page {
+  @apply bg-white;
+}
+
+.vbi-header {
+  @apply relative mt-12;
+}
+
+.vbi-header__image {
+  @apply h-80 sm:h-96 bg-gradient-to-r from-gray-800 to-gray-900 relative overflow-hidden;
+}
+
+.vbi-header__overlay {
+  @apply absolute inset-0 bg-black/50 flex items-center justify-center;
+}
+
+.vbi-header__content {
+  @apply text-center text-white max-w-3xl mx-auto px-4 sm:px-6;
+}
+
+.vbi-header__title {
+  @apply text-2xl sm:text-3xl md:text-4xl font-bold mb-4 leading-tight;
+}
+
+.vbi-header__subtitle {
+  @apply text-lg sm:text-xl opacity-90;
+}
+
+.vbi-intro {
+  @apply py-12 sm:py-16 bg-gray-50;
+}
+
+.vbi-container {
+  @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+}
+
+.vbi-intro__content {
+  @apply text-center max-w-3xl mx-auto;
+}
+
+.vbi-intro__text {
+  @apply text-base sm:text-lg text-gray-700 leading-relaxed;
+}
+
+.vbi-intro__text span {
+  @apply font-bold text-lime-600;
+}
+
+.vbi-features {
+  @apply py-12 sm:py-16;
+}
+
+.vbi-section-title {
+  @apply text-2xl sm:text-3xl font-bold text-center text-gray-900 mb-8 sm:mb-12;
+}
+
+.vbi-features__grid {
+  @apply grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8;
+}
+
+.vbi-feature-item {
+  @apply flex items-start gap-3;
+}
+
+.vbi-feature-icon {
+  @apply w-8 h-8 rounded-full bg-lime-400 flex items-center justify-center text-white font-bold flex-shrink-0 mt-1;
+}
+
+.vbi-feature-content {
+  @apply flex-1;
+}
+
+.vbi-feature-title {
+  @apply text-base sm:text-lg font-bold text-gray-900 mb-1;
+}
+
+.vbi-feature-description {
+  @apply text-gray-600 text-sm sm:text-base;
+}
+
+.vbi-process {
+  @apply py-12 sm:py-16 bg-gray-50;
+}
+
+.vbi-process__timeline {
+  @apply relative max-w-4xl mx-auto;
+}
+
+.vbi-process__timeline::before {
+  @apply absolute right-4 top-0 bottom-0 w-0.5 bg-green-500;
+}
+
+.vbi-process__step {
+  @apply relative mb-8 sm:mb-12 pr-12 last:mb-0;
+}
+
+.vbi-process__number {
+  @apply absolute right-0 top-0 w-8 h-8 rounded-full bg-lime-600 text-white flex items-center justify-center font-bold;
+}
+
+.vbi-process__content {
+  @apply bg-white p-4 sm:p-6 rounded-lg shadow-sm shadow-lime-400;
+}
+
+.vbi-process__title {
+  @apply text-lg sm:text-xl font-bold text-gray-900 mb-2;
+}
+
+.vbi-process__description {
+  @apply text-gray-600 text-sm sm:text-base;
+}
+
+.vbi-portfolio {
+  @apply py-12 sm:py-16;
+}
+
+.vbi-portfolio__grid {
+  @apply grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8 mb-8 sm:mb-12;
+}
+
+.vbi-portfolio__item {
+  @apply relative overflow-hidden rounded-lg shadow-lg;
+}
+
+.vbi-portfolio__image img {
+  @apply w-full h-48 sm:h-64 object-cover transition-transform duration-300;
+}
+
+.vbi-portfolio__item:hover .vbi-portfolio__image img {
+  @apply scale-110;
+}
+
+.vbi-portfolio__overlay {
+  @apply absolute inset-0 bg-black/60 flex items-center justify-center opacity-0 transition-opacity duration-300;
+}
+
+.vbi-portfolio__item:hover .vbi-portfolio__overlay {
+  @apply opacity-100;
+}
+
+.vbi-portfolio__overlay span {
+  @apply text-white text-lg sm:text-xl font-bold;
+}
+
+.vbi-case-study {
+  @apply text-center bg-gradient-to-r from-lime-400 to-lime-600 p-6 sm:p-8 rounded-lg text-gray-900;
+}
+
+.vbi-case-study__title {
+  @apply text-xl sm:text-2xl font-bold mb-4;
+}
+
+.vbi-case-study__text {
+  @apply text-base sm:text-lg;
+}
+
+.vbi-pricing {
+  @apply py-12 sm:py-16 bg-gray-900;
+}
+
+.vbi-pricing__content {
+  @apply text-center text-white max-w-2xl mx-auto;
+}
+
+.vbi-pricing__title {
+  @apply text-2xl sm:text-3xl font-bold mb-4;
+}
+
+.vbi-pricing__amount {
+  @apply text-lg sm:text-2xl mb-6 sm:mb-8;
+}
+
+.vbi-pricing__btn {
+  @apply inline-block px-6 sm:px-8 py-3 sm:py-4 cursor-pointer border-2 text-white font-semibold rounded-lg hover:bg-lime-600 transition-colors duration-200;
+}
+
+.vbi-faq {
+  @apply py-12 sm:py-16;
+}
+
+.vbi-faq__list {
+  @apply max-w-4xl mx-auto space-y-4 sm:space-y-6;
+}
+
+.vbi-faq__item {
+  @apply bg-white p-4 sm:p-6 rounded-lg shadow-md border border-gray-100;
+}
+
+.vbi-faq__question {
+  @apply text-lg sm:text-xl font-bold text-gray-900 mb-2;
+}
+
+.vbi-faq__answer {
+  @apply text-gray-600 text-sm sm:text-base;
+}

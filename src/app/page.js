@@ -1,15 +1,20 @@
-// Server Component
+// src/app/page.js
+import HeroSection from "@/components/main/HeroSection/HeroSection";
+import ServicesOverview from "@/components/main/ServicesOverview/ServicesOverview";
+import WhyUs from "@/components/main/WhyUs/WhyUs";
+import FeaturedWork from "@/components/main/FeaturedWork/FeaturedWork";
+import Testimonials from "@/components/main/Testimonials/Testimonials";
+import PackagesCTA from "@/components/main/PackagesCTA/PackagesCTA";
 
-import Hero from "@/components/home/Hero";
-import Features from "@/components/home/Features";
-import TestimonialsSlider from "@/components/home/TestimonialsSlider";
-
-export default function HomePage() {
+export default function Home() {
   return (
-    <div>
-      <Hero />
-      <Features />
-      <TestimonialsSlider />
+    <div className="homepage">
+      <HeroSection />
+      <ServicesOverview />
+      <WhyUs />
+      <FeaturedWork />
+      <Testimonials />
+      <PackagesCTA />
     </div>
   );
 }

@@ -1,0 +1,65 @@
+@import "tailwindcss";
+
+.featured-work {
+  @apply bg-gray-50 py-16;
+}
+
+.featured-container {
+  @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+}
+
+.featured-header {
+  @apply text-center mb-16;
+}
+
+.featured-title {
+  @apply text-3xl md:text-4xl font-bold text-white mb-4 relative;
+}
+
+.featured-masonry-grid {
+  @apply grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-12;
+}
+
+.featured-project-card.featured {
+  @apply lg:col-span-2;
+}
+
+.featured-project-card {
+  @apply overflow-hidden rounded-xl shadow-md transition-all duration-300;
+}
+
+.featured-image-wrapper {
+  @apply relative overflow-hidden h-64 lg:h-80;
+}
+
+.featured-project-image {
+  @apply object-cover w-full h-full transition-transform duration-500;
+}
+
+.featured-overlay {
+  @apply absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex items-end;
+}
+
+.featured-overlay-content {
+  @apply p-6 text-white transform translate-y-4 transition-transform duration-300;
+}
+
+.featured-project-card:hover .featured-overlay-content {
+  @apply translate-y-0;
+}
+
+.featured-project-title {
+  @apply text-xl font-bold mb-2;
+}
+
+.featured-project-category {
+  @apply text-lime-400 font-medium mb-4;
+}
+
+.featured-cta {
+  @apply text-center;
+}
+
+.featured-btn-brand {
+  @apply inline-block px-6 py-3 text-lg font-medium rounded-full bg-lime-400 text-black hover:bg-lime-500 transition-colors duration-200 relative;
+}

@@ -1,0 +1,147 @@
+@import "tailwindcss";
+
+@layer base {
+  [dir="rtl"] {
+    @apply text-right;
+  }
+}
+
+.vf-footer {
+  @apply bg-white border-t border-gray-100 perspective-distant;
+}
+
+.vf-main {
+  @apply py-8 sm:py-12;
+}
+
+.vf-container {
+  @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+}
+
+.vf-grid {
+  @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8;
+}
+
+.vf-column {
+  @apply space-y-6;
+}
+
+.vf-column-title {
+  @apply text-lg font-bold text-gray-900 mb-4;
+}
+
+.vf-logo {
+  @apply flex items-center space-x-3 space-x-reverse;
+}
+
+.vf-logo__icon {
+  @apply w-10 h-10 rounded-full bg-gradient-to-r from-[#6dff00] to-[#a4ff00] text-white flex items-center justify-center font-bold text-lg;
+}
+
+.vf-logo__text {
+  @apply text-xl font-bold text-gray-900;
+}
+
+.vf-description {
+  @apply text-gray-600 leading-relaxed text-sm sm:text-base;
+}
+
+.vf-newsletter__description {
+  @apply text-gray-600 mb-4 text-sm;
+}
+
+.vf-newsletter__form {
+  @apply mb-3;
+}
+
+.vf-input-group {
+  @apply flex flex-col sm:flex-row gap-2;
+}
+
+.vf-email-input {
+  @apply flex-1 px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#6dff00] focus:border-transparent;
+}
+
+.vf-input--error {
+  @apply border-red-500;
+}
+
+.vf-subscribe-btn {
+  @apply px-4 py-2 bg-gradient-to-r from-[#6dff00] to-[#a4ff00] text-white rounded-lg hover:bg-[#5ac400] transition-colors duration-200 font-medium;
+}
+
+.vf-error {
+  @apply text-red-500 text-sm mt-2;
+}
+
+.vf-success {
+  @apply text-green-500 text-sm mt-2;
+}
+
+.vf-privacy-note {
+  @apply text-xs text-gray-500;
+}
+
+.vf-links {
+  @apply space-y-3;
+}
+
+.vf-link {
+  @apply text-gray-600 hover:text-[#6dff00] transition-colors duration-200 block text-sm sm:text-base;
+}
+
+.vf-contact-info {
+  @apply space-y-4;
+}
+
+.vf-contact-item {
+  @apply flex items-center gap-3;
+}
+
+.vf-contact-icon {
+  @apply text-lg mt-0.5;
+}
+
+.vf-contact-link {
+  @apply text-gray-600 hover:text-[#6dff00] transition-colors duration-200;
+}
+
+.vf-social {
+  @apply mt-6;
+}
+
+.vf-social-title {
+  @apply text-sm font-medium text-gray-900 mb-3;
+}
+
+.vf-social-icons {
+  @apply flex gap-3;
+}
+
+.vf-social-icon {
+  @apply w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center text-gray-600 hover:bg-[#6dff00] hover:text-white transition-all duration-200 transform-gpu;
+}
+
+.vf-bottom {
+  @apply bg-[#1a2421] border-t border-gray-800;
+}
+
+.vf-bottom-content {
+  @apply py-6 flex flex-col md:flex-row items-center justify-between space-y-4 md:space-y-0;
+}
+
+.vf-copyright {
+  @apply text-gray-400 text-sm;
+}
+
+.vf-legal-links {
+  @apply text-gray-400 text-sm flex flex-wrap justify-center;
+}
+
+.vf-legal-link {
+  @apply text-gray-400 hover:text-white transition-colors duration-200;
+}
+
+.vf-credit {
+  @apply text-gray-400 text-sm;
+}
