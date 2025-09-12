@@ -1,3 +1,5 @@
+"use client";
+
 import { motion } from "framer-motion";
 
 export default function WebDevelopmentTypes() {
@@ -42,7 +44,7 @@ export default function WebDevelopmentTypes() {
       ),
     },
     {
-      title: "التطبيقات الويب",
+      title: "تطبيقات الويب",
       description: "لحلول الأعمال المتقدمة",
       icon: (
         <svg width="36" height="36" viewBox="0 0 24 24" fill="none">

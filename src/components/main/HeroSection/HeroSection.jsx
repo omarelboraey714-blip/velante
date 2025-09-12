@@ -17,7 +17,7 @@ const Particles = dynamic(
 const CTAButton = ({ href, children, variant = "primary", onClick }) => (
   <motion.div
     whileTap={{ scale: 0.95 }}
-    className={`inline-block px-6 py-3 rounded-full font-medium text-base transition-all duration-200 ${
+    className={`inline-block px-6 py-3 rounded-full font-medium text-base transition-all cursor-pointer duration-200 ${
       variant === "primary"
         ? "bg-lime-500 text-white hover:bg-lime-600 hover:shadow-lg"
         : "border-2 border-white text-white hover:bg-white hover:text-gray-800"

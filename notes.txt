@@ -165,7 +165,7 @@ export const programs = [
 ];
 
 
-supabase fitflow password= zmJAdxNgjorHxn6c
+supabase fitflow password= $2b$10$wVz6hKwiXsDLvmyGimsEOuQCsyJ9tVF5wEEfdRIfN7U6LabMWeoTq
 
 
 

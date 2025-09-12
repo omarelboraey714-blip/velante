@@ -94,11 +94,11 @@
 }
 
 .testimonials-indicators {
-  @apply flex justify-center mt-8 space-x-reverse space-x-2 relative;
+  @apply flex justify-center mt-8 gap-2 relative;
 }
 
 .testimonials-indicator {
-  @apply w-3 h-3 rounded-full bg-gray-300 transition-all duration-200 hover:bg-gray-400;
+  @apply w-3 h-3 rounded-full bg-gray-300 transition-all duration-200 hover:bg-gray-400 cursor-pointer;
 }
 
 .testimonials-indicator.active {
@@ -126,4 +126,41 @@
   .testimonials-avatar {
     @apply ml-0 mr-4; /* تعديل الـ margin للـ RTL في الموبايل */
   }
+}
+.testimonials-loading {
+  text-align: center;
+  padding: 2rem;
+  font-size: 1.2rem;
+  color: #333;
+}
+
+.testimonials-spinner {
+  display: inline-block;
+  margin-left: 0.5rem;
+}
+
+.testimonials-empty-cta {
+  text-align: center;
+  padding: 2rem;
+  background-color: #f8f9fa;
+  border-radius: 8px;
+}
+
+.testimonials-empty-message {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  color: #333;
+}
+
+.testimonials-btn {
+  background-color: #2563eb; /* لون مشابه لـ featured-btn-brand */
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.375rem;
+  font-size: 1rem;
+  transition: background-color 0.3s ease;
+}
+
+.testimonials-btn:hover {
+  background-color: #1e40af;
 }

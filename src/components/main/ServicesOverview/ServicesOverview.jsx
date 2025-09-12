@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import Image from "next/image";
+
 import { motion } from "framer-motion";
 import { Palette, Code, Megaphone } from "lucide-react";
 
@@ -10,7 +11,7 @@ const CTAButton = ({ href, children, variant = "primary" }) => (
   <motion.div
     whileHover={{ scale: 1.05 }}
     whileTap={{ scale: 0.95 }}
-    className={`inline-block px-6 py-3 rounded-full font-medium text-base transition-all duration-200 ${
+    className={`inline-block px-6 py-3 rounded-full font-medium text-base cursor-pointer transition-all duration-200 ${
       variant === "primary"
         ? "bg-lime-500 text-white hover:bg-lime-600 hover:shadow-md"
         : "border-2 border-lime-500 text-lime-500 hover:bg-lime-500 hover:text-white"
@@ -35,10 +36,10 @@ export default function ServicesOverview() {
       id: 2,
       icon: <Code size={48} className="text-lime-500" />,
       image: "/images/web-icon.jpg",
-      title: "تصميم وبرمجة المواقع",
+      title: "تصميم و تطوير المواقع",
       description:
         "مواقع سريعة، آمنة، وسهلة الإدارة. متوافقة مع محركات البحث وجاهزة لتحقق أهدافك، سواء البيع أو العرض.",
-      link: "/services/web-design",
+      link: "/services/web-development",
     },
     {
       id: 3,

@@ -1,5 +1,6 @@
-import { motion } from "framer-motion";
+"use client";
 
+import { motion } from "framer-motion";
 export default function CTA() {
   return (
     <section className="va-final-cta">

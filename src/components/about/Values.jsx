@@ -1,3 +1,5 @@
+"use client";
+
 import { motion } from "framer-motion";
 import { values } from "@/data/aboutData";
 

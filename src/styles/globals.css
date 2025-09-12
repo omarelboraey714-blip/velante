@@ -23,21 +23,13 @@
   background-clip: text;
 }
 
-.bg-brand-primary {
-  background: linear-gradient(
-    to right,
-    var(--color-primary-start),
-    var(--color-primary-end)
-  );
-}
-
 html {
   scroll-behavior: smooth;
 }
 
 /* يمكنك استخدام @apply لتعريف كلاسات مخصصة */
 .btn-brand {
-  @apply bg-brand-primary text-white font-bold py-2 px-4 rounded-full hover:opacity-90 transition-opacity;
+  @apply text-white font-bold py-2 px-4 rounded-full hover:opacity-90 transition-opacity;
 }
 
 .card-brand {

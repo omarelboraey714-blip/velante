@@ -1,13 +1,13 @@
+"use client";
+
 import { motion } from "framer-motion";
 
 export default function QuickLinks() {
   const quickLinks = [
     { name: "الرئيسية", href: "/" },
     { name: "عن الشركة", href: "/about" },
-    { name: "خدماتنا", href: "/services" },
     { name: "أعمالنا", href: "/portfolio" },
     { name: "الباقات", href: "/packages" },
-    { name: "المدونة", href: "/blog" },
     { name: "اتصل بنا", href: "/contact" },
   ];
 

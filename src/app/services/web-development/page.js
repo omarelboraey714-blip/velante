@@ -1,5 +1,3 @@
-"use client";
-
 import WebDevelopmentHeader from "@/components/web-development/WebDevelopmentHeader";
 import WebDevelopmentIntro from "@/components/web-development/WebDevelopmentIntro";
 import WebDevelopmentTypes from "@/components/web-development/WebDevelopmentTypes";

@@ -275,7 +275,7 @@
 }
 
 .va-testimonials-indicators {
-  @apply flex justify-center space-x-2 space-x-reverse; /* إضافة space-x-reverse للـ RTL */
+  @apply flex justify-center gap-2;
 }
 
 .va-indicator {

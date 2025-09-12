@@ -169,7 +169,6 @@ export default function Testimonials() {
                 index === currentTestimonial ? "va-indicator--active" : ""
               }`}
               onClick={() => goToTestimonial(index)}
-              whileHover={{ scale: 1.3 }}
               whileTap={{ scale: 0.8 }}
               transition={{ duration: 0.2 }}
               aria-label={`الذهاب إلى الشهادة ${index + 1}`}

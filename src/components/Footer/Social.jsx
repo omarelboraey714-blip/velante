@@ -1,3 +1,5 @@
+"use client";
+
 import { motion } from "framer-motion";
 import { FaLinkedin, FaInstagram, FaBehance, FaFacebook } from "react-icons/fa";
 

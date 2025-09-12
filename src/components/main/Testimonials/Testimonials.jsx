@@ -1,155 +1,139 @@
-// src/components/Testimonials/Testimonials.jsx
 "use client";
 
-import { useState, useEffect, useRef } from "react";
-import { motion } from "framer-motion";
+import { useState, useEffect, useRef, useCallback } from "react";
+import useSWR from "swr"; // v2.3.6
+import { motion } from "framer-motion"; // v12.23.12
 import Image from "next/image";
+import Link from "next/link";
+import { supabase } from "../../../lib/supabaseClient";
 import "./Testimonials.css";
+
+// Fallback data in case of error
+const fallbackTestimonials = [
+  {
+    id: 1,
+    name: "أحمد محمد",
+    country: "مصر",
+    flag: "🇪🇬",
+    rating: 5,
+    text: "“شركة محترفة جدًا. كانت رحلة تصميم الهوية البصرية سلسة من البداية حتى النهاية وأنصح الجميع بالتعامل معهم.”",
+    project: "هوية بصرية لشركة تقنية",
+    avatar: "/images/avatar1.png",
+  },
+];
+
+const fetcher = async () => {
+  const { data, error } = await supabase
+    .from("testimonials")
+    .select(
+      `
+      id,
+      rating,
+      text,
+      project,
+      created_at,
+      client:clients (
+        id,
+        name,
+        country,
+        flag,
+        avatar
+      )
+    `
+    )
+    .order("created_at", { ascending: false });
+
+  if (error) throw new Error(error.message);
+
+  return data.map((t) => ({
+    id: t.id,
+    rating: t.rating,
+    text: t.text,
+    project: t.project,
+    name: t.client.name,
+    country: t.client.country,
+    flag: t.client.flag,
+    avatar: t.client.avatar,
+  }));
+};
 
 export default function Testimonials() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isHovered, setIsHovered] = useState(false);
   const intervalRef = useRef(null);
-  const timeoutRef = useRef(null);
 
-  const testimonials = [
-    {
-      id: 1,
-      name: "أحمد محمد",
-      country: "مصر",
-      flag: "🇪🇬",
-      rating: 5,
-      text: "“شركة محترفة جدًا. كانت رحلة تصميم الهوية البصرية سلسة من البداية حتى النهاية وأنصح الجميع بالتعامل معهم.”",
-      project: "هوية بصرية لشركة تقنية",
-      avatar: "/images/avatar1.png",
-    },
-    {
-      id: 2,
-      name: "فاطمة العلي",
-      country: "السعودية",
-      flag: "🇸🇦",
-      rating: 5,
-      text: "“التصميم كان أكثر من رائع. فريق العمل مبدع ومتعاون وحققوا كل ما تمنيته لشركتي.”",
-      project: "تصميم موقع إلكتروني",
-      avatar: "/images/avatar2.png",
-    },
-    {
-      id: 3,
-      name: "محمد عبدالله",
-      country: "الإمارات",
-      flag: "🇦🇪",
-      rating: 5,
-      text: "“السرعة في التسليم وجودة العمل كانتا مذهلين. أنصح بشدة بخدماتهم.”",
-      project: "حملة إعلانية",
-      avatar: "/images/avatar3.png",
-    },
-    {
-      id: 4,
-      name: "سارة حسن",
-      country: "مصر",
-      flag: "🇪🇬",
-      rating: 5,
-      text: "“أفضل تجربة تعامل مع شركة تصميم. الاهتمام بالتفاصيل والدقة في العمل ممتازة.”",
-      project: "هوية بصرية لمطعم",
-      avatar: "/images/avatar4.png",
-    },
-  ];
+  const {
+    data: testimonials,
+    error,
+    isLoading,
+  } = useSWR("testimonials", fetcher, {
+    revalidateOnFocus: true,
+    refreshInterval: 60000,
+    dedupingInterval: 2000,
+    fallbackData: fallbackTestimonials,
+    onError: (err) => console.error("Error fetching testimonials:", err),
+  });
 
-  // دالة لإعادة تشغيل العداد
-  const resetAutoPlay = () => {
+  const isEmpty = testimonials?.length === 0;
+
+  const startAutoPlay = useCallback(() => {
     if (intervalRef.current) {
       clearInterval(intervalRef.current);
     }
-
-    // نبدأ العداد من جديد بعد 5 ثوانٍ
-    timeoutRef.current = setTimeout(() => {
-      intervalRef.current = setInterval(() => {
-        setCurrentIndex((prevIndex) =>
-          prevIndex === testimonials.length - 1 ? 0 : prevIndex + 1
-        );
-      }, 5000);
-    }, 5000);
-  };
-
-  // تأثير للتحكم في التشغيل التلقائي
-  useEffect(() => {
-    // تشغيل أولي
     intervalRef.current = setInterval(() => {
-      if (!isHovered) {
-        setCurrentIndex((prevIndex) =>
-          prevIndex === testimonials.length - 1 ? 0 : prevIndex + 1
-        );
-      }
+      setCurrentIndex((prevIndex) =>
+        prevIndex === testimonials.length - 1 ? 0 : prevIndex + 1
+      );
     }, 5000);
+  }, [testimonials.length]);
 
-    return () => {
-      if (intervalRef.current) {
-        clearInterval(intervalRef.current);
-      }
-      if (timeoutRef.current) {
-        clearTimeout(timeoutRef.current);
-      }
-    };
-  }, [isHovered, testimonials.length]);
-
-  // تأثير لتحديث العداد عند تغيير currentIndex
-  useEffect(() => {
+  const stopAutoPlay = useCallback(() => {
     if (intervalRef.current) {
       clearInterval(intervalRef.current);
+      intervalRef.current = null;
     }
-    if (timeoutRef.current) {
-      clearTimeout(timeoutRef.current);
+  }, []);
+
+  const resetAutoPlay = useCallback(() => {
+    stopAutoPlay();
+    startAutoPlay();
+  }, [stopAutoPlay, startAutoPlay]);
+
+  useEffect(() => {
+    if (!isHovered) {
+      startAutoPlay();
+    } else {
+      stopAutoPlay();
     }
+    return () => stopAutoPlay();
+  }, [isHovered, startAutoPlay, stopAutoPlay]);
 
-    // إعادة تشغيل العداد بعد تغيير الـ index
-    timeoutRef.current = setTimeout(() => {
-      if (!isHovered) {
-        intervalRef.current = setInterval(() => {
-          setCurrentIndex((prevIndex) =>
-            prevIndex === testimonials.length - 1 ? 0 : prevIndex + 1
-          );
-        }, 5000);
-      }
-    }, 5000);
-
-    return () => {
-      if (timeoutRef.current) {
-        clearTimeout(timeoutRef.current);
-      }
-    };
-  }, [currentIndex, isHovered, testimonials.length]);
-
-  const nextTestimonial = () => {
+  const nextTestimonial = useCallback(() => {
     setCurrentIndex((prevIndex) =>
       prevIndex === testimonials.length - 1 ? 0 : prevIndex + 1
     );
-    // إعادة تشغيل العداد بعد الضغط
     resetAutoPlay();
-  };
+  }, [testimonials.length, resetAutoPlay]);
 
-  const prevTestimonial = () => {
+  const prevTestimonial = useCallback(() => {
     setCurrentIndex((prevIndex) =>
       prevIndex === 0 ? testimonials.length - 1 : prevIndex - 1
     );
-    // إعادة تشغيل العداد بعد الضغط
     resetAutoPlay();
-  };
+  }, [testimonials.length, resetAutoPlay]);
 
-  const goToTestimonial = (index) => {
-    setCurrentIndex(index);
-    // إعادة تشغيل العداد بعد الضغط
-    resetAutoPlay();
-  };
+  const goToTestimonial = useCallback(
+    (index) => {
+      setCurrentIndex(index);
+      resetAutoPlay();
+    },
+    [resetAutoPlay]
+  );
 
-  const handleMouseEnter = () => {
-    setIsHovered(true);
-  };
+  const handleMouseEnter = useCallback(() => setIsHovered(true), []);
+  const handleMouseLeave = useCallback(() => setIsHovered(false), []);
 
-  const handleMouseLeave = () => {
-    setIsHovered(false);
-  };
-
-  const renderStars = (rating) => {
+  const renderStars = useCallback((rating) => {
     return Array.from({ length: 5 }, (_, i) => (
       <motion.svg
         key={i}
@@ -167,7 +151,7 @@ export default function Testimonials() {
         <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" />
       </motion.svg>
     ));
-  };
+  }, []);
 
   return (
     <section className="testimonials" dir="rtl">
@@ -187,102 +171,142 @@ export default function Testimonials() {
           <div className="testimonials-subtitle-underline"></div>
         </motion.div>
 
-        <div
-          className="testimonials-carousel"
-          onMouseEnter={handleMouseEnter}
-          onMouseLeave={handleMouseLeave}
-        >
-          <button
-            className="testimonials-nav-button-prev"
-            onClick={prevTestimonial}
-            aria-label="الرأي السابق"
-          >
-            →
-          </button>
-
-          {/* طريقة جديدة: عرض كارت واحد في كل مرة */}
-          <div className="testimonials-single-view">
+        {isLoading ? (
+          <div className="testimonials-loading">
             <motion.div
-              key={currentIndex}
-              initial={{ opacity: 0, x: 50 }}
-              animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: -50 }}
-              transition={{
-                duration: 0.5,
-                type: "spring",
-                stiffness: 100,
-                damping: 20,
-              }}
-              className="testimonials-single-card-wrapper"
+              animate={{ rotate: 360 }}
+              transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
+              className="testimonials-spinner"
             >
-              <div className="testimonials-card">
-                <div className="testimonials-header-content">
-                  <Image
-                    src={
-                      testimonials[currentIndex].avatar ||
-                      "/images/placeholder-avatar.png"
-                    }
-                    alt={`صورة ${testimonials[currentIndex].name}`}
-                    width={48}
-                    height={48}
-                    className="testimonials-avatar"
-                    loading="lazy"
-                    quality={85}
-                  />
-                  <div className="testimonials-info">
-                    <h3 className="testimonials-name">
-                      {testimonials[currentIndex].name}
-                    </h3>
-                    <div className="testimonials-location">
-                      <span className="testimonials-flag">
-                        {testimonials[currentIndex].flag}
-                      </span>
-                      <span>{testimonials[currentIndex].country}</span>
-                    </div>
-                    <p className="testimonials-project">
-                      {testimonials[currentIndex].project}
-                    </p>
-                  </div>
-                </div>
-
-                <div
-                  className="testimonials-stars"
-                  aria-label={`تقييم ${testimonials[currentIndex].rating} من 5 نجوم`}
-                >
-                  {renderStars(testimonials[currentIndex].rating)}
-                </div>
-
-                <p className="testimonials-text">
-                  {testimonials[currentIndex].text}
-                </p>
-              </div>
+              جاري التحميل...
             </motion.div>
           </div>
-
-          <button
-            className="testimonials-nav-button-next"
-            onClick={nextTestimonial}
-            aria-label="الرأي التالي"
+        ) : isEmpty ? (
+          <motion.div
+            className="testimonials-empty-cta"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+            role="alert"
           >
-            ←
-          </button>
-        </div>
+            <p className="testimonials-empty-message">
+              لا توجد آراء حاليًا. كن أول عميل وشارك تجربتك!
+            </p>
+            <Link
+              href="/contact"
+              className="testimonials-btn"
+              aria-label="شارك رأيك"
+            >
+              شارك رأيك
+            </Link>
+          </motion.div>
+        ) : (
+          <div
+            className="testimonials-carousel"
+            onMouseEnter={handleMouseEnter}
+            onMouseLeave={handleMouseLeave}
+            onTouchStart={handleMouseEnter}
+            onTouchEnd={handleMouseLeave}
+          >
+            <button
+              className="testimonials-nav-button-prev"
+              onClick={prevTestimonial}
+              aria-label="الرأي السابق"
+              onMouseDown={(e) => e.preventDefault()}
+            >
+              →
+            </button>
 
-        <div className="testimonials-indicators">
-          {testimonials.map((_, index) => (
-            <motion.button
-              key={index}
-              className={`testimonials-indicator ${
-                index === currentIndex ? "active" : ""
-              }`}
-              onClick={() => goToTestimonial(index)}
-              aria-label={`الذهاب إلى الرأي ${index + 1}`}
-              whileHover={{ scale: 1.3 }}
-              whileTap={{ scale: 0.9 }}
-              transition={{ duration: 0.2 }}
-            />
-          ))}
-        </div>
+            <div className="testimonials-single-view">
+              <motion.div
+                key={currentIndex}
+                initial={{ opacity: 0, x: 50 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: -50 }}
+                transition={{
+                  duration: 0.5,
+                  type: "spring",
+                  stiffness: 100,
+                  damping: 20,
+                }}
+                className="testimonials-single-card-wrapper"
+              >
+                <div className="testimonials-card">
+                  <div className="testimonials-header-content">
+                    <Image
+                      src={
+                        testimonials[currentIndex].avatar ||
+                        "/images/placeholder-avatar.png"
+                      }
+                      alt={`صورة ${testimonials[currentIndex].name}`}
+                      width={48}
+                      height={48}
+                      className="testimonials-avatar"
+                      loading="lazy"
+                      quality={85}
+                      onError={(e) => {
+                        e.target.src = "/images/placeholder-avatar.png";
+                      }}
+                    />
+                    <div className="testimonials-info">
+                      <h3 className="testimonials-name">
+                        {testimonials[currentIndex].name}
+                      </h3>
+                      <div className="testimonials-location">
+                        <span className="testimonials-flag">
+                          {testimonials[currentIndex].flag}
+                        </span>
+                        <span>{testimonials[currentIndex].country}</span>
+                      </div>
+                      <p className="testimonials-project">
+                        {testimonials[currentIndex].project}
+                      </p>
+                    </div>
+                  </div>
+
+                  <div
+                    className="testimonials-stars"
+                    aria-label={`تقييم ${testimonials[currentIndex].rating} من 5 نجوم`}
+                  >
+                    {renderStars(testimonials[currentIndex].rating)}
+                  </div>
+
+                  <p className="testimonials-text">
+                    {testimonials[currentIndex].text}
+                  </p>
+                </div>
+              </motion.div>
+            </div>
+
+            <button
+              className="testimonials-nav-button-next"
+              onClick={nextTestimonial}
+              aria-label="الرأي التالي"
+              onMouseDown={(e) => e.preventDefault()}
+            >
+              ←
+            </button>
+          </div>
+        )}
+
+        {!isEmpty && !isLoading && (
+          <div className="testimonials-indicators">
+            {testimonials.map((_, index) => (
+              <motion.button
+                key={index}
+                className={`testimonials-indicator ${
+                  index === currentIndex ? "active" : ""
+                }`}
+                onClick={() => goToTestimonial(index)}
+                aria-label={`الذهاب إلى الرأي ${index + 1}`}
+                whileHover={{ scale: 1.3 }}
+                whileTap={{ scale: 0.9 }}
+                transition={{ duration: 0.2 }}
+              />
+            ))}
+          </div>
+        )}
       </div>
     </section>
   );

@@ -1,3 +1,5 @@
+"use client";
+
 import { motion } from "framer-motion";
 import Newsletter from "./Newsletter";
 
@@ -11,8 +13,7 @@ export default function Logo() {
         transition={{ duration: 0.6 }}
         viewport={{ once: true }}
       >
-        <div className="vf-logo__icon">V</div>
-        <div className="vf-logo__text">Velante</div>
+        <img src="/images/logo.webp" alt="velante-logo" />
       </motion.div>
       <motion.p
         className="vf-description"

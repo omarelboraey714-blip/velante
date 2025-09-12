@@ -60,6 +60,14 @@
   @apply text-center;
 }
 
+.featured-btn-brand-sm {
+  @apply flex gap-1.5 items-center w-fit;
+}
+
+.featured-btn-brand-sm svg {
+  @apply m-0;
+}
+
 .featured-btn-brand {
   @apply inline-block px-6 py-3 text-lg font-medium rounded-full bg-lime-400 text-black hover:bg-lime-500 transition-colors duration-200 relative;
 }

@@ -1,4 +1,5 @@
 // src/components/WhyUs/WhyUs.jsx
+
 "use client";
 
 import { motion } from "framer-motion";
@@ -37,15 +38,6 @@ export default function WhyUs() {
 
   return (
     <section className="why-us">
-      <div className="whyus-background-image">
-        <Image
-          src="/images/why-us-bg.jpg"
-          alt="خلفية لماذا نحن"
-          fill
-          className="whyus-bg-image"
-          loading="lazy"
-        />
-      </div>
       <div className="whyus-container">
         <motion.div
           className="whyus-header"

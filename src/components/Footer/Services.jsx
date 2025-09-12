@@ -1,12 +1,12 @@
+"use client";
+
 import { motion } from "framer-motion";
 
 export default function Services() {
   const services = [
-    "تصميم الهوية البصرية",
-    "تصميم وبرمجة المواقع",
-    "متاجر إلكترونية (E-commerce)",
-    "إعلانات ممولة (فيسبوك & جوجل)",
-    "تصميم صفحات السوشيال ميديا",
+    { name: "تصميم الهوية البصرية", href: "/services/branding" },
+    { name: "تصميم وبرمجة المواقع", href: "/services/web-development" },
+    { name: "إعلانات مُمولة ", href: "/services/ads" },
   ];
 
   return (
@@ -27,8 +27,8 @@ export default function Services() {
             transition={{ duration: 0.5, delay: index * 0.1 }}
             viewport={{ once: true }}
           >
-            <a href="#" className="vf-link">
-              {service}
+            <a href={service.href} className="vf-link">
+              {service.name}
             </a>
           </motion.li>
         ))}

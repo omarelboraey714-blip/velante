@@ -31,15 +31,7 @@
 }
 
 .vf-logo {
-  @apply flex items-center space-x-3 space-x-reverse;
-}
-
-.vf-logo__icon {
-  @apply w-10 h-10 rounded-full bg-gradient-to-r from-[#6dff00] to-[#a4ff00] text-white flex items-center justify-center font-bold text-lg;
-}
-
-.vf-logo__text {
-  @apply text-xl font-bold text-gray-900;
+  @apply w-30 h-10 rounded-full  flex items-center justify-center;
 }
 
 .vf-description {
@@ -55,7 +47,7 @@
 }
 
 .vf-input-group {
-  @apply flex flex-col sm:flex-row gap-2;
+  @apply grid gap-2;
 }
 
 .vf-email-input {

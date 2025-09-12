@@ -1,5 +1,3 @@
-"use client";
-
 import PaidAdsHeader from "@/components/paid-ads/PaidAdsHeader";
 import PaidAdsIntro from "@/components/paid-ads/PaidAdsIntro";
 import PaidAdsPlatforms from "@/components/paid-ads/PaidAdsPlatforms";

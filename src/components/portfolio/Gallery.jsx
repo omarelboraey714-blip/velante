@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+
 import { motion } from "framer-motion";
 import Filters from "@/components/portfolio/Filters";
 import { projects } from "@/data/portfolioData";

@@ -15,11 +15,11 @@
 }
 
 .vbi-header__image {
-  @apply h-80 sm:h-96 bg-gradient-to-r from-gray-800 to-gray-900 relative overflow-hidden;
+  @apply h-80 sm:h-96 bg-gradient-to-r from-gray-800 to-gray-900 relative overflow-hidden bg-[url('/images/branding-bg.png')] bg-cover bg-center;
 }
 
 .vbi-header__overlay {
-  @apply absolute inset-0 bg-black/50 flex items-center justify-center;
+  @apply absolute inset-0 bg-gradient-to-r from-lime-400 to-lime-600 opacity-95 flex items-center justify-center;
 }
 
 .vbi-header__content {
@@ -127,11 +127,15 @@
 }
 
 .vbi-portfolio__item {
-  @apply relative overflow-hidden rounded-lg shadow-lg;
+  @apply relative overflow-hidden rounded-lg shadow-lg w-full grid md:flex items-center justify-center gap-7;
+}
+
+.vbi-portfolio__image {
+  @apply relative h-48 w-full;
 }
 
 .vbi-portfolio__image img {
-  @apply w-full h-48 sm:h-64 object-cover transition-transform duration-300;
+  @apply w-full object-cover transition-transform duration-300;
 }
 
 .vbi-portfolio__item:hover .vbi-portfolio__image img {
@@ -139,11 +143,7 @@
 }
 
 .vbi-portfolio__overlay {
-  @apply absolute inset-0 bg-black/60 flex items-center justify-center opacity-0 transition-opacity duration-300;
-}
-
-.vbi-portfolio__item:hover .vbi-portfolio__overlay {
-  @apply opacity-100;
+  @apply absolute inset-0 bg-black/60 flex items-center justify-center;
 }
 
 .vbi-portfolio__overlay span {
@@ -200,4 +200,54 @@
 
 .vbi-faq__answer {
   @apply text-gray-600 text-sm sm:text-base;
+}
+
+.vbi-loading {
+  text-align: center;
+  padding: 2rem;
+  font-size: 1.2rem;
+  color: #333;
+}
+
+.vbi-spinner {
+  display: inline-block;
+  margin-left: 0.5rem;
+}
+
+.vbi-error {
+  text-align: center;
+  padding: 2rem;
+  background-color: #fee2e2;
+  border-radius: 8px;
+}
+
+.vbi-error-message {
+  font-size: 1.5rem;
+  color: #dc2626;
+}
+
+.vbi-empty-cta {
+  text-align: center;
+  padding: 2rem;
+  background-color: #f8f9fa;
+  border-radius: 8px;
+}
+
+.vbi-empty-message {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  color: #333;
+}
+
+.vbi-btn {
+  background-color: lime;
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.375rem;
+  font-size: 1rem;
+  transition: background-color 0.3s ease;
+}
+
+.vbi-btn:hover {
+  background-color: limegreen;
 }

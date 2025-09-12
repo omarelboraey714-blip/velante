@@ -1,3 +1,5 @@
+"use client";
+
 import { motion } from "framer-motion";
 
 export default function WebDevelopmentPortfolio() {
@@ -42,7 +44,7 @@ export default function WebDevelopmentPortfolio() {
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
         >
-          معرض مواقع
+          معرض الاعمال
         </motion.h2>
         <div className="vwd-portfolio__grid">
           {websites.map((website) => (

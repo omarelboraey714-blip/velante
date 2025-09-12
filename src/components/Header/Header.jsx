@@ -217,7 +217,7 @@ export default function Header() {
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-16 md:h-20">
         <motion.div
-          className="flex-shrink-0 order-3"
+          className="flex-shrink-0 order-3 h-10 w-25"
           whileHover={{
             scale: 1.05,
             transition: { type: "spring", stiffness: 400, damping: 10 },
@@ -225,7 +225,7 @@ export default function Header() {
           whileTap={{ scale: 0.95 }}
         >
           <Link href="/">
-            <span className="text-2xl font-bold text-lime-500">VELANTE</span>
+            <img src="/images/logo.webp" alt="velante-logo" />
           </Link>
         </motion.div>
 

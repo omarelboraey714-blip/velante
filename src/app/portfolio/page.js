@@ -1,5 +1,3 @@
-"use client";
-
 import Header from "@/components/portfolio/Header";
 import Gallery from "@/components/portfolio/Gallery";
 import CaseStudies from "@/components/portfolio/CaseStudies";

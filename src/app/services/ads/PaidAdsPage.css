@@ -15,11 +15,11 @@
 }
 
 .vpa-header__image {
-  @apply h-80 sm:h-96 bg-gradient-to-r from-[#1a2421] to-[#2a3a36] relative;
+  @apply h-80 sm:h-96 bg-gradient-to-r from-[#1a2421] to-[#2a3a36] relative bg-[url('/images/ads-bg.png')] bg-cover bg-center;
 }
 
 .vpa-header__overlay {
-  @apply absolute inset-0 bg-black/40 flex items-center justify-center;
+  @apply absolute inset-0 bg-gradient-to-r from-lime-400 to-lime-600 opacity-95 flex items-center justify-center;
 }
 
 .vpa-header__content {

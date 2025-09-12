@@ -1,5 +1,3 @@
-"use client";
-
 import PackagesHeader from "@/components/packages/PackagesHeader";
 import PackagesSelector from "@/components/packages/PackagesSelector";
 import PackagesComparison from "@/components/packages/PackagesComparison";
