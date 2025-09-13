@@ -14,7 +14,7 @@ export default function Team() {
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
         >
-          تعرف على العقول المبدعة behind فيلانتي
+          تعرف على العقول المبدعة behind velante
         </motion.h2>
         <div className="va-team-grid">
           {teamMembers.map((member) => (

@@ -4,7 +4,7 @@ import WebDevelopmentTypes from "@/components/web-development/WebDevelopmentType
 import WebDevelopmentFeatures from "@/components/web-development/WebDevelopmentFeatures";
 import WebDevelopmentTechnologies from "@/components/web-development/WebDevelopmentTechnologies";
 import WebDevelopmentCalculator from "@/components/web-development/WebDevelopmentCalculator";
-import WebDevelopmentPortfolio from "@/components/web-development/WebDevelopmentPortfolio";
+import WebDevelopmentPortfolio from "@/components/main/FeaturedWork/FeaturedWork";
 import WebDevelopmentFAQ from "@/components/web-development/WebDevelopmentFAQ";
 import "./WebDevelopmentPage.css";
 

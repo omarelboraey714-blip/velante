@@ -1,44 +1,111 @@
-// src/components/main/FeaturedWork/FeaturedWork.jsx
 "use client";
 
 import Link from "next/link";
 import Image from "next/image";
-import { useEffect, useState } from "react";
-import useSWR from "swr"; // للـ caching والجلب الديناميكي (أحدث إصدار v2.2+)
-import { motion } from "framer-motion";
+import { usePathname } from "next/navigation";
+import { useMemo } from "react";
+import useSWR from "swr"; // v2.3.6
+import { motion } from "framer-motion"; // v12.23.12
 import { ExternalLink } from "lucide-react";
-import { supabase } from "../../../lib/supabaseClient"; // استورد الـ client
 import "./FeaturedWork.css";
 
-const fetcher = async () => {
-  const { data, error } = await supabase
-    .from("projects")
-    .select("*")
-    .order("created_at", { ascending: false }); // ترتيب حسب التاريخ الجديد أولاً
+// Fallback data
+const fallbackProjects = [
+  {
+    id: 1,
+    title: "هوية علامة تجارية لشركة تقنية",
+    category: "هوية بصرية",
+    image: "/images/project1.jpg",
+    featured: true,
+    tag: "branding",
+  },
+  {
+    id: 2,
+    title: "موقع إلكتروني لشركة استشارات",
+    category: "تطوير المواقع",
+    image: "/images/project2.jpg",
+    tag: "web-development",
+  },
+  {
+    id: 3,
+    title: "حملة إعلانية لمنتج جديد",
+    category: "إعلانات ممولة",
+    image: "/images/project3.jpg",
+    tag: "ads",
+  },
+  {
+    id: 4,
+    title: "هوية علامة تجارية لمطعم",
+    category: "هوية بصرية",
+    image: "/images/project4.jpg",
+    featured: true,
+    tag: "branding",
+  },
+  {
+    id: 5,
+    title: "تطبيق لشركة توصيل",
+    category: "تطوير المواقع",
+    image: "/images/project5.jpg",
+    tag: "web-development",
+  },
+  {
+    id: 6,
+    title: "حملة تسويقية لمنتج تجميلي",
+    category: "إعلانات ممولة",
+    image: "/images/project6.jpg",
+    tag: "ads",
+  },
+];
 
-  if (error) throw new Error(error.message);
-  return data;
+const fetcher = async (url) => {
+  const response = await fetch(url);
+  if (!response.ok) {
+    throw new Error("Failed to fetch projects");
+  }
+  return response.json();
 };
 
 export default function FeaturedWork() {
+  const pathname = usePathname();
+
+  // تحديد الفلتر بناءً على المسار
+  const filterTag = useMemo(() => {
+    if (pathname.includes("/services/ads")) return "ads";
+    if (pathname.includes("/services/web-development"))
+      return "web-development";
+    if (pathname.includes("/services/branding")) return "branding";
+    return "all";
+  }, [pathname]);
+
   const {
     data: projects,
     error,
     isLoading,
-  } = useSWR("projects", fetcher, {
-    revalidateOnFocus: true, // تحديث عند التركيز
-    refreshInterval: 60000, // تحديث كل دقيقة (اختياري)
-    dedupingInterval: 2000, // تجنب الطلبات المتكررة في 2 ثواني (ممارسة أفضل)
+  } = useSWR(`/api/projects?tag=${filterTag}`, fetcher, {
+    revalidateOnFocus: false, // منع إعادة الطلب عند التركيز
+    dedupingInterval: 10000, // 10 ثواني لتجنب الطلبات المتكررة
+    fallbackData: fallbackProjects.filter(
+      (p) => filterTag === "all" || p.tag === filterTag
+    ),
+    revalidateOnMount: true, // التأكد من الجلب عند التحميل الأولي
   });
 
   if (isLoading) {
-    return <div className="featured-work">جاري التحميل...</div>;
+    return (
+      <motion.div
+        className="featured-work"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.5 }}
+      >
+        جاري التحميل...
+      </motion.div>
+    );
   }
 
   if (error) {
-    return (
-      <div className="featured-work">خطأ في جلب البيانات: {error.message}</div>
-    );
+    console.error("Error fetching projects:", error);
+    // Fallback يظهر بدون إزعاج المستخدم
   }
 
   return (
@@ -61,10 +128,10 @@ export default function FeaturedWork() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
-            role="alert" // للوصولية
+            role="alert"
           >
             <p className="featured-empty-message">
-              لا توجد لدينا اعمال سابقه كن اول عميل لدينا و احصل علي خصم 40%
+              لا توجد لدينا أعمال سابقة كن أول عميل لدينا و احصل على خصم 40%
             </p>
             <Link
               href="/contact"
@@ -77,7 +144,7 @@ export default function FeaturedWork() {
         ) : (
           <>
             <div className="featured-masonry-grid">
-              {projects.map((project, index) => (
+              {projects.map((project) => (
                 <motion.div
                   key={project.id}
                   className={`featured-project-card ${

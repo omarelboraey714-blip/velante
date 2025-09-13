@@ -16,10 +16,10 @@ export default function Story() {
           >
             <h2 className="va-section-title">كيف بدأت رحلتنا</h2>
             <p className="va-story-description">
-              تأسست فيلانتي في عام 2021، من خلال شغف مشترك لسد الفجوة بين
+              تأسست velante في عام 2021، من خلال شغف مشترك لسد الفجوة بين
               الإبداع البصري والوظائف الرقمية. لاحظنا أن الكثير من الشركات
               الناشئة والمنشآت الصغيرة تبحث عن حلول متكاملة ولكنها تواجه عروضًا
-              مبعثرة أو مكلفة. ومن هنا، ولدت فكرة فيلانتي: أن نكون الوجهة
+              مبعثرة أو مكلفة. ومن هنا، ولدت فكرة velante: أن نكون الوجهة
               الواحدة التي توفر حلولاً بصرية رقمية متكاملة، بجودة استثنائية
               وأسعار شفافة.
             </p>
@@ -33,7 +33,7 @@ export default function Story() {
           >
             <img
               src="/images/founders.jpg"
-              alt="مؤسسو فيلانتي"
+              alt="مؤسسو velante"
               className="va-story-img"
               onError={(e) => (e.target.src = "/images/placeholder-avatar.png")}
             />

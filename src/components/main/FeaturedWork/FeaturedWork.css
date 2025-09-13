@@ -13,7 +13,7 @@
 }
 
 .featured-title {
-  @apply text-3xl md:text-4xl font-bold text-white mb-4 relative;
+  @apply text-3xl md:text-4xl font-bold text-lime-500 mb-4 relative;
 }
 
 .featured-masonry-grid {
@@ -21,7 +21,7 @@
 }
 
 .featured-project-card.featured {
-  @apply lg:col-span-2;
+  @apply lg:col-span-1;
 }
 
 .featured-project-card {
