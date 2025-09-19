@@ -5,7 +5,9 @@ import WebDevelopmentFeatures from "@/components/web-development/WebDevelopmentF
 import WebDevelopmentTechnologies from "@/components/web-development/WebDevelopmentTechnologies";
 import WebDevelopmentCalculator from "@/components/web-development/WebDevelopmentCalculator";
 import WebDevelopmentPortfolio from "@/components/main/FeaturedWork/FeaturedWork";
-import WebDevelopmentFAQ from "@/components/web-development/WebDevelopmentFAQ";
+import Packages from "@/components/packs/Packages";
+import Services from "@/components/Services/Services";
+import WebDevelopmentFAQ from "@/components/FAQs/FAQs";
 import "./WebDevelopmentPage.css";
 
 export default function WebDevelopmentPage() {
@@ -16,8 +18,10 @@ export default function WebDevelopmentPage() {
       <WebDevelopmentTypes />
       <WebDevelopmentFeatures />
       <WebDevelopmentTechnologies />
-      <WebDevelopmentCalculator />
+      {/* <WebDevelopmentCalculator /> */}
       <WebDevelopmentPortfolio />
+      <Packages />
+      <Services />
       <WebDevelopmentFAQ />
     </div>
   );

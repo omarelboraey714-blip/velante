@@ -70,7 +70,7 @@ export default function PackagesComparison() {
         },
       },
       cta: "اختر الباقة",
-      ctaStyle: "secondary",
+      ctaStyle: "primary",
     },
     {
       id: "enterprise",

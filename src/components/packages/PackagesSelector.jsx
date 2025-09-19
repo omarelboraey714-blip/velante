@@ -9,11 +9,11 @@ export default function PackagesSelector() {
   const [recommendedPackage, setRecommendedPackage] = useState("");
 
   const businessTypes = [
-    { id: "startup", label: "🚀 Startup", desc: "أنا في البداية" },
-    { id: "sme", label: "📈 SME", desc: "لدي عمل قائم وأريد تطويره" },
+    { id: "startup", label: "Startup", desc: "أنا في البداية" },
+    { id: "sme", label: "SME", desc: "لدي عمل قائم وأريد تطويره" },
     {
       id: "corporate",
-      label: "🏢 Corporate",
+      label: "Corporate",
       desc: "شركة كبيرة وأحتاج لحلول متكاملة",
     },
   ];

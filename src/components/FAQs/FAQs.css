@@ -1,0 +1,35 @@
+@import "tailwindcss";
+
+@import "../../styles/theme.css";
+
+.vp-section-title {
+  @apply text-2xl sm:text-3xl font-bold text-center text-light mb-8 sm:mb-12;
+}
+
+.vp-faq {
+  @apply py-12 sm:py-16 perspective-distant;
+}
+
+.vp-faq__list {
+  @apply max-w-4xl mx-auto;
+}
+
+.vp-faq__item {
+  @apply mb-4 border border-l-blue rounded-lg overflow-hidden transform-gpu;
+}
+
+.vp-faq__question {
+  @apply w-full text-right text-light p-4 sm:p-6 flex justify-between items-center cursor-pointer transition-colors duration-200;
+}
+
+.vp-faq__toggle {
+  @apply transition-transform duration-200;
+}
+
+.vp-faq__answer {
+  @apply overflow-hidden p-4 sm:p-6 border-t border-l-blue text-light transition-all duration-400;
+}
+
+.vp-faq__answer--open {
+  @apply pb-6;
+}

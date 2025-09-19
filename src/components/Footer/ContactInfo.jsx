@@ -13,12 +13,8 @@ export default function ContactInfo() {
       icon: "📞",
       text: (
         <>
-          <a href="tel:+201000000000" className="vf-contact-link">
-            +20 100 000 0000 (مصر)
-          </a>
-          <br />
-          <a href="tel:+966500000000" className="vf-contact-link">
-            +966 50 000 0000 (السعودية)
+          <a href="tel:+201556840380" dir="ltr" className="vf-contact-link">
+            +201556840380
           </a>
         </>
       ),

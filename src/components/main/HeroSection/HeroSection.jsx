@@ -15,22 +15,22 @@ const Particles = dynamic(
 
 // مكون زر موحد مع تحسينات
 const CTAButton = ({ href, children, variant = "primary", onClick }) => (
-  <motion.div
-    whileTap={{ scale: 0.95 }}
-    className={`inline-block px-6 py-3 rounded-full font-medium text-base transition-all cursor-pointer duration-200 ${
-      variant === "primary"
-        ? "bg-lime-500 text-white hover:bg-lime-600 hover:shadow-lg"
-        : "border-2 border-white text-white hover:bg-white hover:text-gray-800"
-    }`}
+  <Link
+    href={href}
+    onClick={onClick}
+    className=" h-full flex items-center justify-center"
   >
-    <Link
-      href={href}
-      onClick={onClick}
-      className=" w-full h-full flex items-center justify-center"
+    <motion.div
+      whileTap={{ scale: 0.95 }}
+      className={`inline-block px-6 py-3 rounded-full font-medium text-base transition-all cursor-pointer duration-200 ${
+        variant === "primary"
+          ? "bg-e-blue text-white hover:bg-l-blue hover:shadow-lg"
+          : "border-2 border-white text-white hover:bg-white hover:text-gray-800"
+      }`}
     >
       {children}
-    </Link>
-  </motion.div>
+    </motion.div>
+  </Link>
 );
 
 export default function HeroSection() {
@@ -144,10 +144,10 @@ export default function HeroSection() {
           </motion.p>
 
           <motion.div
-            className="flex flex-col sm:flex-row gap-4 justify-center"
+            className="flex flex-col sm:flex-row gap-4 items-center justify-center"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.4 }}
+            transition={{ duration: 0.2 }}
           >
             <CTAButton href="/contact">اطلب خدمتك الآن</CTAButton>
             <CTAButton href="/portfolio" variant="outline">

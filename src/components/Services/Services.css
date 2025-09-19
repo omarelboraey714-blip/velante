@@ -1,0 +1,55 @@
+@import "tailwindcss";
+
+@import "../../styles/theme.css";
+
+.vs-services {
+  @apply p-8 text-center;
+}
+
+.vs-container {
+  @apply max-w-7xl mx-auto;
+}
+
+.vs-section-title {
+  @apply text-4xl font-bold text-light m-8 relative;
+}
+
+.vs-services-grid {
+  @apply grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6;
+}
+
+.vs-service-card {
+  @apply grid content-between rounded-2xl p-6 text-right shadow-md relative hover:shadow-primary hover:shadow-xl transition-shadow duration-200 border border-primary;
+}
+
+.vs-service-title {
+  @apply text-xl font-semibold text-e-blue mb-4;
+}
+
+.vs-service-description {
+  @apply text-light/60 mb-4;
+}
+
+.vs-service-price {
+  @apply text-l-blue font-bold mb-4;
+}
+
+.vs-btn {
+  @apply w-fit px-6 py-3 bg-e-blue text-white rounded-lg hover:bg-l-blue transition;
+}
+
+.vs-loading {
+  @apply flex justify-center items-center h-64;
+}
+
+.vs-spinner {
+  @apply border-4 border-lime-400 border-t-transparent rounded-full w-12 h-12 animate-spin;
+}
+
+.vs-empty-cta {
+  @apply text-center p-8 bg-amber-50 rounded-lg;
+}
+
+.vs-empty-message {
+  @apply text-gray-700 mb-4 text-2xl;
+}

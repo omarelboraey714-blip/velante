@@ -1,4 +1,4 @@
-import "@/styles/globals.css";
+import "./globals.css";
 import Header from "@/components/Header/Header";
 import Footer from "@/components/Footer/Footer";
 import { Tajawal } from "next/font/google";
@@ -27,8 +27,8 @@ export const metadata = {
     "تسويق رقمي",
     "وكالة تصميم",
   ],
-  metadataBase: new URL("http://localhost:3001"), // غيرها لـ production URL لاحقًا
-  title: "Your Website Title",
+  metadataBase: new URL("http://localhost:3000"), // غيرها لـ production URL لاحقًا
+  title: "Velante | وكالة التصميم والتسويق الرقمي",
   description:
     "Velante وكالة متخصصة في الهوية البصرية، تصميم السوشيال ميديا، الإعلانات الممولة، وتطوير المواقع. نبني حضور رقمي متكامل يساعد علامتك التجارية على النمو",
   icons: {

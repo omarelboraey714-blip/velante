@@ -1,16 +1,9 @@
 @import "tailwindcss";
 
+@import "../../../styles/theme.css";
+
 .why-us {
-  @apply relative bg-white py-20;
-}
-
-.whyus-background-image {
-  @apply absolute inset-0 overflow-hidden;
-  z-index: -1;
-}
-
-.whyus-bg-image {
-  @apply w-full h-full object-cover opacity-10;
+  @apply relative bg-gradient-to-b from-gray-900 to-primary py-20;
 }
 
 .whyus-container {
@@ -22,7 +15,7 @@
 }
 
 .whyus-title {
-  @apply text-3xl md:text-4xl font-bold text-gray-900 mb-4;
+  @apply text-3xl md:text-4xl font-bold text-light mb-4;
 }
 
 .whyus-grid {
@@ -34,20 +27,20 @@
 }
 
 .whyus-reason-content {
-  @apply p-6 rounded-xl transition-all duration-300 hover:shadow-xl bg-white/80 backdrop-blur-sm;
+  @apply p-6 rounded-xl transition-all duration-300 shadow-sm hover:shadow-xl shadow-primary grid content-between h-full backdrop-blur-sm;
 }
 
 .whyus-icon {
-  @apply w-16 h-16 rounded-full bg-gradient-to-r from-lime-400 to-lime-600 flex items-center justify-center text-white mx-auto mb-6;
-  box-shadow: 0 10px 25px rgba(109, 255, 0, 0.3);
+  @apply w-16 h-16 rounded-full bg-gradient-to-r from-e-blue to-l-blue flex items-center justify-center text-white mx-auto mb-10;
+  box-shadow: 0 10px 25px #007bff;
 }
 
 .whyus-reason-title {
-  @apply text-xl font-bold text-gray-900 mb-3;
+  @apply text-xl font-bold text-light mb-3;
 }
 
 .whyus-reason-description {
-  @apply text-gray-600;
+  @apply text-white;
 }
 
 .whyus-cta {
@@ -55,5 +48,5 @@
 }
 
 .whyus-btn-brand {
-  @apply inline-flex items-center px-6 py-3 text-base font-medium rounded-full bg-lime-400 text-black hover:bg-lime-600 transition-colors duration-200;
+  @apply inline-flex items-center px-6 py-3 text-base font-medium rounded-full bg-e-blue text-light hover:bg-l-blue transition-colors duration-200;
 }

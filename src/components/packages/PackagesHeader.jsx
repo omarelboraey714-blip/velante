@@ -41,15 +41,13 @@ export default function PackagesHeader() {
             وأسعار واضحة بدون مفاجآت.
           </motion.p>
           <motion.button
-            className="vp-btn vp-btn--secondary vp-header__faq-trigger"
+            className="vp-btn vp-btn--primary vp-header__faq-trigger"
             onClick={() =>
               document
                 .getElementById("faq-section")
                 .scrollIntoView({ behavior: "smooth" })
             }
-            whileHover={{ scale: 1.1, rotateX: 10 }}
             whileTap={{ scale: 0.95 }}
-            transition={{ duration: 0.3 }}
           >
             كيفية الاختيار؟
           </motion.button>

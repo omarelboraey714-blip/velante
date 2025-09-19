@@ -1,7 +1,9 @@
 @import "tailwindcss";
 
+@import "../../../styles/theme.css";
+
 .featured-work {
-  @apply bg-gray-50 py-16;
+  @apply bg-primary relative py-16;
 }
 
 .featured-container {
@@ -13,7 +15,7 @@
 }
 
 .featured-title {
-  @apply text-3xl md:text-4xl font-bold text-lime-500 mb-4 relative;
+  @apply text-3xl md:text-4xl font-bold text-light mb-4 relative;
 }
 
 .featured-masonry-grid {
@@ -25,7 +27,7 @@
 }
 
 .featured-project-card {
-  @apply overflow-hidden rounded-xl shadow-md transition-all duration-300;
+  @apply overflow-hidden rounded-xl shadow-xl shadow-gray-900 transition-all duration-300;
 }
 
 .featured-image-wrapper {
@@ -60,14 +62,6 @@
   @apply text-center;
 }
 
-.featured-btn-brand-sm {
-  @apply flex gap-1.5 items-center w-fit;
-}
-
-.featured-btn-brand-sm svg {
-  @apply m-0;
-}
-
 .featured-btn-brand {
-  @apply inline-block px-6 py-3 text-lg font-medium rounded-full bg-lime-400 text-black hover:bg-lime-500 transition-colors duration-200 relative;
+  @apply inline-block px-6 py-3 text-lg font-medium rounded-full bg-e-blue text-black hover:bg-l-blue transition-colors duration-200 relative;
 }

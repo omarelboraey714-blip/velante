@@ -14,7 +14,7 @@ export default function Team() {
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
         >
-          تعرف على العقول المبدعة behind velante
+          تعرف على العقول المبدعة خلف <span>velante</span>
         </motion.h2>
         <div className="va-team-grid">
           {teamMembers.map((member) => (
@@ -24,7 +24,7 @@ export default function Team() {
               initial={{ opacity: 0, y: 50 }}
               whileInView={{ opacity: 1, y: 0 }}
               whileHover={{ rotateY: 10, rotateX: 5, translateY: -5 }}
-              transition={{ duration: 0.5, delay: member.id * 0.1 }}
+              transition={{ duration: 0.3 }}
               viewport={{ once: true }}
             >
               <div className="va-member-image">

@@ -1,5 +1,7 @@
 @import "tailwindcss";
 
+@import "../../../styles/theme.css";
+
 @layer base {
   [dir="rtl"] {
     @apply text-right;
@@ -7,11 +9,11 @@
 }
 
 .vwd-page {
-  @apply bg-white;
+  @apply bg-gray-900 pt-12;
 }
 
 .vwd-header {
-  @apply relative perspective-distant mt-12;
+  @apply relative perspective-distant;
 }
 
 .vwd-header__background {
@@ -19,7 +21,7 @@
 }
 
 .vwd-header__overlay {
-  @apply absolute inset-0 bg-gradient-to-r from-gray-800 to-gray-900 opacity-95 flex items-center justify-center;
+  @apply absolute inset-0 bg-gray-900 opacity-95 flex items-center justify-center;
 }
 
 .vwd-header__content {
@@ -31,7 +33,7 @@
 }
 
 .vwd-intro {
-  @apply py-12 sm:py-16 bg-gray-50 perspective-distant;
+  @apply py-12 sm:py-16 bg-gray-900 perspective-distant;
 }
 
 .vwd-container {
@@ -43,7 +45,7 @@
 }
 
 .vwd-intro__text {
-  @apply text-base sm:text-lg text-gray-700 leading-relaxed;
+  @apply text-base sm:text-lg text-light leading-relaxed;
 }
 
 .vwd-types {
@@ -51,7 +53,7 @@
 }
 
 .vwd-section-title {
-  @apply text-2xl sm:text-3xl font-bold text-center text-gray-900 mb-8 sm:mb-12;
+  @apply text-2xl sm:text-3xl font-bold text-center text-light mb-8 sm:mb-12;
 }
 
 .vwd-types__grid {
@@ -59,43 +61,43 @@
 }
 
 .vwd-type-card {
-  @apply text-center p-6 sm:p-8 rounded-xl shadow-lg bg-white border border-gray-100 transform-gpu;
+  @apply text-center p-6 sm:p-8 rounded-xl shadow-lg  border border-l-blue transform-gpu;
 }
 
 .vwd-type-icon {
-  @apply w-16 h-16 p-2 rounded-full bg-gradient-to-r from-lime-400 to-lime-600 flex items-center justify-center text-white mx-auto mb-4 sm:mb-6;
+  @apply w-16 h-16 p-2 rounded-full bg-gradient-to-r from-e-blue to-l-blue flex items-center justify-center text-white mx-auto mb-4 sm:mb-6;
 }
 
 .vwd-type-title {
-  @apply text-lg sm:text-xl font-bold text-gray-900 mb-2;
+  @apply text-lg sm:text-xl font-bold text-light mb-2;
 }
 
 .vwd-type-description {
-  @apply text-gray-600 text-sm sm:text-base;
+  @apply text-light/60 text-sm sm:text-base;
 }
 
 .vwd-features {
-  @apply py-12 sm:py-16 bg-gray-50 perspective-distant;
+  @apply py-12 sm:py-16 bg-gray-900 perspective-distant;
 }
 
 .vwd-features__table {
-  @apply w-full border border-gray-200 rounded-lg overflow-hidden shadow-lg;
+  @apply w-full border border-l-blue rounded-lg overflow-hidden shadow-lg;
 }
 
 .vwd-features__header {
-  @apply grid grid-cols-3 bg-gray-100;
+  @apply grid grid-cols-3 text-light;
 }
 
 .vwd-features__header-cell {
-  @apply p-3 sm:p-4 font-bold text-center border-b border-gray-200;
+  @apply p-3 sm:p-4 font-bold text-center border-b text-light border-l-blue;
 }
 
 .vwd-features__row {
-  @apply grid grid-cols-3 border-b border-gray-200 last:border-b-0 hover:bg-gray-50 transform-gpu;
+  @apply grid grid-cols-3 text-light border-b border-l-blue last:border-b-0 hover:bg-l-blue/20 transform-gpu;
 }
 
 .vwd-features__cell {
-  @apply p-3 sm:p-4 text-center border-r border-gray-200 last:border-r-0;
+  @apply p-3 sm:p-4 text-center border-r border-l-blue last:border-r-0;
 }
 
 .vwd-features__feature {
@@ -103,11 +105,11 @@
 }
 
 .vwd-features__velante {
-  @apply text-lime-400 font-bold;
+  @apply text-e-blue font-bold;
 }
 
 .vwd-technologies {
-  @apply py-12 sm:py-16 perspective-distant;
+  @apply py-12 sm:py-16 perspective-distant bg-gradient-to-b from-gray-900 to-primary;
 }
 
 .vwd-tech__logos {
@@ -115,7 +117,9 @@
 }
 
 .vwd-tech__logo {
-  @apply bg-white px-4 sm:px-6 py-2 sm:py-3 rounded-full shadow-md border border-gray-200 text-gray-700 font-bold transform-gpu;
+  @apply bg-gray-900 px-4 sm:px-6 py-2 sm:py-3 rounded-full shadow-md border border-primary text-light/70 font-bold transform-gpu;
+  transform-style: preserve-3d;
+  perspective: 1000px;
 }
 
 .vwd-calculator {
@@ -207,25 +211,5 @@
 }
 
 .vwd-portfolio__type {
-  @apply text-gray-600 text-sm sm:text-base;
-}
-
-.vwd-faq {
-  @apply py-12 sm:py-16 bg-gray-50 perspective-distant;
-}
-
-.vwd-faq__list {
-  @apply max-w-4xl mx-auto space-y-4 sm:space-y-6;
-}
-
-.vwd-faq__item {
-  @apply bg-white p-4 sm:p-6 rounded-lg shadow-md border border-gray-100 transform-gpu;
-}
-
-.vwd-faq__question {
-  @apply text-lg sm:text-xl font-bold text-gray-900 mb-2;
-}
-
-.vwd-faq__answer {
   @apply text-gray-600 text-sm sm:text-base;
 }

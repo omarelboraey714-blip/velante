@@ -13,8 +13,8 @@ const CTAButton = ({ href, children, variant = "primary" }) => (
     whileTap={{ scale: 0.95 }}
     className={`inline-block px-6 py-3 rounded-full font-medium text-base cursor-pointer transition-all duration-200 ${
       variant === "primary"
-        ? "bg-lime-500 text-white hover:bg-lime-600 hover:shadow-md"
-        : "border-2 border-lime-500 text-lime-500 hover:bg-lime-500 hover:text-white"
+        ? "bg-e-blue text-white hover:bg-l-blue hover:shadow-md"
+        : "border-2 border-e-blue text-e-blue hover:bg-e-blue hover:text-white"
     }`}
   >
     <Link href={href}>{children}</Link>
@@ -25,7 +25,7 @@ export default function ServicesOverview() {
   const services = [
     {
       id: 1,
-      icon: <Palette size={48} className="text-lime-500" />,
+      icon: <Palette size={48} className="text-l-blue" />,
       image: "/images/branding-icon.jpg",
       title: "تصميم الهوية البصرية",
       description:
@@ -34,7 +34,7 @@ export default function ServicesOverview() {
     },
     {
       id: 2,
-      icon: <Code size={48} className="text-lime-500" />,
+      icon: <Code size={48} className="text-l-blue" />,
       image: "/images/web-icon.jpg",
       title: "تصميم و تطوير المواقع",
       description:
@@ -43,7 +43,7 @@ export default function ServicesOverview() {
     },
     {
       id: 3,
-      icon: <Megaphone size={48} className="text-lime-500" />,
+      icon: <Megaphone size={48} className="text-l-blue" />,
       image: "/images/ads-icon.jpg",
       title: "إعلانات مُمولة فعّالة",
       description:
@@ -53,28 +53,8 @@ export default function ServicesOverview() {
   ];
 
   return (
-    <section className="relative py-16 sm:py-20 bg-gradient-to-b from-gray-50 to-white overflow-hidden">
+    <section className="relative py-16 sm:py-20  overflow-hidden">
       {/* Subtle SVG Pattern للخلفية */}
-      <div className="absolute inset-0 z-0 opacity-10">
-        <svg className="w-full h-full" preserveAspectRatio="none">
-          <defs>
-            <pattern
-              id="grid"
-              width="40"
-              height="40"
-              patternUnits="userSpaceOnUse"
-            >
-              <path
-                d="M 40 0 L 0 0 0 40"
-                fill="none"
-                stroke="#84CC16"
-                strokeWidth="0.5"
-              />
-            </pattern>
-          </defs>
-          <rect width="100%" height="100%" fill="url(#grid)" />
-        </svg>
-      </div>
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 z-10">
         <motion.div
@@ -84,7 +64,7 @@ export default function ServicesOverview() {
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
         >
-          <h2 className="text-2xl sm:text-3xl font-bold text-gray-800">
+          <h2 className="text-2xl sm:text-3xl font-bold text-light">
             خدماتنا التي تُحدث الفرق
           </h2>
         </motion.div>
@@ -93,7 +73,7 @@ export default function ServicesOverview() {
           {services.map((service, index) => (
             <motion.div
               key={service.id}
-              className="bg-white rounded-xl shadow-sm hover:shadow-lg hover:shadow-lime-400 p-6 grid justify-center"
+              className="bg-gray-900 rounded-xl shadow-sm hover:shadow-lg hover:shadow-primary transition-shadow duration-200 p-6 grid justify-center"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.2 }}
@@ -103,15 +83,15 @@ export default function ServicesOverview() {
               <div className="flex justify-center mb-4 text-2xl">
                 {service.icon}
               </div>
-              <h3 className="text-lg sm:text-xl font-semibold text-gray-800 mb-3 text-center">
+              <h3 className="text-lg sm:text-xl font-semibold text-light mb-3 text-center">
                 {service.title}
               </h3>
-              <p className="text-gray-600 text-sm sm:text-base flex-grow text-center">
+              <p className="text-light text-sm sm:text-base flex-grow text-center">
                 {service.description}
               </p>
               <Link
                 href={service.link}
-                className="text-lime-500 font-medium hover:text-lime-600 transition-colors duration-200 mt-4 text-center"
+                className="text-e-blue font-medium hover:text-l-blue transition-colors duration-200 mt-4 text-center"
                 aria-label={`اعرف المزيد عن ${service.title}`}
               >
                 اعرف المزيد →

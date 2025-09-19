@@ -4,7 +4,7 @@ import MissionVision from "@/components/about/MissionVision";
 import Values from "@/components/about/Values";
 import Team from "@/components/about/Team";
 import Stats from "@/components/about/Stats";
-import Testimonials from "@/components/about/Testimonials";
+import Testimonials from "@/components/Testimonials/Testimonials";
 import CTA from "@/components/about/CTA";
 import "./AboutPage.css";
 
@@ -48,7 +48,7 @@ export default function AboutPage() {
       <Values />
       <Team />
       <Stats />
-      <Testimonials />
+      <Testimonials relative bg={"bg-gradient-to-b from-primary to-gray-900"} />
       <CTA />
     </div>
   );

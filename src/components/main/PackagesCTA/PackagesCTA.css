@@ -1,15 +1,16 @@
 @import "tailwindcss";
 
+@import "../../../styles/theme.css";
+
 .packages-cta {
-  @apply relative py-24 px-4 sm:px-6 lg:px-8 overflow-hidden;
-  background: linear-gradient(135deg, #1a2421 0%, #2a3a36 100%);
+  @apply relative py-24 px-4 sm:px-6 lg:px-8 overflow-hidden bg-gradient-to-b from-primary to-gray-900;
 }
 
 .packages-stars-background {
   @apply absolute inset-0;
-  background-image: radial-gradient(2px 2px at 20px 30px, #a4ff00, transparent),
-    radial-gradient(2px 2px at 40px 70px, rgba(164, 255, 0, 0.5), transparent),
-    radial-gradient(1px 1px at 90px 40px, #6dff00, transparent);
+  background-image: radial-gradient(2px 2px at 20px 30px, #007bff, transparent),
+    radial-gradient(2px 2px at 40px 70px, #007bff, transparent),
+    radial-gradient(1px 1px at 90px 40px, #007bff, transparent);
   background-size: 200px 100px;
   animation: packages-sparkle 5s linear infinite;
 }
@@ -28,7 +29,7 @@
 }
 
 .packages-content {
-  @apply text-white;
+  @apply text-light;
 }
 
 .packages-title {
@@ -41,7 +42,7 @@
 }
 
 .packages-package-card {
-  @apply p-6 bg-white/10 rounded-xl backdrop-blur-sm border border-white/20;
+  @apply p-6 bg-l-blue/10 rounded-xl backdrop-blur-sm border border-white/20;
 }
 
 .packages-package-card h3 {
@@ -53,7 +54,7 @@
 }
 
 .packages-btn-brand-sm {
-  @apply inline-flex items-center px-4 py-2 text-sm rounded-full bg-lime-400 text-black hover:bg-lime-500 transition-colors duration-200;
+  @apply inline-flex items-center px-4 py-2 text-sm rounded-full bg-e-blue text-black hover:bg-l-blue transition-colors duration-200;
 }
 
 .packages-cta-button {
@@ -61,7 +62,7 @@
 }
 
 .packages-btn-brand {
-  @apply inline-flex items-center px-6 py-3 text-base font-medium rounded-full bg-lime-400 text-black hover:bg-lime-500 transition-colors duration-200;
+  @apply inline-flex items-center px-6 py-3 text-base font-medium rounded-full bg-e-blue text-black hover:bg-l-blue transition-colors duration-200;
 }
 
 .packages-cta:hover .packages-stars-background {

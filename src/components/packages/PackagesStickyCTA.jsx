@@ -38,7 +38,7 @@ export default function PackagesStickyCTA() {
             تواصل معنا للاستشارة
           </motion.button>
           <motion.a
-            href="https://wa.me/1234567890"
+            href="https://wa.me/+201556840380"
             className="vp-whatsapp-button"
             whileHover={{ scale: 1.1, rotateY: 10 }}
             transition={{ duration: 0.3 }}

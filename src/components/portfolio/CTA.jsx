@@ -4,23 +4,23 @@ import { motion } from "framer-motion";
 
 export default function CTA() {
   return (
-    <section className="vp-cta">
-      <div className="vp-container">
+    <section className="vw-cta">
+      <div className="vw-container">
         <motion.div
-          className="vp-cta-content"
+          className="vw-cta-content"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
         >
-          <h2 className="vp-cta-title">مستعد لبدء مشروعك القادم؟</h2>
-          <p className="vp-cta-subtitle">
+          <h2 className="vw-cta-title">مستعد لبدء مشروعك القادم؟</h2>
+          <p className="vw-cta-subtitle">
             لنتحدث عن كيف يمكننا تحويل فكرتك إلى واقع ملموس ونتائج مذهلة.
           </p>
-          <div className="vp-cta-buttons">
+          <div className="vw-cta-buttons">
             <motion.a
               href="/contact"
-              className="vp-cta-btn vp-btn vp-btn--primary"
+              className="vw-cta-btn vw-btn vw-btn--primary"
               whileHover={{ scale: 1.1, rotateX: 10 }}
               whileTap={{ scale: 0.95 }}
               transition={{ duration: 0.3 }}
@@ -29,7 +29,7 @@ export default function CTA() {
             </motion.a>
             <motion.a
               href="/services"
-              className="vp-cta-btn vp-btn vp-btn--secondary"
+              className="vw-cta-btn vw-btn vw-btn--secondary"
               whileHover={{ scale: 1.1, rotateX: 10 }}
               whileTap={{ scale: 0.95 }}
               transition={{ duration: 0.3 }}

@@ -1,5 +1,7 @@
 @import "tailwindcss";
 
+@import "../../styles/theme.css";
+
 @layer base {
   [dir="rtl"] {
     @apply text-right;
@@ -7,56 +9,19 @@
 }
 
 .vc-page {
-  @apply bg-white;
+  @apply bg-gray-900 pt-12;
 }
 
 .vc-header {
-  @apply relative perspective-distant mt-12;
+  @apply relative perspective-distant;
 }
 
 .vc-header__background {
-  @apply h-80 sm:h-96 bg-gradient-to-r from-[#1a2421] to-[#2a3a36] relative overflow-hidden;
-}
-
-.vc-header__animation {
-  @apply absolute inset-0;
-  background: radial-gradient(
-      circle at 20% 30%,
-      rgba(109, 255, 0, 0.15) 0%,
-      transparent 25%
-    ),
-    radial-gradient(
-      circle at 80% 70%,
-      rgba(164, 255, 0, 0.15) 0%,
-      transparent 25%
-    ),
-    linear-gradient(
-      45deg,
-      transparent 48%,
-      rgba(109, 255, 0, 0.08) 50%,
-      transparent 52%
-    ),
-    linear-gradient(
-      -45deg,
-      transparent 48%,
-      rgba(109, 255, 0, 0.08) 50%,
-      transparent 52%
-    );
-  background-size: 150px 150px, 200px 200px, 30px 30px, 30px 30px;
-  animation: vc-animation-move 20s linear infinite;
-}
-
-@keyframes vc-animation-move {
-  0% {
-    background-position: 0 0, 0 0, 0 0, 0 0;
-  }
-  100% {
-    background-position: 150px 150px, 200px 200px, 30px 30px, 30px 30px;
-  }
+  @apply h-80 sm:h-96 bg-gray-900 relative overflow-hidden;
 }
 
 .vc-header__overlay {
-  @apply absolute inset-0 bg-black/40 flex items-center justify-center;
+  @apply absolute inset-0 bg-black/30 flex items-center justify-center;
 }
 
 .vc-header__content {
@@ -76,7 +41,7 @@
 }
 
 .vc-info {
-  @apply py-12 sm:py-16 bg-gray-50 perspective-distant;
+  @apply py-12 sm:py-16 bg-gray-900;
 }
 
 .vc-container {
@@ -84,15 +49,15 @@
 }
 
 .vc-section-title {
-  @apply text-2xl sm:text-3xl font-bold text-center text-gray-900 mb-8 sm:mb-12;
+  @apply text-2xl sm:text-3xl font-bold text-center text-light mb-8 sm:mb-12;
 }
 
 .vc-info__grid {
-  @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8;
+  @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 perspective-distant;
 }
 
 .vc-info__card {
-  @apply bg-white rounded-xl shadow-lg p-4 sm:p-6 text-center border border-gray-100 transform-gpu;
+  @apply grid content-between bg-l-blue/20 rounded-xl shadow-l-blue shadow-lg p-4 sm:p-6 hover:shadow-e-blue text-center border border-l-blue transition-shadow duration-300 transform-gpu;
 }
 
 .vc-info__icon {
@@ -100,7 +65,7 @@
 }
 
 .vc-info__title {
-  @apply text-lg sm:text-xl font-bold text-gray-900 mb-3;
+  @apply text-lg sm:text-xl font-bold text-light mb-3;
 }
 
 .vc-info__details {
@@ -108,19 +73,15 @@
 }
 
 .vc-info__text {
-  @apply text-sm sm:text-base text-gray-600 mb-1 cursor-pointer relative;
-}
-
-.vc-info__text:hover {
-  @apply text-[#6dff00];
+  @apply text-sm sm:text-base text-light/70 hover:text-e-blue mb-1 cursor-pointer relative;
 }
 
 .vc-copy-confirmation {
-  @apply absolute top-0 right-0 bg-green-500 text-white text-xs px-2 py-1 rounded ml-2;
+  @apply absolute top-0 right-0 bg-e-blue text-white text-xs px-2 py-1 rounded ml-2;
 }
 
 .vc-info__description {
-  @apply text-sm text-gray-500 mb-4;
+  @apply text-sm text-light/60 mb-4;
 }
 
 .vc-info__button {
@@ -132,7 +93,7 @@
 }
 
 .vc-btn--primary {
-  @apply bg-[#6dff00] text-white hover:bg-[#5ac400];
+  @apply bg-e-blue text-white hover:bg-l-blue;
 }
 
 .vc-form-section {
@@ -144,7 +105,7 @@
 }
 
 .vc-form {
-  @apply bg-white rounded-xl shadow-lg p-6 sm:p-8 border border-gray-100;
+  @apply rounded-xl shadow-lg p-6 sm:p-8 border border-l-blue;
 }
 
 .vc-form__row {
@@ -156,7 +117,7 @@
 }
 
 .vc-form__label {
-  @apply block text-gray-700 font-bold mb-2 flex items-center;
+  @apply text-light/90 font-bold mb-2 flex items-center;
 }
 
 .vc-form__icon {
@@ -166,7 +127,7 @@
 .vc-form__input,
 .vc-form__select,
 .vc-form__textarea {
-  @apply w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#6dff00] focus:border-transparent transition-colors duration-200;
+  @apply w-full p-3 border border-l-blue/30 rounded-lg focus:ring-2 focus:ring-l-blue focus:border-transparent transition-colors duration-200;
 }
 
 .vc-form__input--error,
@@ -179,15 +140,11 @@
 }
 
 .vc-form__country-code {
-  @apply w-20 p-3 border border-gray-300 rounded-l-lg border-l-0 focus:ring-2 focus:ring-[#6dff00] focus:border-transparent;
-  border-top-right-radius: 0;
-  border-bottom-right-radius: 0;
+  @apply w-30 ml-5 p-3 border border-l-blue/30 rounded-lg border-l-0 focus:ring-2 focus:ring-l-blue focus:border-transparent;
 }
 
 .vc-form__input {
   @apply flex-1 rounded-l-none;
-  border-top-left-radius: 0;
-  border-bottom-left-radius: 0;
 }
 
 .vc-form__error {
@@ -203,43 +160,11 @@
 }
 
 .vc-form__loading-spinner {
-  @apply w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin mr-2;
+  @apply w-5 h-5 border-2 border-e-blue border-t-transparent rounded-full animate-spin mr-2;
 }
 
 .vc-form__success-message {
-  @apply mt-4 p-4 bg-green-100 text-green-700 rounded-lg text-center;
-}
-
-.vc-faq {
-  @apply py-12 sm:py-16 bg-gray-50 perspective-distant;
-}
-
-.vc-faq__list {
-  @apply max-w-4xl mx-auto;
-}
-
-.vc-faq__item {
-  @apply mb-4 border border-gray-200 rounded-lg overflow-hidden transform-gpu;
-}
-
-.vc-faq__question {
-  @apply w-full text-right p-4 sm:p-6 bg-white flex justify-between items-center cursor-pointer hover:bg-gray-50 transition-colors duration-200;
-}
-
-.vc-faq__toggle {
-  @apply transition-transform duration-200;
-}
-
-.vc-faq__toggle--open {
-  @apply rotate-180;
-}
-
-.vc-faq__answer {
-  @apply bg-gray-50 p-4 sm:p-6 text-gray-700 transition-all duration-300;
-}
-
-.vc-faq__answer--open {
-  @apply pb-6;
+  @apply mt-4 p-4 bg-blue-100 text-blue-700 rounded-lg text-center;
 }
 
 .vc-map {
@@ -251,27 +176,27 @@
 }
 
 .vc-map__placeholder {
-  @apply h-96 bg-gray-200 rounded-xl flex items-center justify-center text-gray-500;
+  @apply h-96 bg-light/20 rounded-xl flex items-center justify-center text-light/50;
 }
 
 .vc-map__note {
-  @apply text-center text-gray-600;
+  @apply text-center text-light/60;
 }
 
 .vc-social {
-  @apply py-12 sm:py-16 bg-gray-900 perspective-distant;
+  @apply py-12 sm:py-16 bg-gray-900;
 }
 
 .vc-social__description {
-  @apply text-center text-gray-300 mb-8 sm:mb-12 text-base sm:text-lg;
+  @apply text-center text-light/50 mb-8 sm:mb-12 text-base sm:text-lg;
 }
 
 .vc-social__grid {
-  @apply grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto;
+  @apply grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto perspective-distant;
 }
 
 .vc-social__card {
-  @apply grid justify-center bg-white/10 rounded-xl p-4 sm:p-6 text-center text-white transform-gpu;
+  @apply grid justify-center bg-l-blue/10 shadow-lg hover:shadow-l-blue rounded-xl p-4 sm:p-6 text-center text-e-blue transform-gpu;
 }
 
 .vc-social__icon {
@@ -283,13 +208,9 @@
 }
 
 .vc-sticky-bar {
-  @apply fixed bottom-5 right-5 w-fit  shadow-lg p-4 flex items-center justify-center z-50 md:hidden;
-}
-
-.vc-sticky-bar__phones {
-  @apply flex flex-col sm:flex-row gap-2 text-sm text-gray-700 mb-2 sm:mb-0;
+  @apply fixed bottom-5 right-5  flex items-center justify-center z-50;
 }
 
 .vc-sticky-bar__whatsapp {
-  @apply bg-green-500 text-white px-4 py-2 rounded-lg hover:bg-green-600 transition-colors duration-200;
+  @apply text-3xl  text-light bg-radial from-l-blue to-e-blue  rounded-full  shadow-lg p-3 lg:text-4xl transition-colors duration-200;
 }

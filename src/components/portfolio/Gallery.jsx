@@ -99,8 +99,8 @@ export default function Gallery({ setSelectedProject, setShowLightbox }) {
   };
 
   return (
-    <section className="vp-gallery" aria-label="معرض الأعمال">
-      <div className="vp-container">
+    <section className="vw-gallery" aria-label="معرض الأعمال">
+      <div className="vw-container">
         <Filters
           setActiveFilter={setActiveFilter}
           activeFilter={activeFilter}
@@ -108,7 +108,7 @@ export default function Gallery({ setSelectedProject, setShowLightbox }) {
 
         {isLoading ? (
           <motion.div
-            className="vp-loading"
+            className="vw-loading"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.5 }}
@@ -118,26 +118,24 @@ export default function Gallery({ setSelectedProject, setShowLightbox }) {
             <motion.div
               animate={{ rotate: 360 }}
               transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
-              className="vp-spinner"
-            >
-              جاري التحميل...
-            </motion.div>
+              className="vw-spinner"
+            ></motion.div>
           </motion.div>
         ) : filteredProjects.length === 0 ? (
           <motion.div
-            className="vp-empty-cta"
+            className="vw-empty-cta"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
             role="alert"
             aria-live="polite"
           >
-            <p className="vp-empty-message">
+            <p className="vw-empty-message">
               لا توجد أعمال متاحة حاليًا. كن أول عميل واستمتع بخصم 40%!
             </p>
             <Link
               href="/contact"
-              className="vp-btn vp-btn--primary"
+              className="vw-btn vw-btn--primary"
               aria-label="كن أول عميل واحصل على خصم 40%"
             >
               كن أول عميل
@@ -145,7 +143,7 @@ export default function Gallery({ setSelectedProject, setShowLightbox }) {
           </motion.div>
         ) : (
           <motion.div
-            className="vp-masonry-grid"
+            className="vw-masonry-grid"
             variants={containerVariants}
             initial="hidden"
             animate="visible"
@@ -154,14 +152,14 @@ export default function Gallery({ setSelectedProject, setShowLightbox }) {
               {filteredProjects.slice(0, visibleProjects).map((project) => (
                 <motion.div
                   key={project.id}
-                  className="vp-project-card"
+                  className="vw-project-card"
                   // variants={cardVariants}
                   whileHover={{ scale: 1.03, rotateY: 5, translateY: -10 }}
                   onClick={() => openLightbox(project)}
                   role="button"
                   aria-label={`عرض تفاصيل ${project.title}`}
                 >
-                  <div className="vp-project-image">
+                  <div className="vw-project-image">
                     {/* ✅ صورة آمنة مع تصحيح الأخطاء */}
                     <Image
                       src={
@@ -172,28 +170,28 @@ export default function Gallery({ setSelectedProject, setShowLightbox }) {
                       alt={project.title}
                       fill
                       sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                      className="vp-image"
+                      className="vw-image"
                       onError={(e) => {
                         console.warn("🖼️ صورة فاشلة:", e.target.src);
                         e.target.src = "/images/placeholder.jpg"; // ← تأكد أن هذه الصورة موجودة!
                       }}
                     />
                     {project.badge && (
-                      <div className="vp-project-badge">{project.badge}</div>
+                      <div className="vw-project-badge">{project.badge}</div>
                     )}
                     <motion.div
-                      className="vp-project-overlay"
+                      className="vw-project-overlay"
                       initial={{ opacity: 0 }}
                       whileHover={{ opacity: 0.9 }}
                       transition={{ duration: 0.3 }}
                     >
-                      <div className="vp-project-info">
-                        <h3 className="vp-project-title">{project.title}</h3>
-                        <p className="vp-project-type">{project.type}</p>
+                      <div className="vw-project-info">
+                        <h3 className="vw-project-title">{project.title}</h3>
+                        <p className="vw-project-type">{project.type}</p>
                       </div>
-                      <div className="vp-project-actions">
+                      <div className="vw-project-actions">
                         <button
-                          className="vp-action-btn"
+                          className="vw-action-btn"
                           aria-label={`عرض تفاصيل ${project.title}`}
                         >
                           👁️ عرض التفاصيل
@@ -208,9 +206,9 @@ export default function Gallery({ setSelectedProject, setShowLightbox }) {
         )}
 
         {visibleProjects < filteredProjects.length && !isLoading && (
-          <div className="vp-load-more">
+          <div className="vw-load-more">
             <motion.button
-              className="vp-load-more-btn vp-btn vp-btn--primary"
+              className="vw-load-more-btn vw-btn vw-btn--primary"
               onClick={loadMore}
               whileHover={{ scale: 1.1, rotateX: 10 }}
               whileTap={{ scale: 0.95 }}

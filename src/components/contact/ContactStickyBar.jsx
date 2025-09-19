@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-
+import { FaWhatsapp } from "react-icons/fa";
 import { motion } from "framer-motion";
 
 export default function ContactStickyBar() {
@@ -30,14 +30,14 @@ export default function ContactStickyBar() {
           transition={{ duration: 0.5 }}
         >
           <motion.a
-            href="https://wa.me/201000000000"
+            href="https://wa.me/+201556840380"
             className="vc-sticky-bar__whatsapp"
             target="_blank"
             rel="noopener noreferrer"
             whileHover={{ scale: 1.1, rotateX: 10 }}
             transition={{ duration: 0.3 }}
           >
-            💬 واتساب
+            <FaWhatsapp />
           </motion.a>
         </motion.div>
       )}

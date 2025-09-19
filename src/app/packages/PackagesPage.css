@@ -1,5 +1,7 @@
 @import "tailwindcss";
 
+@import "../../styles/theme.css";
+
 @layer base {
   [dir="rtl"] {
     @apply text-right;
@@ -7,52 +9,15 @@
 }
 
 .vp-page {
-  @apply bg-white;
+  @apply bg-gray-900 pt-12;
 }
 
 .vp-header {
-  @apply relative perspective-distant mt-12;
+  @apply relative perspective-distant;
 }
 
 .vp-header__background {
-  @apply h-80 sm:h-96 bg-gradient-to-r from-gray-100 to-gray-200 relative overflow-hidden;
-}
-
-.vp-header__geometric-shape {
-  @apply absolute inset-0;
-  background: radial-gradient(
-      circle at 10% 20%,
-      rgba(109, 255, 0, 0.1) 0%,
-      transparent 20%
-    ),
-    radial-gradient(
-      circle at 90% 80%,
-      rgba(164, 255, 0, 0.1) 0%,
-      transparent 20%
-    ),
-    linear-gradient(
-      45deg,
-      transparent 48%,
-      rgba(109, 255, 0, 0.05) 50%,
-      transparent 52%
-    ),
-    linear-gradient(
-      -45deg,
-      transparent 48%,
-      rgba(164, 255, 0, 0.05) 50%,
-      transparent 52%
-    );
-  background-size: 200px 200px, 300px 300px, 40px 40px, 40px 40px;
-  animation: vp-geometric-move 25s linear infinite;
-}
-
-@keyframes vp-geometric-move {
-  0% {
-    background-position: 0 0, 0 0, 0 0, 0 0;
-  }
-  100% {
-    background-position: 200px 200px, 300px 300px, 40px 40px, 40px 40px;
-  }
+  @apply h-80 sm:h-96 bg-gray-900 relative overflow-hidden;
 }
 
 .vp-header__overlay {
@@ -76,11 +41,11 @@
 }
 
 .vp-header__faq-trigger {
-  @apply inline-flex items-center;
+  @apply inline-flex items-center rounded-full;
 }
 
 .vp-selector {
-  @apply py-12 sm:py-16 bg-gray-50 perspective-distant;
+  @apply py-12 sm:py-16 bg-gray-900 perspective-distant;
 }
 
 .vp-container {
@@ -88,7 +53,7 @@
 }
 
 .vp-section-title {
-  @apply text-2xl sm:text-3xl font-bold text-center text-gray-900 mb-8 sm:mb-12;
+  @apply text-2xl sm:text-3xl font-bold text-center text-light mb-8 sm:mb-12;
 }
 
 .vp-business-types {
@@ -96,27 +61,27 @@
 }
 
 .vp-business-type {
-  @apply bg-white p-4 sm:p-6 rounded-xl shadow-md border border-gray-200 text-center transform-gpu;
+  @apply p-4 sm:p-6 cursor-pointer rounded-xl shadow-md border border-l-blue text-center transform-gpu;
 }
 
 .vp-business-type--selected {
-  @apply border-2 border-[#6dff00] bg-gradient-to-r from-[#6dff00] to-[#a4ff00] text-white;
+  @apply border-2 bg-gradient-to-r from-l-blue to-e-blue text-white;
 }
 
 .vp-business-type-label {
-  @apply text-lg sm:text-xl font-bold block mb-2;
+  @apply text-lg text-light sm:text-xl font-bold block mb-2;
 }
 
 .vp-business-type-desc {
-  @apply text-sm sm:text-base opacity-80;
+  @apply text-sm text-light/60 sm:text-base opacity-80;
 }
 
 .vp-recommendation {
-  @apply text-center mt-6;
+  @apply text-center mt-6 border border-l-blue;
 }
 
 .vp-recommendation-text {
-  @apply text-base sm:text-lg font-semibold text-[#6dff00] bg-white p-4 rounded-lg shadow-md inline-block;
+  @apply text-base sm:text-lg font-semibold text-e-blue p-4 rounded-lg shadow-md inline-block;
 }
 
 .vp-comparison {
@@ -128,27 +93,21 @@
 }
 
 .vp-package-card {
-  @apply relative bg-white rounded-xl shadow-lg border border-gray-200 p-4 sm:p-6 transform-gpu;
+  @apply relative  rounded-xl shadow-lg border border-l-blue p-4 sm:p-6 transform-gpu;
 }
 
+.vp-package-card--orange,
+.vp-package-card--purple,
 .vp-package-card--blue {
-  @apply border-blue-200;
-}
-
-.vp-package-card--orange {
-  @apply border-orange-200;
-}
-
-.vp-package-card--purple {
-  @apply border-purple-200;
+  @apply border-l-blue;
 }
 
 .vp-package-card--popular {
-  @apply border-2 border-orange-400 scale-105;
+  @apply border-2 border-e-blue;
 }
 
 .vp-popular-badge {
-  @apply absolute -top-3 right-4 bg-orange-500 text-white px-3 sm:px-4 py-1 rounded-full text-xs sm:text-sm font-bold;
+  @apply absolute -top-3 right-4 bg-e-blue text-white px-3 sm:px-4 py-1 rounded-full text-xs sm:text-sm font-bold;
 }
 
 .vp-package-header {
@@ -156,23 +115,23 @@
 }
 
 .vp-package-name {
-  @apply text-lg sm:text-xl font-bold text-gray-900 mb-2;
+  @apply text-lg sm:text-xl font-bold text-light mb-2;
 }
 
 .vp-package-subtitle {
-  @apply text-base sm:text-lg font-semibold text-gray-600 mb-2;
+  @apply text-base sm:text-lg font-semibold text-light/60 mb-2;
 }
 
 .vp-package-description {
-  @apply text-sm sm:text-base text-gray-500 mb-4;
+  @apply text-sm sm:text-base text-light/60 mb-4;
 }
 
 .vp-package-price {
-  @apply text-lg sm:text-xl font-bold text-[#6dff00] mb-4;
+  @apply text-lg sm:text-xl font-bold text-l-blue mb-4;
 }
 
 .vp-price-note {
-  @apply block text-xs sm:text-sm text-gray-500 font-normal;
+  @apply block text-xs sm:text-sm text-light/60 font-normal;
 }
 
 .vp-package-features {
@@ -180,11 +139,11 @@
 }
 
 .vp-feature-category {
-  @apply mb-4 pb-4 border-b border-gray-100 last:border-b-0;
+  @apply mb-4 pb-4 border-b border-l-blue last:border-b-0;
 }
 
 .vp-feature-category-title {
-  @apply text-base sm:text-lg font-bold text-gray-800 mb-3;
+  @apply text-base sm:text-lg font-bold text-light mb-3;
 }
 
 .vp-feature-item {
@@ -192,11 +151,11 @@
 }
 
 .vp-feature-name {
-  @apply text-sm sm:text-base text-gray-600;
+  @apply text-sm sm:text-base text-light/60;
 }
 
 .vp-feature-check {
-  @apply text-green-500 font-bold;
+  @apply text-l-blue font-bold;
 }
 
 .vp-feature-cross {
@@ -204,7 +163,7 @@
 }
 
 .vp-feature-value {
-  @apply text-[#6dff00] font-medium;
+  @apply text-e-blue font-medium;
 }
 
 .vp-package-cta {
@@ -216,11 +175,11 @@
 }
 
 .vp-btn--primary {
-  @apply bg-[#6dff00] text-white hover:bg-[#5ac400];
+  @apply bg-e-blue text-white hover:bg-l-blue cursor-pointer;
 }
 
 .vp-btn--secondary {
-  @apply bg-gray-200 text-gray-900 hover:bg-gray-300;
+  @apply border-l-blue border text-light hover:bg-l-blue cursor-pointer;
 }
 
 .vp-addons {
@@ -240,47 +199,15 @@
 }
 
 .vp-addon-price {
-  @apply text-lg sm:text-xl font-bold text-[#6dff00] mb-4;
+  @apply text-lg sm:text-xl font-bold text-l-blue mb-4;
 }
 
 .vp-addon-add {
   @apply w-full py-2 sm:py-2;
 }
 
-.vp-faq {
-  @apply py-12 sm:py-16 perspective-distant;
-}
-
-.vp-faq__list {
-  @apply max-w-4xl mx-auto;
-}
-
-.vp-faq__item {
-  @apply mb-4 border border-gray-200 rounded-lg overflow-hidden transform-gpu;
-}
-
-.vp-faq__question {
-  @apply w-full text-right p-4 sm:p-6 bg-white flex justify-between items-center cursor-pointer hover:bg-gray-50 transition-colors duration-200;
-}
-
-.vp-faq__toggle {
-  @apply transition-transform duration-200;
-}
-
-.vp-faq__toggle--open {
-  @apply rotate-180;
-}
-
-.vp-faq__answer {
-  @apply bg-gray-50 p-4 sm:p-6 text-gray-700 transition-all duration-400;
-}
-
-.vp-faq__answer--open {
-  @apply pb-6;
-}
-
 .vp-final-cta {
-  @apply py-12 sm:py-16 bg-gradient-to-r from-[#1a2421] to-[#2a3a36];
+  @apply py-12 sm:py-16 bg-gray-900;
 }
 
 .vp-final-cta__content {
@@ -316,5 +243,5 @@
 }
 
 .vp-chat-button {
-  @apply w-14 h-14 rounded-full bg-[#6dff00] text-white shadow-lg flex items-center justify-center hover:bg-[#5ac400] transition-colors duration-200;
+  @apply w-14 h-14 rounded-full bg-e-blue text-white shadow-lg flex items-center justify-center hover:bg-l-blue transition-colors duration-200;
 }

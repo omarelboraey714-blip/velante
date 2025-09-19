@@ -5,7 +5,7 @@ import useSWR from "swr"; // v2.3.6
 import { motion } from "framer-motion"; // v12.23.12
 import Image from "next/image";
 import Link from "next/link";
-import { supabase } from "../../../lib/supabaseClient";
+import { supabase } from "@/lib/supabaseClient";
 import "./Testimonials.css";
 
 // Fallback data in case of error
@@ -57,7 +57,7 @@ const fetcher = async () => {
   }));
 };
 
-export default function Testimonials() {
+export default function Testimonials({ bg }) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isHovered, setIsHovered] = useState(false);
   const intervalRef = useRef(null);
@@ -154,7 +154,7 @@ export default function Testimonials() {
   }, []);
 
   return (
-    <section className="testimonials" dir="rtl">
+    <section className={`testimonials ${bg || "bg-primary"}`} dir="rtl">
       <div className="testimonials-container">
         <motion.div
           className="testimonials-header"

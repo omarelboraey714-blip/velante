@@ -1,7 +1,9 @@
 @import "tailwindcss";
 
+@import "../../styles/theme.css";
+
 .testimonials {
-  @apply bg-white py-20;
+  @apply relative py-20;
 }
 
 .testimonials-container {
@@ -13,11 +15,7 @@
 }
 
 .testimonials-title {
-  @apply text-3xl md:text-4xl font-bold text-lime-400 mb-4;
-}
-
-.testimonials-subtitle-underline {
-  @apply w-24 h-1 bg-lime-400 mx-auto rounded-full;
+  @apply text-3xl md:text-4xl font-bold text-light mb-4;
 }
 
 .testimonials-carousel {
@@ -37,11 +35,7 @@
 }
 
 .testimonials-card {
-  @apply bg-gradient-to-br from-gray-50 to-white rounded-2xl shadow-lg p-8 mx-auto max-w-2xl border border-gray-100 transition-all duration-300 min-h-[272.5px];
-}
-
-.testimonials-card:hover {
-  @apply shadow-xl;
+  @apply bg-gray-900 rounded-2xl shadow-gray-900 shadow-lg hover:shadow-xl p-8 mx-auto max-w-2xl border border-l-blue transition-all duration-300 min-h-[272.5px];
 }
 
 .testimonials-header-content {
@@ -57,19 +51,19 @@
 }
 
 .testimonials-name {
-  @apply text-lg font-bold text-gray-900;
+  @apply text-lg font-bold text-light;
 }
 
 .testimonials-location {
-  @apply flex items-center text-gray-600;
+  @apply flex items-center text-e-blue;
 }
 
 .testimonials-flag {
-  @apply ml-2 text-xl; /* تغيير mr-2 إلى ml-2 للـ RTL */
+  @apply ml-2 text-xl;
 }
 
 .testimonials-project {
-  @apply text-sm text-gray-500 mt-1;
+  @apply text-sm text-e-blue mt-1;
 }
 
 .testimonials-stars {
@@ -77,12 +71,12 @@
 }
 
 .testimonials-text {
-  @apply text-gray-700 text-lg leading-relaxed text-center;
+  @apply text-light text-lg leading-relaxed text-center;
 }
 
 .testimonials-nav-button-prev,
 .testimonials-nav-button-next {
-  @apply absolute top-1/2 transform -translate-y-1/2 w-12 h-12 rounded-full bg-radial from-lime-400 to-lime-600 shadow-lg flex items-center justify-center font-black text-gray-600 hover:text-white hover:shadow-xl transition-all duration-200 z-10;
+  @apply absolute top-1/2 transform -translate-y-1/2 w-12 h-12 rounded-full bg-radial from-e-blue to-l-blue cursor-pointer shadow-lg flex items-center justify-center font-black text-gray-600 hover:text-white hover:shadow-xl transition-all duration-200 z-10;
 }
 
 .testimonials-nav-button-prev {
@@ -102,7 +96,7 @@
 }
 
 .testimonials-indicator.active {
-  @apply bg-lime-500 w-8;
+  @apply bg-l-blue w-8;
 }
 
 @media (max-width: 768px) {

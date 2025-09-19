@@ -1,0 +1,59 @@
+@import "tailwindcss";
+
+@import "../../styles/theme.css";
+
+.vpa-container {
+  @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+}
+
+.vpa-section-title {
+  @apply text-2xl sm:text-3xl font-bold text-center text-light mb-8 sm:mb-12;
+}
+
+.vpa-packages {
+  @apply py-12 sm:py-16 perspective-distant;
+}
+
+.vpa-packages__grid {
+  @apply grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8;
+}
+
+.vpa-package-card {
+  @apply relative grid content-between rounded-xl shadow-lg p-6 sm:p-8 border border-light transform-gpu;
+}
+
+.vpa-package-card--popular {
+  @apply border-2 border-e-blue scale-105;
+}
+
+.vpa-package-popular-badge {
+  @apply absolute -top-3 right-4 bg-e-blue text-white px-3 sm:px-4 py-1 rounded-full text-xs sm:text-sm font-bold;
+}
+
+.vpa-package-name {
+  @apply text-lg sm:text-xl font-bold text-center text-light mb-2;
+}
+
+.vpa-package-price {
+  @apply text-lg sm:text-xl font-bold text-center text-l-blue mb-4 sm:mb-6;
+}
+
+.vpa-package-description {
+  @apply text-sm sm:text-base text-light/70 text-center mb-4 sm:mb-6 font-bold;
+}
+
+.vpa-package-features {
+  @apply mb-6 sm:mb-8 grid gap-3;
+}
+
+.vpa-package-feature {
+  @apply flex gap-1.5 items-center text-light;
+}
+
+.vpa-package-feature-check {
+  @apply w-5 h-5 rounded-full bg-e-blue text-light flex items-center justify-center text-xs font-bold mr-2 sm:mr-3 flex-shrink-0;
+}
+
+.vpa-package-btn {
+  @apply w-full cursor-pointer bg-e-blue hover:bg-l-blue py-2 font-bold text-light transition-colors duration-200 rounded-full;
+}

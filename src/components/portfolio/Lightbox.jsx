@@ -48,7 +48,7 @@ export default function Lightbox({
 
   return (
     <motion.div
-      className="vp-lightbox"
+      className="vw-lightbox"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
@@ -56,47 +56,47 @@ export default function Lightbox({
       onClick={closeLightbox}
     >
       <motion.div
-        className="vp-lightbox-content"
+        className="vw-lightbox-content"
         initial={{ scale: 0.9, rotateY: 20 }}
         animate={{ scale: 1, rotateY: 0 }}
         transition={{ duration: 0.5 }}
         onClick={(e) => e.stopPropagation()}
       >
-        <button className="vp-lightbox-close" onClick={closeLightbox}>
+        <button className="vw-lightbox-close" onClick={closeLightbox}>
           ×
         </button>
-        <div className="vp-lightbox-gallery">
+        <div className="vw-lightbox-gallery">
           <motion.img
             src={selectedProject.images[currentImageIndex]}
             alt={selectedProject.title}
-            className="vp-lightbox-image"
+            className="vw-lightbox-image"
             onError={(e) => (e.target.src = "/images/placeholder.jpg")}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.3 }}
           />
           <button
-            className="vp-lightbox-nav vp-lightbox-nav--prev"
+            className="vw-lightbox-nav vw-lightbox-nav--prev"
             onClick={prevImage}
           >
             ←
           </button>
           <button
-            className="vp-lightbox-nav vp-lightbox-nav--next"
+            className="vw-lightbox-nav vw-lightbox-nav--next"
             onClick={nextImage}
           >
             →
           </button>
         </div>
-        <div className="vp-lightbox-thumbnails">
+        <div className="vw-lightbox-thumbnails">
           {selectedProject.images.map((image, index) => (
             <motion.img
               key={index}
               src={image}
               alt={`${selectedProject.title} ${index + 1}`}
-              className={`vp-lightbox-thumbnail ${
+              className={`vw-lightbox-thumbnail ${
                 currentImageIndex === index
-                  ? "vp-lightbox-thumbnail--active"
+                  ? "vw-lightbox-thumbnail--active"
                   : ""
               }`}
               onClick={() => setCurrentImageIndex(index)}
@@ -105,16 +105,16 @@ export default function Lightbox({
             />
           ))}
         </div>
-        <div className="vp-lightbox-info">
-          <h3 className="vp-lightbox-title">{selectedProject.title}</h3>
-          <p className="vp-lightbox-description">
+        <div className="vw-lightbox-info">
+          <h3 className="vw-lightbox-title">{selectedProject.title}</h3>
+          <p className="vw-lightbox-description">
             {selectedProject.description}
           </p>
-          <div className="vp-lightbox-actions">
+          <div className="vw-lightbox-actions">
             {selectedProject.liveUrl && (
               <a
                 href={selectedProject.liveUrl}
-                className="vp-lightbox-visit-btn vp-btn vp-btn--primary"
+                className="vw-lightbox-visit-btn vw-btn vw-btn--primary"
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -122,7 +122,7 @@ export default function Lightbox({
               </a>
             )}
             <button
-              className="vp-lightbox-close-btn vp-btn vp-btn--secondary"
+              className="vw-lightbox-close-btn vw-btn vw-btn--secondary"
               onClick={closeLightbox}
             >
               إغلاق

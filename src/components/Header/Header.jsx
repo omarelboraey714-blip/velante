@@ -16,11 +16,11 @@ const NavItem = memo(({ href, children, onClick }) => (
   <li>
     <Link
       href={href}
-      className="block py-3 font-bold text-gray-700 hover:text-lime-500 transition-colors duration-200 relative group"
+      className="block py-3 font-bold text-light hover:text-e-blue transition-colors duration-200 relative group"
       onClick={onClick}
     >
       {children}
-      <span className="absolute bottom-0 right-0 w-0 h-0.5 bg-lime-500 transition-all duration-300 group-hover:w-full" />
+      <span className="absolute bottom-0 right-0 w-0 h-0.5 bg-e-blue transition-all duration-300 group-hover:w-full" />
     </Link>
   </li>
 ));
@@ -38,7 +38,7 @@ const DesktopDropdown = memo(({ isOpen, setIsOpen }) => {
   return (
     <li className="relative" onMouseLeave={() => setIsOpen(false)}>
       <button
-        className="flex items-center font-bold py-3 text-gray-700 hover:text-lime-500 transition-colors duration-200 gap-1"
+        className="flex items-center font-bold py-3 text-light hover:text-e-blue transition-colors duration-200 gap-1"
         onMouseEnter={() => setIsOpen(true)}
         aria-expanded={isOpen}
         aria-haspopup="true"
@@ -60,7 +60,7 @@ const DesktopDropdown = memo(({ isOpen, setIsOpen }) => {
       <AnimatePresence>
         {isOpen && (
           <motion.ul
-            className="absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-lg border border-gray-100 py-2 z-[1000]"
+            className="absolute right-0 mt-2 w-48 bg-primary/60 rounded-lg shadow-lg  py-2 z-[1000]"
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
@@ -75,7 +75,7 @@ const DesktopDropdown = memo(({ isOpen, setIsOpen }) => {
               <li key={item.href}>
                 <Link
                   href={item.href}
-                  className="block px-4 py-2 text-gray-700 hover:bg-lime-500 hover:text-white transition-colors duration-200 rounded-md"
+                  className="block px-4 py-2 text-light hover:bg-e-blue  transition-colors duration-200 rounded-md"
                   onClick={() => setIsOpen(false)}
                 >
                   {item.label}
@@ -101,7 +101,7 @@ const MobileServicesMenu = memo(({ onBack, onClose }) => {
 
   return (
     <motion.div
-      className="fixed top-0 right-0 h-[100vh] w-80 max-w-[90vw] bg-white shadow-xl z-50 flex flex-col"
+      className="fixed top-0 right-0 h-[100vh] w-80 max-w-[90vw] bg-gradient-to-b from-gray-900 to-primary shadow-xl z-50 flex flex-col"
       initial={{ x: "100%" }}
       animate={{ x: 0 }}
       exit={{ x: "100%" }}
@@ -113,17 +113,17 @@ const MobileServicesMenu = memo(({ onBack, onClose }) => {
       }}
     >
       {/* Header مع زر الرجوع */}
-      <div className="flex items-center justify-between p-4 border-b border-gray-100">
+      <div className="flex items-center justify-between p-4 border-b border-gray-900">
         <button
-          className="p-2 text-gray-500 hover:text-lime-500 hover:bg-gray-100 rounded-full transition-colors duration-200"
+          className="p-2 text-light hover:text-e-blue hover:bg-gray-950 cursor-pointer rounded-full transition-colors duration-200"
           onClick={onBack}
           aria-label="الرجوع للقائمة الرئيسية"
         >
           <ArrowLeft size={24} />
         </button>
-        <span className="text-lg font-bold text-gray-700">الخدمات</span>
+        <span className="text-lg font-bold text-light">الخدمات</span>
         <button
-          className="p-2 text-gray-500 hover:text-lime-500 hover:bg-gray-100 rounded-full transition-colors duration-200"
+          className="p-2 text-light cursor-pointer hover:text-e-blue hover:bg-gray-950 rounded-full transition-colors duration-200"
           onClick={onClose}
           aria-label="إغلاق القائمة"
         >
@@ -132,7 +132,7 @@ const MobileServicesMenu = memo(({ onBack, onClose }) => {
       </div>
 
       {/* قائمة الخدمات */}
-      <ul className="grid gap-4 bg-white">
+      <ul className="grid gap-4">
         {servicesItems.map((item, index) => (
           <motion.li
             key={item.href}
@@ -147,11 +147,11 @@ const MobileServicesMenu = memo(({ onBack, onClose }) => {
           >
             <Link
               href={item.href}
-              className="flex items-center justify-between px-6 py-4 text-gray-700 hover:bg-lime-50 hover:text-lime-500 transition-colors duration-200 border-b border-gray-50"
+              className="flex items-center justify-between px-6 py-4 text-light hover:bg-gray-950 hover:text-e-blue transition-colors duration-200 "
               onClick={onClose}
             >
               <span className="font-medium">{item.label}</span>
-              <ChevronRight size={20} className="text-gray-400" />
+              <ChevronRight size={20} className="text-light" />
             </Link>
           </motion.li>
         ))}
@@ -213,7 +213,7 @@ export default function Header() {
   return (
     <header
       dir="rtl"
-      className="fixed top-0 left-0 right-0 bg-white/95 shadow-sm z-50 backdrop-blur-md"
+      className="fixed top-0 left-0 right-0 shadow-sm z-50 backdrop-blur-md"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-16 md:h-20">
         <motion.div
@@ -254,17 +254,19 @@ export default function Header() {
           }}
           whileTap={{ scale: 0.95 }}
         >
-          <button
-            className="px-6 py-2 bg-lime-500 cursor-pointer text-white font-medium rounded-full hover:bg-lime-600 hover:shadow-lg transition-all duration-200 transform hover:-translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-lime-500 focus:ring-opacity-50"
-            aria-label="اطلب الآن"
-          >
-            اطلب الآن
-          </button>
+          <Link href={"/contact"}>
+            <button
+              className="px-6 py-2 bg-e-blue cursor-pointer text-white font-medium rounded-full hover:bg-l-blue hover:shadow-lg transition-all duration-200 transform hover:-translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-l-blue focus:ring-opacity-50"
+              aria-label="اتصل الآن"
+            >
+              اتصل الآن
+            </button>
+          </Link>
         </motion.div>
 
         {/* Mobile Menu Button */}
         <motion.button
-          className="md:hidden p-2 text-gray-700 hover:text-lime-500 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-lime-500 focus:ring-opacity-50 rounded-lg"
+          className="md:hidden cursor-pointer p-2 text-light hover:text-e-blue transition-colors duration-200 focus:outline-none cursor-pointer focus:ring-2 focus:ring-e-blue focus:ring-opacity-50 rounded-lg"
           onClick={() => setIsMobileMenuOpen((prev) => !prev)}
           aria-label={isMobileMenuOpen ? "إغلاق القائمة" : "فتح القائمة"}
           whileTap={{ scale: 0.9 }}
@@ -287,7 +289,7 @@ export default function Header() {
 
               {/* Mobile Main Menu */}
               <motion.div
-                className="fixed top-0 grid gap-6 right-0 w-80 min-h-[100vh] max-w-[90vw] bg-white shadow-xl z-50"
+                className="fixed top-0 grid gap-6 right-0 w-80 min-h-[100vh] max-w-[90vw] bg-gradient-to-b from-gray-900 to-primary  shadow-xl z-50"
                 initial={{ x: "100%" }}
                 animate={{ x: 0 }}
                 exit={{ x: "100%" }}
@@ -298,14 +300,12 @@ export default function Header() {
                   duration: 0.3,
                 }}
               >
-                <div className="flex items-center justify-between p-4 border-b border-gray-100">
+                <div className="flex items-center justify-between p-4 border-b border-gray-950">
                   <Link href="/" onClick={handleMobileLinkClick}>
-                    <span className="text-2xl font-bold text-lime-500">
-                      VELANTE
-                    </span>
+                    <img src="/images/logo.webp" className="w-24 h-auto" />
                   </Link>
                   <motion.button
-                    className="p-2 text-gray-500 hover:text-lime-500 hover:bg-gray-100 rounded-full transition-colors duration-200"
+                    className="p-2 text-light hover:text-e-blue cursor-pointer hover:bg-gray-950 rounded-full transition-colors duration-200"
                     onClick={() => setIsMobileMenuOpen(false)}
                     aria-label="إغلاق القائمة"
                     whileTap={{ scale: 0.9 }}
@@ -322,12 +322,13 @@ export default function Header() {
                   {/* Mobile Services Item - opens separate menu */}
                   <li>
                     <button
-                      className="flex items-center justify-between w-full px-6 py-3 font-bold text-gray-700 hover:text-lime-500 hover:bg-lime-50 transition-colors duration-200 border-b border-gray-50"
+                      className="flex items-center relative justify-between w-full px-6 py-3 font-bold text-light hover:text-e-blue cursor-pointer transition-colors duration-200 group"
                       onClick={openMobileServices}
                       aria-label="الخدمات"
                     >
                       <span>الخدمات</span>
-                      <ChevronLeft size={20} className="text-gray-400" />
+                      <span className="absolute bottom-0 right-0 w-0 h-0.5 bg-e-blue transition-all duration-300 group-hover:w-full" />
+                      <ChevronLeft size={20} className="text-light" />
                     </button>
                   </li>
 
@@ -346,21 +347,15 @@ export default function Header() {
                 </ul>
 
                 <div className="px-6 mt-4 pb-6">
-                  <motion.button
-                    className="w-full px-6 py-3 bg-lime-500 text-white font-medium rounded-full hover:bg-lime-600 hover:shadow-lg transition-all duration-200"
-                    aria-label="اطلب الآن"
-                    whileHover={{
-                      scale: 1.02,
-                      transition: {
-                        type: "spring",
-                        stiffness: 400,
-                        damping: 10,
-                      },
-                    }}
-                    whileTap={{ scale: 0.98 }}
-                  >
-                    اطلب الآن
-                  </motion.button>
+                  <Link href={"/contact"}>
+                    <motion.button
+                      className="w-full px-6 py-3 cursor-pointer bg-e-blue text-white font-medium rounded-full hover:bg-l-blue hover:shadow-lg transition-all duration-200"
+                      aria-label="اتصل الآن"
+                      whileTap={{ scale: 0.98 }}
+                    >
+                      اتصل الآن
+                    </motion.button>
+                  </Link>
                 </div>
               </motion.div>
             </>

@@ -12,10 +12,10 @@ export default function ContactInfo() {
       id: 1,
       icon: "☎️",
       title: "تحدث معنا",
-      info: ["+20 100 000 0000 (مصر)", "+966 50 000 0000 (السعودية)"],
+      info: ["+20 1556840380"],
       description: "متوفرون من الأحد إلى الخميس، من 9 صباحًا إلى 5 مساءً",
       buttonText: "اتصل الآن",
-      buttonAction: "tel:+201000000000",
+      buttonAction: "tel:+201556840380",
       type: "phone",
     },
     {
@@ -38,7 +38,7 @@ export default function ContactInfo() {
       info: ["WhatsApp / Messenger"],
       description: "للرد السريع، تواصل معنا على الواتساب",
       buttonText: "ابدأ محادثة",
-      buttonAction: "https://wa.me/201000000000",
+      buttonAction: "https://wa.me/+201556840380",
       type: "chat",
     },
     {
@@ -81,7 +81,7 @@ export default function ContactInfo() {
               initial={{ opacity: 0, rotateY: 90 }}
               whileInView={{ opacity: 1, rotateY: 0 }}
               transition={{ duration: 0.2 }}
-              whileHover={{ rotateY: 10, translateY: -5 }}
+              whileHover={{ rotateY: -10, translateY: -5 }}
               viewport={{ once: true }}
             >
               <div className="vc-info__icon">{contact.icon}</div>
@@ -89,6 +89,7 @@ export default function ContactInfo() {
               <div className="vc-info__details">
                 {contact.info.map((info, index) => (
                   <p
+                    dir="ltr"
                     key={index}
                     className="vc-info__text"
                     onClick={() =>

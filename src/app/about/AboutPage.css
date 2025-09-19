@@ -1,5 +1,7 @@
 @import "tailwindcss";
 
+@import "../../styles/theme.css";
+
 @layer base {
   [dir="rtl"] {
     @apply text-right;
@@ -7,19 +9,19 @@
 }
 
 .va-page {
-  @apply bg-white;
+  @apply bg-gray-900 pt-12;
 }
 
 .va-header {
-  @apply relative perspective-distant mt-12;
+  @apply relative perspective-distant;
 }
 
 .va-header-image {
-  @apply h-80 sm:h-96 bg-gradient-to-r from-[#1a2421] to-[#2a3a36] relative;
+  @apply h-80 sm:h-96 bg-gray-900 relative;
 }
 
 .va-header-overlay {
-  @apply absolute inset-0 bg-black/40 flex items-center justify-center;
+  @apply absolute inset-0 bg-black/30 flex items-center justify-center;
 }
 
 .va-header-content {
@@ -51,11 +53,11 @@
 }
 
 .va-section-title {
-  @apply text-2xl sm:text-3xl font-bold text-gray-900 mb-8;
+  @apply text-2xl sm:text-3xl font-bold text-light mb-8;
 }
 
 .va-story-description {
-  @apply text-base sm:text-lg text-gray-700 leading-relaxed;
+  @apply text-base sm:text-lg text-light/80 leading-relaxed;
 }
 
 .va-story-image {
@@ -67,7 +69,7 @@
 }
 
 .va-mission-vision {
-  @apply py-12 sm:py-16 bg-gray-50;
+  @apply py-12 sm:py-16 bg-gray-900;
 }
 
 .va-mission-vision-grid {
@@ -76,7 +78,7 @@
 
 .va-mission-card,
 .va-vision-card {
-  @apply bg-white rounded-xl shadow-lg p-6 sm:p-8 border border-gray-100 transform-gpu;
+  @apply rounded-xl shadow-lg p-6 sm:p-8 border border-l-blue transform-gpu;
 }
 
 .va-mission-icon,
@@ -86,24 +88,24 @@
 
 .va-mission-title,
 .va-vision-title {
-  @apply text-xl sm:text-2xl font-bold text-gray-900 mb-4;
+  @apply text-xl sm:text-2xl font-bold text-light mb-4;
 }
 
 .va-mission-text,
 .va-vision-text {
-  @apply text-gray-600 leading-relaxed text-sm sm:text-base;
+  @apply text-light/70 leading-relaxed text-sm sm:text-base;
 }
 
 .va-values {
-  @apply py-12 sm:py-16;
+  @apply py-12 sm:py-16 bg-gradient-to-b from-gray-900 to-primary;
 }
 
 .va-values-grid {
-  @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8;
+  @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 perspective-distant gap-8;
 }
 
 .va-value-card {
-  @apply text-center p-6 rounded-xl bg-white shadow-lg border border-gray-100 transform-gpu;
+  @apply text-center p-6 rounded-xl bg-l-blue/20 shadow-lg hover:shadow-l-blue border border-l-blue transform-gpu;
 }
 
 .va-value-icon {
@@ -111,23 +113,27 @@
 }
 
 .va-value-title {
-  @apply text-lg sm:text-xl font-bold text-gray-900 mb-3;
+  @apply text-lg sm:text-xl font-bold text-light mb-3;
 }
 
 .va-value-description {
-  @apply text-gray-600 text-sm sm:text-base;
+  @apply text-light/70 text-sm sm:text-base;
 }
 
 .va-team {
-  @apply py-12 sm:py-16 bg-gray-50 perspective-distant;
+  @apply py-12 sm:py-16 bg-primary perspective-distant;
+}
+
+.va-team .va-section-title span {
+  @apply text-l-blue uppercase;
 }
 
 .va-team-grid {
-  @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8;
+  @apply grid grid-cols-1 px-10 perspective-distant md:grid-cols-2 xl:grid-cols-4 gap-8;
 }
 
 .va-team-member {
-  @apply bg-white rounded-xl shadow-lg overflow-hidden border border-gray-100 transform-gpu;
+  @apply rounded-xl shadow-lg overflow-hidden hover:scale-110 hover:shadow-l-blue transition-transform duration-300 border border-l-blue transform-gpu;
 }
 
 .va-member-image {
@@ -147,42 +153,27 @@
 }
 
 .va-member-name {
-  @apply text-lg sm:text-xl font-bold text-gray-900 mb-1;
+  @apply text-lg sm:text-xl font-bold text-light mb-1;
 }
 
 .va-member-position {
-  @apply text-[#6dff00] font-medium mb-3 text-sm sm:text-base;
+  @apply text-e-blue font-medium mb-3 text-sm sm:text-base;
 }
 
 .va-member-description {
-  @apply text-gray-600 mb-4 text-sm;
+  @apply text-light/70 mb-4 text-sm;
 }
 
 .va-member-social {
-  @apply flex space-x-3 space-x-reverse;
+  @apply flex gap-3;
 }
 
 .va-social-link {
-  @apply w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center text-gray-600 hover:bg-[#6dff00] hover:text-white transition-all duration-200;
+  @apply w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center text-gray-600 hover:bg-e-blue hover:text-white transition-all duration-200;
 }
 
 .va-stats {
-  @apply py-12 sm:py-16 bg-gradient-to-r from-[#1a2421] to-[#2a3a36] relative overflow-hidden perspective-distant;
-}
-
-.va-stats::before {
-  @apply absolute inset-0 opacity-10;
-  background: radial-gradient(
-      circle at 10% 20%,
-      rgba(109, 255, 0, 0.3) 0%,
-      transparent 20%
-    ),
-    radial-gradient(
-      circle at 90% 80%,
-      rgba(164, 255, 0, 0.3) 0%,
-      transparent 20%
-    );
-  content: "";
+  @apply py-12 sm:py-16 bg-primary relative overflow-hidden perspective-distant;
 }
 
 .va-stats-grid {
@@ -200,111 +191,9 @@
 .va-stat-label {
   @apply text-base sm:text-lg opacity-90;
 }
-.va-testimonials {
-  @apply py-12 sm:py-16;
-}
-
-.va-testimonials-carousel {
-  @apply relative max-w-4xl mx-auto mb-8;
-}
-
-.va-carousel-nav {
-  @apply absolute top-1/2 transform -translate-y-1/2 w-10 h-10 rounded-full bg-white shadow-lg flex items-center justify-center text-gray-600 hover:bg-[#6dff00] hover:text-white transition-all duration-200 z-10;
-  border: 1px solid #e5e7eb;
-}
-
-.va-carousel-nav--prev {
-  @apply right-0;
-}
-
-.va-carousel-nav--next {
-  @apply left-0;
-}
-
-/* جديد: عرض كارت واحد فقط */
-.va-testimonials-single-view {
-  @apply w-full overflow-hidden mx-4 flex justify-center;
-}
-
-.va-testimonial-slide-wrapper {
-  @apply w-full;
-}
-
-.va-testimonial-card {
-  @apply bg-white min-h-[240.5px] rounded-xl shadow-lg p-6 sm:p-8 border border-gray-100 mx-auto max-w-2xl transition-all duration-300;
-}
-
-.va-testimonial-card:hover {
-  @apply shadow-xl;
-}
-
-.va-testimonial-header {
-  @apply flex items-center mb-6;
-}
-
-.va-testimonial-avatar {
-  @apply w-16 h-16 rounded-full ml-4; /* تغيير من mr-4 إلى ml-4 للـ RTL */
-}
-
-.va-testimonial-info {
-  @apply flex-1;
-}
-
-.va-testimonial-name {
-  @apply text-base sm:text-lg font-bold text-gray-900;
-}
-
-.va-testimonial-location {
-  @apply flex items-center text-gray-600 mb-2;
-}
-
-.va-testimonial-flag {
-  @apply ml-2 text-xl; /* تغيير من mr-2 إلى ml-2 للـ RTL */
-}
-
-.va-testimonial-stars {
-  @apply text-yellow-400;
-}
-
-.va-star {
-  @apply text-xl;
-}
-
-.va-testimonial-text {
-  @apply text-gray-700 text-base sm:text-lg leading-relaxed text-center italic;
-}
-
-.va-testimonials-indicators {
-  @apply flex justify-center gap-2;
-}
-
-.va-indicator {
-  @apply w-3 h-3 rounded-full bg-gray-300 transition-all duration-200 cursor-pointer;
-}
-
-.va-indicator--active {
-  @apply bg-[#6dff00] w-8;
-}
-
-@media (max-width: 768px) {
-  .va-testimonial-header {
-    @apply flex-row-reverse; /* عكس ترتيب العناصر في الموبايل للـ RTL */
-  }
-
-  .va-testimonial-avatar {
-    @apply ml-0 mr-4; /* تعديل الـ margin للـ RTL في الموبايل */
-  }
-}
-.va-indicator {
-  @apply w-3 h-3 rounded-full bg-gray-300 transition-all duration-200;
-}
-
-.va-indicator--active {
-  @apply bg-[#6dff00] w-8;
-}
 
 .va-final-cta {
-  @apply py-12 sm:py-16 bg-gradient-to-r from-[#6dff00] to-[#a4ff00];
+  @apply py-12 sm:py-16 bg-gradient-to-r from-l-blue to-e-blue;
 }
 
 .va-cta-content {
@@ -332,7 +221,7 @@
 }
 
 .va-btn--primary {
-  @apply bg-[#6dff00] text-white hover:bg-[#5ac400];
+  @apply bg-e-blue text-white hover:bg-l-blue;
 }
 
 .va-btn--secondary {

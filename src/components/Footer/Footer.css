@@ -1,5 +1,7 @@
 @import "tailwindcss";
 
+@import "../../styles/theme.css";
+
 @layer base {
   [dir="rtl"] {
     @apply text-right;
@@ -7,7 +9,7 @@
 }
 
 .vf-footer {
-  @apply bg-white border-t border-gray-100 perspective-distant;
+  @apply bg-gray-900  perspective-distant;
 }
 
 .vf-main {
@@ -27,7 +29,7 @@
 }
 
 .vf-column-title {
-  @apply text-lg font-bold text-gray-900 mb-4;
+  @apply text-lg font-bold text-light mb-4;
 }
 
 .vf-logo {
@@ -35,11 +37,11 @@
 }
 
 .vf-description {
-  @apply text-gray-600 leading-relaxed text-sm sm:text-base;
+  @apply text-light/90 leading-relaxed text-sm sm:text-base;
 }
 
 .vf-newsletter__description {
-  @apply text-gray-600 mb-4 text-sm;
+  @apply text-light/90 mb-4 text-sm;
 }
 
 .vf-newsletter__form {
@@ -51,7 +53,7 @@
 }
 
 .vf-email-input {
-  @apply flex-1 px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#6dff00] focus:border-transparent;
+  @apply flex-1 text-light px-4 py-2 border border-l-blue rounded-lg focus:ring-2 focus:ring-l-blue focus:border-transparent;
 }
 
 .vf-input--error {
@@ -59,7 +61,7 @@
 }
 
 .vf-subscribe-btn {
-  @apply px-4 py-2 bg-gradient-to-r from-[#6dff00] to-[#a4ff00] text-white rounded-lg hover:bg-[#5ac400] transition-colors duration-200 font-medium;
+  @apply px-4 py-2 bg-gradient-to-r from-l-blue to-e-blue text-white rounded-lg hover:bg-e-blue cursor-pointer transition-colors duration-200 font-medium;
 }
 
 .vf-error {
@@ -71,7 +73,7 @@
 }
 
 .vf-privacy-note {
-  @apply text-xs text-gray-500;
+  @apply text-xs text-light;
 }
 
 .vf-links {
@@ -79,7 +81,7 @@
 }
 
 .vf-link {
-  @apply text-gray-600 hover:text-[#6dff00] transition-colors duration-200 block text-sm sm:text-base;
+  @apply w-fit text-gray-600 hover:text-e-blue transition-colors duration-200 block text-sm sm:text-base;
 }
 
 .vf-contact-info {
@@ -95,7 +97,7 @@
 }
 
 .vf-contact-link {
-  @apply text-gray-600 hover:text-[#6dff00] transition-colors duration-200;
+  @apply text-gray-600 hover:text-e-blue transition-colors duration-200;
 }
 
 .vf-social {
@@ -103,7 +105,7 @@
 }
 
 .vf-social-title {
-  @apply text-sm font-medium text-gray-900 mb-3;
+  @apply text-sm font-medium text-light mb-3;
 }
 
 .vf-social-icons {
@@ -111,11 +113,11 @@
 }
 
 .vf-social-icon {
-  @apply w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center text-gray-600 hover:bg-[#6dff00] hover:text-white transition-all duration-200 transform-gpu;
+  @apply w-10 h-10 rounded-full bg-primary flex items-center justify-center text-light hover:bg-e-blue hover:text-white transition-all duration-200 transform-gpu;
 }
 
 .vf-bottom {
-  @apply bg-[#1a2421] border-t border-gray-800;
+  @apply bg-primary;
 }
 
 .vf-bottom-content {
@@ -123,17 +125,17 @@
 }
 
 .vf-copyright {
-  @apply text-gray-400 text-sm;
+  @apply text-light text-sm;
 }
 
 .vf-legal-links {
-  @apply text-gray-400 text-sm flex flex-wrap justify-center;
+  @apply text-light text-sm flex flex-wrap justify-center;
 }
 
 .vf-legal-link {
-  @apply text-gray-400 hover:text-white transition-colors duration-200;
+  @apply text-light hover:text-white transition-colors duration-200;
 }
 
 .vf-credit {
-  @apply text-gray-400 text-sm;
+  @apply text-light text-sm;
 }

@@ -23,7 +23,7 @@ export default function Values() {
               className="va-value-card"
               initial={{ opacity: 0, scale: 0.9 }}
               whileInView={{ opacity: 1, scale: 1 }}
-              whileHover={{ rotateY: 10, translateY: -5 }}
+              whileHover={{ rotateY: -10, translateY: -5 }}
               transition={{ duration: 0.2 }}
               viewport={{ once: true }}
             >

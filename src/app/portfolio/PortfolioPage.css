@@ -1,329 +1,310 @@
 @import "tailwindcss";
 
+@import "../../styles/theme.css";
+
 @layer base {
   [dir="rtl"] {
     @apply text-right;
   }
 }
 
-.vp-page {
-  @apply bg-white;
+.vw-page {
+  @apply bg-gray-900 pt-12;
 }
 
-.vp-header {
-  @apply relative perspective-distant mt-12;
+.vw-header {
+  @apply relative h-80 sm:h-96 bg-gray-900 perspective-distant;
 }
 
-.vp-video-background {
-  @apply h-80 sm:h-96 bg-gradient-to-r from-[#1a2421] to-[#2a3a36] relative overflow-hidden;
-}
-
-.vp-motion-graphics {
-  @apply absolute inset-0;
-  background: radial-gradient(
-      circle at 15% 25%,
-      rgba(109, 255, 0, 0.15) 0%,
-      transparent 20%
-    ),
-    radial-gradient(
-      circle at 85% 75%,
-      rgba(164, 255, 0, 0.15) 0%,
-      transparent 20%
-    ),
-    linear-gradient(
-      30deg,
-      transparent 48%,
-      rgba(109, 255, 0, 0.08) 50%,
-      transparent 52%
-    ),
-    linear-gradient(
-      -60deg,
-      transparent 48%,
-      rgba(109, 255, 0, 0.08) 50%,
-      transparent 52%
-    );
-  background-size: 250px 250px, 350px 350px, 50px 50px, 50px 50px;
-  animation: vp-motion 20s linear infinite;
-}
-
-@keyframes vp-motion {
-  0% {
-    background-position: 0 0, 0 0, 0 0, 0 0;
-  }
-  100% {
-    background-position: 250px 250px, 350px 350px, 50px 50px, 50px 50px;
-  }
-}
-
-.vp-header-overlay {
+.vw-header-overlay {
   @apply absolute inset-0 bg-black/40 flex items-center justify-center;
 }
 
-.vp-header-content {
-  @apply text-center text-white max-w-4xl mx-auto px-4 sm:px-6;
+.vw-header-content {
+  @apply text-center text-light max-w-4xl mx-auto px-4 sm:px-6;
 }
 
-.vp-header-title {
+.vw-header-title {
   @apply text-2xl sm:text-3xl md:text-4xl font-bold mb-4 leading-tight;
 }
 
-.vp-header-subtitle {
+.vw-header-subtitle {
   @apply text-lg sm:text-xl md:text-2xl font-semibold mb-4;
 }
 
-.vp-header-description {
+.vw-header-description {
   @apply text-base sm:text-lg opacity-90;
 }
 
-.vp-filters {
-  @apply bg-white sticky top-18 z-40 shadow-sm border-b border-gray-100 mb-8;
+.vw-filters {
+  @apply sticky top-18 z-40 shadow-sm border rounded-lg border-l-blue mb-8;
 }
 
-.vp-container {
+.vw-filters-container {
+  @apply bg-l-blue/10 max-w-7xl mx-auto px-1.5 sm:px-6 lg:px-8;
+}
+
+.vw-container {
   @apply max-w-7xl mx-auto px-1.5 sm:px-6 lg:px-8;
 }
 
-.vp-filters-bar {
+.vw-filters-bar {
   @apply flex flex-wrap gap-1.5 py-4 justify-center;
 }
 
-.vp-filter-btn {
-  @apply px-4 py-2 cursor-pointer rounded-full text-gray-700 hover:bg-gray-100 transition-all duration-200 font-medium;
+.vw-filter-btn {
+  @apply px-4 py-2 cursor-pointer rounded-full text-light hover:bg-l-blue/10 transition-all duration-200 font-medium;
 }
 
-.vp-gallery {
+.vw-gallery {
   @apply py-12 sm:py-16 perspective-distant;
 }
 
-.vp-masonry-grid {
-  @apply grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 mb-12;
+.vw-masonry-grid {
+  @apply grid grid-cols-1 px-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 mb-12;
 }
 
-.vp-project-card {
-  @apply rounded-xl overflow-hidden shadow-lg bg-white border border-gray-100 cursor-pointer transform-gpu;
+.vw-project-card {
+  @apply rounded-xl overflow-hidden shadow-lg grid content-between border border-l-blue cursor-pointer transform-gpu;
 }
 
-.vp-project-image {
+.vw-project-image {
   @apply relative overflow-hidden min-h-96;
 }
 
-.vp-project-image img {
+.vw-project-image img {
   @apply w-full h-64 object-cover transition-all duration-300;
 }
 
-.vp-project-card:hover .vp-project-image img {
+.vw-project-card:hover .vw-project-image img {
   @apply scale-110 opacity-80;
 }
 
-.vp-project-badge {
-  @apply absolute top-4 right-4 bg-[#6dff00] text-white px-3 py-1 rounded-full text-xs font-bold;
+.vw-project-badge {
+  @apply absolute top-4 right-4 bg-e-blue text-light px-3 py-1 rounded-full text-xs font-bold;
 }
 
-.vp-project-overlay {
-  @apply absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent flex flex-col justify-end;
+.vw-project-overlay {
+  @apply absolute inset-0 bg-gradient-to-t from-primary via-transparent to-transparent flex flex-col justify-end;
 }
 
-.vp-project-info {
+.vw-project-info {
   @apply p-4 text-white;
 }
 
-.vp-project-title {
+.vw-project-title {
   @apply text-lg font-bold mb-1;
 }
 
-.vp-project-type {
+.vw-project-type {
   @apply text-sm opacity-80;
 }
 
-.vp-project-actions {
+.vw-project-actions {
   @apply p-4 flex flex-col sm:flex-row gap-2;
 }
 
-.vp-action-btn {
+.vw-action-btn {
   @apply cursor-pointer bg-white/90 text-gray-800 px-3 py-1 rounded text-sm hover:bg-white transition-all duration-200;
 }
 
-.vp-load-more {
+.vw-load-more {
   @apply text-center;
 }
 
-.vp-load-more-btn {
+.vw-load-more-btn {
   @apply px-8 py-3 text-lg;
 }
 
-.vp-case-studies {
+.vw-case-studies {
   @apply py-12 sm:py-16 bg-gray-50 perspective-distant;
 }
 
-.vp-section-title {
+.vw-section-title {
   @apply text-2xl sm:text-3xl font-bold text-center text-gray-900 mb-8 sm:mb-12;
 }
 
-.vp-case-studies-grid {
+.vw-case-studies-grid {
   @apply grid grid-cols-1 lg:grid-cols-2 gap-8;
 }
 
-.vp-case-study {
+.vw-case-study {
   @apply bg-white rounded-xl shadow-lg overflow-hidden border border-gray-100 transform-gpu;
 }
 
-.vp-case-study-content {
+.vw-case-study-content {
   @apply p-6 sm:p-8;
 }
 
-.vp-case-study-title {
+.vw-case-study-title {
   @apply text-xl sm:text-2xl font-bold text-gray-900 mb-6;
 }
 
-.vp-case-study-section {
+.vw-case-study-section {
   @apply mb-6;
 }
 
-.vp-case-study-subtitle {
+.vw-case-study-subtitle {
   @apply text-lg font-semibold text-gray-800 mb-2;
 }
 
-.vp-case-study-text {
+.vw-case-study-text {
   @apply text-gray-600 leading-relaxed text-sm sm:text-base;
 }
 
-.vp-results-grid {
+.vw-results-grid {
   @apply grid grid-cols-1 sm:grid-cols-3 gap-4 mb-6;
 }
 
-.vp-result-box {
-  @apply bg-gradient-to-r from-[#6dff00] to-[#a4ff00] text-white p-4 rounded-lg text-center font-bold text-sm;
+.vw-result-box {
+  @apply bg-gradient-to-r from-l-blue to-e-blue text-light p-4 rounded-lg text-center font-bold text-sm;
 }
 
-.vp-testimonial {
+.vw-testimonial {
   @apply bg-gray-50 rounded-lg p-6 mb-6;
 }
 
-.vp-testimonial-content {
+.vw-testimonial-content {
   @apply text-center;
 }
 
-.vp-testimonial-quote {
+.vw-testimonial-quote {
   @apply text-gray-700 text-base sm:text-lg italic mb-4;
 }
 
-.vp-testimonial-author {
+.vw-testimonial-author {
   @apply flex items-center justify-center space-x-4 space-x-reverse;
 }
 
-.vp-testimonial-avatar {
+.vw-testimonial-avatar {
   @apply w-12 h-12 rounded-full;
 }
 
-.vp-testimonial-name {
+.vw-testimonial-name {
   @apply font-bold text-gray-900;
 }
 
-.vp-testimonial-position {
+.vw-testimonial-position {
   @apply text-sm text-gray-600;
 }
 
-.vp-case-study-btn {
+.vw-case-study-btn {
   @apply w-full py-3 text-base sm:text-lg;
 }
 
-.vp-cta {
-  @apply py-12 sm:py-16 bg-gradient-to-r from-[#1a2421] to-[#2a3a36];
+.vw-cta {
+  @apply py-12 sm:py-16 bg-gradient-to-r from-l-blue/30 to-e-blue/30;
 }
 
-.vp-cta-content {
-  @apply text-center text-white max-w-3xl mx-auto px-4;
+.vw-cta-content {
+  @apply text-center text-light max-w-3xl mx-auto px-4;
 }
 
-.vp-cta-title {
+.vw-cta-title {
   @apply text-2xl sm:text-3xl font-bold mb-4;
 }
 
-.vp-cta-subtitle {
+.vw-cta-subtitle {
   @apply text-base sm:text-xl mb-8 opacity-90;
 }
 
-.vp-cta-buttons {
+.vw-cta-buttons {
   @apply flex flex-col sm:flex-row gap-4 justify-center;
 }
 
-.vp-cta-btn {
+.vw-cta-btn {
   @apply px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg;
 }
 
-.vp-btn {
+.vw-btn {
   @apply px-4 sm:px-6 py-2 sm:py-3 rounded-lg font-semibold transition-colors duration-200;
 }
 
-.vp-btn--primary {
-  @apply bg-[#6dff00] text-white hover:bg-[#5ac400];
+.vw-btn--primary {
+  @apply bg-e-blue text-white hover:bg-l-blue cursor-pointer;
 }
 
-.vp-btn--secondary {
+.vw-btn--secondary {
   @apply bg-white text-gray-800 hover:bg-gray-100;
 }
 
-.vp-lightbox {
+.vw-lightbox {
   @apply fixed inset-0 bg-black/90 z-50 flex items-center justify-center p-4;
 }
 
-.vp-lightbox-content {
+.vw-lightbox-content {
   @apply bg-white rounded-xl max-w-4xl w-full max-h-[90vh] overflow-y-auto relative;
 }
 
-.vp-lightbox-close {
+.vw-lightbox-close {
   @apply absolute top-4 right-4 text-3xl text-gray-500 hover:text-gray-700 cursor-pointer z-10;
 }
 
-.vp-lightbox-gallery {
+.vw-lightbox-gallery {
   @apply p-4 relative;
 }
 
-.vp-lightbox-image {
+.vw-lightbox-image {
   @apply w-full h-auto rounded-lg;
 }
 
-.vp-lightbox-nav {
+.vw-lightbox-nav {
   @apply absolute top-1/2 transform -translate-y-1/2 text-3xl text-white bg-black/50 px-4 py-2 rounded-full cursor-pointer;
 }
 
-.vp-lightbox-nav--prev {
+.vw-lightbox-nav--prev {
   @apply left-4;
 }
 
-.vp-lightbox-nav--next {
+.vw-lightbox-nav--next {
   @apply right-4;
 }
 
-.vp-lightbox-thumbnails {
+.vw-lightbox-thumbnails {
   @apply flex gap-2 p-4 overflow-x-auto;
 }
 
-.vp-lightbox-thumbnail {
+.vw-lightbox-thumbnail {
   @apply w-20 h-20 object-cover rounded-lg cursor-pointer opacity-60;
 }
 
-.vp-lightbox-thumbnail--active {
-  @apply opacity-100 border-2 border-[#6dff00];
+.vw-lightbox-thumbnail--active {
+  @apply opacity-100 border-2 border-b-l-blue;
 }
 
-.vp-lightbox-info {
+.vw-lightbox-info {
   @apply p-6;
 }
 
-.vp-lightbox-title {
+.vw-lightbox-title {
   @apply text-xl sm:text-2xl font-bold text-gray-900 mb-2;
 }
 
-.vp-lightbox-description {
+.vw-lightbox-description {
   @apply text-gray-600 mb-6 text-sm sm:text-base;
 }
 
-.vp-lightbox-actions {
+.vw-lightbox-actions {
   @apply flex flex-col sm:flex-row gap-4;
 }
 
-.vp-lightbox-visit-btn,
-.vp-lightbox-close-btn {
+.vw-lightbox-visit-btn,
+.vw-lightbox-close-btn {
   @apply flex-1 py-3 text-base sm:text-lg;
 }
+
+.vw-loading {
+  @apply w-[80vw] h-[30vh] mx-auto flex items-center justify-center;
+}
+
+.vw-spinner {
+  @apply w-12 h-12 rounded-full border-y-2 border-r-2 border-e-blue;
+}
+
+/* .vpa-packages {
+  background-image: linear-gradient(to bottom, #101828, #0a1f44) !important;
+}
+
+.vs-services {
+  background-image: linear-gradient(to bottom, #0a1f44, #101828) !important;
+} */
