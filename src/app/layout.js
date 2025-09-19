@@ -32,7 +32,7 @@ export const metadata = {
   description:
     "Velante وكالة متخصصة في الهوية البصرية، تصميم السوشيال ميديا، الإعلانات الممولة، وتطوير المواقع. نبني حضور رقمي متكامل يساعد علامتك التجارية على النمو",
   icons: {
-    icon: "/images/logo.ico",
+    icon: "/images/velante.ico",
   },
   openGraph: {
     title: "Velante | وكالة التصميم والتسويق الرقمي",
