@@ -6,7 +6,7 @@ import Packages from "@/components/packs/Packages";
 import Services from "@/components/Services/Services";
 import PackagesFAQ from "@/components/FAQs/FAQs";
 import PackagesFinalCTA from "@/components/packages/PackagesFinalCTA";
-import PackagesStickyCTA from "@/components/packages/PackagesStickyCTA";
+// import PackagesStickyCTA from "@/components/packages/PackagesStickyCTA";
 import "./PackagesPage.css";
 
 export default function PackagesPage() {
@@ -20,7 +20,7 @@ export default function PackagesPage() {
       <Services bg="bg-gradient-to-b from-primary to-gray-900" />
       <PackagesFAQ />
       <PackagesFinalCTA />
-      <PackagesStickyCTA />
+      {/* <PackagesStickyCTA /> */}
     </div>
   );
 }

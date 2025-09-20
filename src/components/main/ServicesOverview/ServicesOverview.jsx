@@ -73,7 +73,7 @@ export default function ServicesOverview() {
           {services.map((service, index) => (
             <motion.div
               key={service.id}
-              className="bg-gray-900 rounded-xl shadow-sm hover:shadow-lg hover:shadow-primary transition-shadow duration-200 p-6 grid justify-center"
+              className="bg-gray-900 justify-items-center rounded-xl shadow-sm hover:shadow-lg hover:shadow-primary transition-shadow duration-200 p-6 grid justify-center"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.2 }}
@@ -91,7 +91,7 @@ export default function ServicesOverview() {
               </p>
               <Link
                 href={service.link}
-                className="text-e-blue font-medium hover:text-l-blue transition-colors duration-200 mt-4 text-center"
+                className="text-e-blue w-fit font-medium hover:text-l-blue transition-colors duration-200 mt-4 text-center"
                 aria-label={`اعرف المزيد عن ${service.title}`}
               >
                 اعرف المزيد →

@@ -3,7 +3,7 @@ import WebDevelopmentIntro from "@/components/web-development/WebDevelopmentIntr
 import WebDevelopmentTypes from "@/components/web-development/WebDevelopmentTypes";
 import WebDevelopmentFeatures from "@/components/web-development/WebDevelopmentFeatures";
 import WebDevelopmentTechnologies from "@/components/web-development/WebDevelopmentTechnologies";
-import WebDevelopmentCalculator from "@/components/web-development/WebDevelopmentCalculator";
+// import WebDevelopmentCalculator from "@/components/web-development/WebDevelopmentCalculator";
 import WebDevelopmentPortfolio from "@/components/main/FeaturedWork/FeaturedWork";
 import Packages from "@/components/packs/Packages";
 import Services from "@/components/Services/Services";

@@ -11,7 +11,7 @@
 }
 
 .vbi-header__image {
-  @apply h-80 sm:h-96  relative overflow-hidden bg-[url('/images/branding-bg.png')] bg-cover bg-center;
+  @apply h-80 sm:h-96  relative overflow-hidden bg-[url('/images/branding-bg.webp')] bg-cover bg-center;
 }
 
 .vbi-header__overlay {

@@ -1,13 +1,12 @@
 "use client";
 
 import { useState, useEffect, useCallback, useMemo } from "react";
-import useSWR from "swr"; // v2.3.6
-import { motion, AnimatePresence } from "framer-motion"; // v12.23.12
+import useSWR from "swr";
+import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 import Filters from "@/components/portfolio/Filters";
 
-// Fallback data — ملاحظة: liveUrl بحرف كبير U
 const fallbackProjects = [
   {
     id: 1,
@@ -41,11 +40,10 @@ export default function Gallery({ setSelectedProject, setShowLightbox }) {
   } = useSWR("/api/projects?tag=all", fetcher, {
     revalidateOnFocus: false,
     dedupingInterval: 10000,
-    initialData: fallbackProjects, // ✅ استخدم initialData بدل fallbackData
+    initialData: fallbackProjects,
     onError: (err) => console.error("Error fetching projects:", err),
   });
 
-  // ✅ دائمًا لدينا بيانات — من API أو من fallback
   const projects = apiData || fallbackProjects;
 
   const filteredProjects = useMemo(() => {
@@ -153,19 +151,17 @@ export default function Gallery({ setSelectedProject, setShowLightbox }) {
                 <motion.div
                   key={project.id}
                   className="vw-project-card"
-                  // variants={cardVariants}
                   whileHover={{ scale: 1.03, rotateY: 5, translateY: -10 }}
                   onClick={() => openLightbox(project)}
                   role="button"
                   aria-label={`عرض تفاصيل ${project.title}`}
                 >
                   <div className="vw-project-image">
-                    {/* ✅ صورة آمنة مع تصحيح الأخطاء */}
                     <Image
                       src={
                         project.thumbnail ||
                         project.image ||
-                        "/images/placeholder.jpg"
+                        "/images/placeholder.webp"
                       }
                       alt={project.title}
                       fill
@@ -173,7 +169,7 @@ export default function Gallery({ setSelectedProject, setShowLightbox }) {
                       className="vw-image"
                       onError={(e) => {
                         console.warn("🖼️ صورة فاشلة:", e.target.src);
-                        e.target.src = "/images/placeholder.jpg"; // ← تأكد أن هذه الصورة موجودة!
+                        e.target.src = "/images/placeholder.webp";
                       }}
                     />
                     {project.badge && (

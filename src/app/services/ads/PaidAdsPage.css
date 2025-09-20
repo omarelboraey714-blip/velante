@@ -17,7 +17,7 @@
 }
 
 .vpa-header__image {
-  @apply h-80 sm:h-96 relative bg-[url('/images/ads-bg.png')] bg-cover bg-center;
+  @apply h-80 sm:h-96 relative bg-[url('/images/ads-bg.webp')] bg-cover bg-center;
 }
 
 .vpa-header__overlay {

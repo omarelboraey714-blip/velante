@@ -17,7 +17,7 @@
 }
 
 .vwd-header__background {
-  @apply h-80 sm:h-96 relative overflow-hidden bg-[url('/images/webDev.png')] bg-cover bg-center;
+  @apply h-80 sm:h-96 relative overflow-hidden bg-[url('/images/webDev.webp')] bg-cover bg-center;
 }
 
 .vwd-header__overlay {

@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import { FaWhatsapp } from "react-icons/fa";
 import { motion } from "framer-motion";
+import "./ContactStickyBar.css";
 
 export default function ContactStickyBar() {
   const [isStickyBarVisible, setIsStickyBarVisible] = useState(false);

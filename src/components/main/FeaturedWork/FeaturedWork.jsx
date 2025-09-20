@@ -159,13 +159,13 @@ export default function FeaturedWork() {
                 >
                   <div className="featured-image-wrapper">
                     <Image
-                      src={project.image || "/images/placeholder.jpg"}
+                      src={project.image || "/images/placeholder.webp"}
                       alt={project.title}
                       fill
                       className="featured-project-image"
                       sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                       onError={(e) => {
-                        e.target.src = "/images/placeholder.jpg";
+                        e.target.src = "/images/placeholder.webp";
                       }}
                     />
                     <motion.div

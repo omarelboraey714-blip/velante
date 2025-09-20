@@ -4,7 +4,7 @@ import ContactForm from "@/components/contact/ContactForm";
 import ContactFAQ from "@/components/FAQs/FAQs";
 import ContactMap from "@/components/contact/ContactMap";
 import ContactSocial from "@/components/contact/ContactSocial";
-import ContactStickyBar from "@/components/contact/ContactStickyBar";
+
 import "./ContactPage.css";
 
 export default function ContactPage() {
@@ -16,7 +16,6 @@ export default function ContactPage() {
       <ContactFAQ />
       <ContactMap />
       <ContactSocial />
-      <ContactStickyBar />
     </div>
   );
 }

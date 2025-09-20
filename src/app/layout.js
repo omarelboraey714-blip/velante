@@ -1,6 +1,7 @@
 import "./globals.css";
 import Header from "@/components/Header/Header";
 import Footer from "@/components/Footer/Footer";
+import ContactStickyBar from "@/components/ContactStickyBar/ContactStickyBar";
 import { Tajawal } from "next/font/google";
 
 // ✅ الخط
@@ -32,7 +33,7 @@ export const metadata = {
   description:
     "Velante وكالة متخصصة في الهوية البصرية، تصميم السوشيال ميديا، الإعلانات الممولة، وتطوير المواقع. نبني حضور رقمي متكامل يساعد علامتك التجارية على النمو",
   icons: {
-    icon: "/images/velante.ico",
+    icon: "/images/icon.ico",
   },
   openGraph: {
     title: "Velante | وكالة التصميم والتسويق الرقمي",
@@ -66,6 +67,7 @@ export default function RootLayout({ children }) {
       <body>
         <Header />
         <main>{children}</main>
+        <ContactStickyBar />
         <Footer />
       </body>
     </html>

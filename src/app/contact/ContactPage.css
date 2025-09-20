@@ -206,11 +206,3 @@
 .vc-social__name {
   @apply font-medium;
 }
-
-.vc-sticky-bar {
-  @apply fixed bottom-5 right-5  flex items-center justify-center z-50;
-}
-
-.vc-sticky-bar__whatsapp {
-  @apply text-3xl  text-light bg-radial from-l-blue to-e-blue  rounded-full  shadow-lg p-3 lg:text-4xl transition-colors duration-200;
-}
