@@ -2,6 +2,7 @@ import "./globals.css";
 import Header from "@/components/Header/Header";
 import Footer from "@/components/Footer/Footer";
 import ContactStickyBar from "@/components/ContactStickyBar/ContactStickyBar";
+import { Toaster } from "sonner";
 import { Tajawal } from "next/font/google";
 
 // ✅ الخط
@@ -67,6 +68,24 @@ export default function RootLayout({ children }) {
       <body>
         <Header />
         <main>{children}</main>
+        <Toaster
+          toastOptions={{
+            className: "rounded-xl shadow-lg shadow-e-blue ",
+            success: {
+              className: "bg-l-blue/20 text-e-blue font-bold",
+            },
+            error: {
+              className: "bg-red-600/20 text-white",
+            },
+            warning: {
+              className: "bg-yellow-500 text-black",
+            },
+            info: {
+              className: "bg-blue-500 text-white",
+            },
+          }}
+          position="top-right"
+        />
         <ContactStickyBar />
         <Footer />
       </body>

@@ -23,12 +23,12 @@ export default function ContactInfo() {
       icon: "✉️",
       title: "أرسل لنا بريدًا",
       info: [
-        "info@velante.com (للاستفسارات العامة)",
+        "velante.Solutions@gmail.com (للاستفسارات العامة)",
         "projects@velante.com (لعروض الأسعار والمشاريع)",
       ],
       description: "سنجيب خلال 24 ساعة خلال أيام العمل",
       buttonText: "أرسل بريدًا",
-      buttonAction: "mailto:info@velante.com",
+      buttonAction: "mailto:velante.Solutions@gmail.com",
       type: "email",
     },
     {

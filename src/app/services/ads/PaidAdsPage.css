@@ -109,7 +109,7 @@
 }
 
 .vpa-case-study__content {
-  @apply bg-gradient-to-r from-[#6dff00] to-[#a4ff00] rounded-2xl p-6 sm:p-8 md:p-12 text-white text-center;
+  @apply bg-gradient-to-r from-l-blue to-e-blue rounded-2xl p-6 sm:p-8 md:p-12 text-white text-center;
 }
 
 .vpa-case-study__title {
@@ -141,7 +141,7 @@
 }
 
 .vpa-btn--primary {
-  @apply bg-[#6dff00] text-white hover:bg-[#5ac400];
+  @apply bg-e-blue text-white hover:bg-l-blue;
 }
 
 .vpa-btn--secondary {
@@ -165,11 +165,11 @@
 }
 
 .vpa-form__textarea {
-  @apply w-full p-3 sm:p-4 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#6dff00] focus:border-transparent resize-none;
+  @apply w-full p-3 sm:p-4 border border-gray-300 rounded-lg focus:ring-2 focus:ring-l-blue focus:border-transparent resize-none;
 }
 
 .vpa-form__select {
-  @apply w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#6dff00] focus:border-transparent;
+  @apply w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-l-blue focus:border-transparent;
 }
 
 .vpa-form__submit {

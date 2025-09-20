@@ -6,7 +6,11 @@ import { FaLinkedin, FaInstagram, FaBehance, FaFacebook } from "react-icons/fa";
 export default function ContactSocial() {
   const socialMedia = [
     { name: "LinkedIn", icon: <FaLinkedin />, url: "#" },
-    { name: "Instagram", icon: <FaInstagram />, url: "#" },
+    {
+      name: "Instagram",
+      icon: <FaInstagram />,
+      url: "https://www.instagram.com/velante_official?igsh=ZmI1ZW1maGFrbDRu",
+    },
     { name: "Behance", icon: <FaBehance />, url: "#" },
     { name: "Facebook", icon: <FaFacebook />, url: "#" },
   ];

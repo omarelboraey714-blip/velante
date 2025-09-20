@@ -11,7 +11,7 @@
 }
 
 .vp-faq__list {
-  @apply max-w-4xl mx-auto;
+  @apply max-w-4xl px-5 mx-auto;
 }
 
 .vp-faq__item {

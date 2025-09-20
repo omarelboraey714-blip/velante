@@ -93,7 +93,7 @@
 }
 
 .vc-btn--primary {
-  @apply bg-e-blue text-white hover:bg-l-blue;
+  @apply bg-e-blue cursor-pointer text-white hover:bg-l-blue;
 }
 
 .vc-form-section {
@@ -127,7 +127,7 @@
 .vc-form__input,
 .vc-form__select,
 .vc-form__textarea {
-  @apply w-full p-3 border border-l-blue/30 rounded-lg focus:ring-2 focus:ring-l-blue focus:border-transparent transition-colors duration-200;
+  @apply w-full p-3 text-light border border-l-blue/30 rounded-lg focus:ring-2 focus:ring-l-blue focus:border-transparent transition-colors duration-200;
 }
 
 .vc-form__input--error,
@@ -140,7 +140,7 @@
 }
 
 .vc-form__country-code {
-  @apply w-30 ml-5 p-3 border border-l-blue/30 rounded-lg border-l-0 focus:ring-2 focus:ring-l-blue focus:border-transparent;
+  @apply w-30 text-light ml-5 p-3 border border-l-blue/30 rounded-lg border-l-0 focus:ring-2 focus:ring-l-blue focus:border-transparent;
 }
 
 .vc-form__input {

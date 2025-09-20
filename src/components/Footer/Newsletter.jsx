@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useCallback } from "react";
-import { motion, AnimatePresence } from "framer-motion"; // v12.23.12
+import { motion, AnimatePresence } from "framer-motion";
 
 export default function Newsletter() {
   const [email, setEmail] = useState("");
@@ -23,19 +23,32 @@ export default function Newsletter() {
       }
 
       try {
-        const response = await fetch("/api/newsletter", {
+        // إرسال طلب الاشتراك إلى /api/newsletter
+        const newsletterResponse = await fetch("/api/newsletter", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ email }),
         });
 
-        const result = await response.json();
+        const newsletterResult = await newsletterResponse.json();
 
-        if (!response.ok) {
-          throw new Error(result.error || "فشل في الاشتراك");
+        if (!newsletterResponse.ok) {
+          throw new Error(newsletterResult.error || "فشل في الاشتراك");
         }
 
-        setSuccess("تم الاشتراك بنجاح!");
+        // إرسال إيميل ترحيبي
+        const emailResponse = await fetch("/api/send-email", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ type: "newsletter", email }),
+        });
+
+        const emailResult = await emailResponse.json();
+
+        if (!emailResponse.ok)
+          throw new Error(emailResult.error || "فشل في إرسال إيميل الترحيب");
+
+        setSuccess("تم الاشتراك بنجاح! تحقق من بريدك الإلكتروني للتأكيد.");
         setEmail("");
         setTimeout(() => setSuccess(""), 5000);
       } catch (err) {

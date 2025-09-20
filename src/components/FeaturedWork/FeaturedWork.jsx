@@ -155,7 +155,6 @@ export default function FeaturedWork() {
                   transition={{ duration: 0.2 }}
                   viewport={{ once: true }}
                   whileHover={{ rotateY: 5, rotateX: 2 }}
-                  style={{ perspective: "1000px" }}
                 >
                   <div className="featured-image-wrapper">
                     <Image

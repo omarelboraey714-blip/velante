@@ -1,6 +1,6 @@
 @import "tailwindcss";
 
-@import "../../../styles/theme.css";
+@import "../../styles/theme.css";
 
 .featured-work {
   @apply bg-primary relative py-16;
@@ -19,7 +19,7 @@
 }
 
 .featured-masonry-grid {
-  @apply grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-12;
+  @apply grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-12 perspective-distant;
 }
 
 .featured-project-card.featured {
@@ -27,7 +27,7 @@
 }
 
 .featured-project-card {
-  @apply overflow-hidden rounded-xl shadow-xl shadow-gray-900 transition-all duration-300;
+  @apply overflow-hidden rounded-xl shadow-xl shadow-gray-900 transition-all duration-300 perspective-distant;
 }
 
 .featured-image-wrapper {
@@ -55,7 +55,7 @@
 }
 
 .featured-project-category {
-  @apply text-lime-400 font-medium mb-4;
+  @apply text-e-blue font-medium mb-4;
 }
 
 .featured-cta {

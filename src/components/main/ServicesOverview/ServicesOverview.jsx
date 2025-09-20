@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import Image from "next/image";
+import { HiArrowLeft } from "react-icons/hi";
 
 import { motion } from "framer-motion";
 import { Palette, Code, Megaphone } from "lucide-react";
@@ -91,10 +92,10 @@ export default function ServicesOverview() {
               </p>
               <Link
                 href={service.link}
-                className="text-e-blue w-fit font-medium hover:text-l-blue transition-colors duration-200 mt-4 text-center"
+                className="text-e-blue flex items-center justify-center gap-1.5 w-fit font-medium hover:text-l-blue transition-colors duration-200 mt-4 text-center"
                 aria-label={`اعرف المزيد عن ${service.title}`}
               >
-                اعرف المزيد →
+                اعرف المزيد <HiArrowLeft />
               </Link>
             </motion.div>
           ))}

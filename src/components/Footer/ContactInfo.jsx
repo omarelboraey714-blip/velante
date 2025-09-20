@@ -22,8 +22,11 @@ export default function ContactInfo() {
     {
       icon: "✉️",
       text: (
-        <a href="mailto:info@velante.com" className="vf-contact-link">
-          info@velante.com
+        <a
+          href="mailto:velante.Solutions@gmail.com"
+          className="vf-contact-link"
+        >
+          velante.Solutions@gmail.com
         </a>
       ),
     },

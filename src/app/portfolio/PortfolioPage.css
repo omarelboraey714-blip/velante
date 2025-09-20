@@ -300,11 +300,3 @@
 .vw-spinner {
   @apply w-12 h-12 rounded-full border-y-2 border-r-2 border-e-blue;
 }
-
-/* .vpa-packages {
-  background-image: linear-gradient(to bottom, #101828, #0a1f44) !important;
-}
-
-.vs-services {
-  background-image: linear-gradient(to bottom, #0a1f44, #101828) !important;
-} */

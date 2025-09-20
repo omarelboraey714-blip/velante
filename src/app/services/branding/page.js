@@ -2,7 +2,7 @@ import BrandIdentityHeader from "@/components/brand-identity/BrandIdentityHeader
 import BrandIdentityIntro from "@/components/brand-identity/BrandIdentityIntro/BrandIdentityIntro";
 import BrandIdentityFeatures from "@/components/brand-identity/BrandIdentityFeatures/BrandIdentityFeatures";
 import BrandIdentityProcess from "@/components/brand-identity/BrandIdentityProcess/BrandIdentityProcess";
-import BrandIdentityPortfolio from "@/components/main/FeaturedWork/FeaturedWork";
+import BrandIdentityPortfolio from "@/components/FeaturedWork/FeaturedWork";
 import Packages from "@/components/packs/Packages";
 import Services from "@/components/Services/Services";
 import BrandIdentityFAQ from "@/components/FAQs/FAQs";
