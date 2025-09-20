@@ -3,6 +3,7 @@ import Header from "@/components/Header/Header";
 import Footer from "@/components/Footer/Footer";
 import ContactStickyBar from "@/components/ContactStickyBar/ContactStickyBar";
 import { Toaster } from "sonner";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Tajawal } from "next/font/google";
 
 // ✅ الخط
@@ -72,10 +73,10 @@ export default function RootLayout({ children }) {
           toastOptions={{
             className: "rounded-xl shadow-lg shadow-e-blue ",
             success: {
-              className: "bg-l-blue/20 text-e-blue font-bold",
+              className: "bg-l-blue text-light font-bold",
             },
             error: {
-              className: "bg-red-600/20 text-white",
+              className: "bg-red-600 text-white",
             },
             warning: {
               className: "bg-yellow-500 text-black",
@@ -87,6 +88,7 @@ export default function RootLayout({ children }) {
           position="top-right"
         />
         <ContactStickyBar />
+        <SpeedInsights />
         <Footer />
       </body>
     </html>
