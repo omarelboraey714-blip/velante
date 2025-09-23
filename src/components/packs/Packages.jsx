@@ -9,6 +9,14 @@ import "./packages.css";
 
 // مكون بطاقة الباقة
 function PackageCard({ pkg }) {
+  const whatsappNumber = "201556840380";
+  const getWhatsAppLink = (packageName) => {
+    const message = encodeURIComponent(
+      `أهلاً، أنا مهتم ب${packageName} وأرغب في طلبها و معرفة المزيد من التفاصيل.`
+    );
+    return `https://wa.me/${whatsappNumber}?text=${message}`;
+  };
+
   return (
     <motion.div
       className={`vpa-package-card ${
@@ -40,7 +48,7 @@ function PackageCard({ pkg }) {
           </li>
         ))}
       </ul>
-      <Link href="#" aria-label={`اختر ${pkg.title}`}>
+      <Link href={getWhatsAppLink(pkg.title)} aria-label={`اختر ${pkg.title}`}>
         <motion.button
           className={`vpa-btn ${
             pkg.popular ? "vpa-btn--primary" : "vpa-btn--secondary"

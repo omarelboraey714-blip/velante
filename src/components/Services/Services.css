@@ -19,7 +19,7 @@
 }
 
 .vs-service-card {
-  @apply grid content-between rounded-2xl p-6 text-right shadow-md relative hover:shadow-primary hover:shadow-xl transition-shadow duration-200 border border-primary;
+  @apply grid content-between rounded-2xl p-6 text-right shadow-md relative shadow-primary hover:shadow-l-blue border border-l-blue hover:shadow-xl transition-shadow duration-200;
 }
 
 .vs-service-title {

@@ -44,7 +44,7 @@ export default function PackagesHeader() {
             className="vp-btn vp-btn--primary vp-header__faq-trigger"
             onClick={() =>
               document
-                .getElementById("faq-section")
+                .getElementById("vp-final-cta")
                 .scrollIntoView({ behavior: "smooth" })
             }
             whileTap={{ scale: 0.95 }}

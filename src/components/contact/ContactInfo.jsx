@@ -22,10 +22,7 @@ export default function ContactInfo() {
       id: 2,
       icon: "✉️",
       title: "أرسل لنا بريدًا",
-      info: [
-        "velante.Solutions@gmail.com (للاستفسارات العامة)",
-        "projects@velante.com (لعروض الأسعار والمشاريع)",
-      ],
+      info: ["velante.Solutions@gmail.com"],
       description: "سنجيب خلال 24 ساعة خلال أيام العمل",
       buttonText: "أرسل بريدًا",
       buttonAction: "mailto:velante.Solutions@gmail.com",
@@ -35,21 +32,11 @@ export default function ContactInfo() {
       id: 3,
       icon: "💬",
       title: "دردش مباشرة",
-      info: ["WhatsApp / Messenger"],
+      info: ["WhatsApp"],
       description: "للرد السريع، تواصل معنا على الواتساب",
       buttonText: "ابدأ محادثة",
-      buttonAction: "https://wa.me/+201556840380",
+      buttonAction: "https://wa.me/201556840380",
       type: "chat",
-    },
-    {
-      id: 4,
-      icon: "📍",
-      title: "زورنا في المكتب",
-      info: ["العنوان: مدينة نصر، القاهرة، مصر"],
-      description: "يرجى تحديد موعد مسبقًا",
-      buttonText: "احصل على اتجاهات",
-      buttonAction: "https://maps.google.com/?q=مدينة+نصر،+القاهرة،+مصر",
-      type: "location",
     },
   ];
 

@@ -32,6 +32,10 @@
   @apply text-2xl sm:text-3xl md:text-4xl font-bold mb-4 leading-tight;
 }
 
+.va-header-title span {
+  @apply text-l-blue;
+}
+
 .va-header-subtitle {
   @apply text-lg sm:text-xl md:text-2xl font-semibold mb-4;
 }
@@ -49,7 +53,7 @@
 }
 
 .va-story-content {
-  @apply grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 items-center;
+  @apply grid grid-cols-1 md:grid-cols-2 gap-8 sm:gap-12 items-center;
 }
 
 .va-section-title {
@@ -58,6 +62,10 @@
 
 .va-story-description {
   @apply text-base sm:text-lg text-light/80 leading-relaxed;
+}
+
+.va-story-description span {
+  @apply text-l-blue font-bold;
 }
 
 .va-story-image {

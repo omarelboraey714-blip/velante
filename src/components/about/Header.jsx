@@ -19,7 +19,7 @@ export default function Header() {
               animate={{ y: 0, opacity: 1 }}
               transition={{ delay: 0.2, duration: 0.6 }}
             >
-              velante: أكثر من مجرد شريك تصميم
+              <span>VELANTE</span> أكثر من مجرد شريك تصميم
             </motion.h1>
             <motion.p
               className="va-header-subtitle"

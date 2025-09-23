@@ -2,7 +2,6 @@ import ContactHeader from "@/components/contact/ContactHeader";
 import ContactInfo from "@/components/contact/ContactInfo";
 import ContactForm from "@/components/contact/ContactForm";
 import ContactFAQ from "@/components/FAQs/FAQs";
-import ContactMap from "@/components/contact/ContactMap";
 import ContactSocial from "@/components/contact/ContactSocial";
 
 import "./ContactPage.css";
@@ -14,7 +13,6 @@ export default function ContactPage() {
       <ContactInfo />
       <ContactForm />
       <ContactFAQ />
-      <ContactMap />
       <ContactSocial />
     </div>
   );

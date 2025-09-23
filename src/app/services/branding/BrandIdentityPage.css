@@ -46,6 +46,10 @@
   @apply text-base sm:text-lg text-light leading-relaxed;
 }
 
+.vbi-intro__text span {
+  @apply font-bold text-l-blue;
+}
+
 .vbi-features {
   @apply py-12 sm:py-16 bg-gradient-to-b from-gray-900 to-primary;
 }

@@ -31,7 +31,7 @@ export default function ContactStickyBar() {
           transition={{ duration: 0.5 }}
         >
           <motion.a
-            href="https://wa.me/+201556840380"
+            href="https://wa.me/201556840380"
             className="vc-sticky-bar__whatsapp"
             target="_blank"
             rel="noopener noreferrer"

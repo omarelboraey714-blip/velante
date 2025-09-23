@@ -45,7 +45,7 @@ export default function WebDevelopmentTechnologies() {
   const itemVariants = {
     hidden: { opacity: 0, rotateY: 90 },
     show: { opacity: 1, rotateY: 0 },
-    hover: { rotateY: 360, scale: 1.1 },
+    hover: { scale: 1.1 },
   };
 
   return (
@@ -78,10 +78,6 @@ export default function WebDevelopmentTechnologies() {
               transition={{ duration: 0.3 }}
               aria-label={`Technology: ${tech}`}
               title={tech}
-              style={{
-                transformStyle: "preserve-3d",
-                perspective: "1000px",
-              }}
             >
               <span>{tech}</span>
             </motion.div>

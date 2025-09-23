@@ -8,31 +8,32 @@ export default function PackagesComparison() {
       id: "basic",
       name: "الباقة الأساسية",
       subtitle: "The Launchpad",
-      description: "مخصصة ل: المشاريع الناشئة والأفراد",
-      price: "2,499 ج.م / 1,299 ر.س",
-      priceNote: 'أو سعر "يبدأ من"',
+      description:
+        "للمشاريع الناشئة والأفراد اللي عايزين يبدأوا أونلاين بشكل احترافي وبأقل تكلفة. توفرلك أساسيات الهوية والموقع والمحتوى لتظهر بمظهر قوي من أول يوم.",
+      price: "6,500 ج.م / 850 ر.س",
+      priceNote: "سعر ثابت",
       color: "blue",
       features: {
         branding: {
-          "تصميم لوجو (3 مفاهيم)": true,
-          "دليل الهوية البصرية": false,
-          "تصميم بطاقات العمل": true,
+          "تصميم لوجو (مفهوم واحد)": true,
+          "دليل ألوان وخطوط بسيط": true,
+          "تصميم بطاقة عمل": true,
         },
         web: {
-          "عدد الصفحات": "5 صفحات",
+          "عدد الصفحات": "3 صفحات",
           "متجر إلكتروني (E-commerce)": false,
           "لوحة تحكم عربية": true,
-          "استضافة مجانية (لمدة عام)": false,
+          "استضافة مجانية (لمدة 3 أشهر)": true,
         },
         marketing: {
-          "تصميم 5 منشورات": true,
-          "إدارة حملة إعلانية (لمدة أسبوع)": false,
-          "تحليل المنافسين": false,
+          "تصميم 3 منشورات ثابتة": true,
+          "إعداد صفحة فيسبوك/إنستجرام": true,
+          "إدارة حملة إعلانية تجريبية (5 أيام)": false,
         },
         support: {
           "فترة الدعم": "شهر واحد",
           "عدد المراجعات": "2 مراجعة",
-          "تسليم خلال": "10 أيام",
+          "تسليم خلال": "12 يوم",
         },
       },
       cta: "ابدأ مشروعك",
@@ -42,31 +43,33 @@ export default function PackagesComparison() {
       id: "advanced",
       name: "الباقة المتقدمة",
       subtitle: "The Growth",
-      description: "مخصصة ل: الشركات الصغيرة والمتوسطة الراغبة في النمو",
-      price: "5,999 ج.م / 3,199 ر.س",
+      description:
+        "للشركات الصغيرة والمتوسطة اللي عايزة تكبر بسرعة. بتجمع بين هوية متكاملة، موقع احترافي، وتسويق مدروس يوصلك لجمهورك المستهدف.",
+      price: "14,500 ج.م / 1,650 ر.س",
+      priceNote: "أو حسب متطلباتك",
       color: "orange",
       popular: true,
       features: {
         branding: {
-          "تصميم لوجو (3 مفاهيم)": true,
-          "دليل الهوية البصرية": "PDF",
+          "تصميم لوجو (مفهومين)": true,
+          "دليل الهوية البصرية (PDF)": true,
           "تصميم بطاقات العمل": true,
         },
         web: {
-          "عدد الصفحات": "10 صفحات",
-          "متجر إلكتروني (E-commerce)": "ماكس 20 منتج",
+          "عدد الصفحات": "7 صفحات",
+          "متجر إلكتروني (E-commerce)": "حتى 25 منتج",
           "لوحة تحكم عربية": true,
-          "استضافة مجانية (لمدة عام)": true,
+          "استضافة مجانية (6 اشهر)": true,
         },
         marketing: {
-          "تصميم 5 منشورات": true,
-          "إدارة حملة إعلانية (لمدة أسبوع)": true,
+          "تصميم 7 منشورات (ثابت + متحرك)": true,
+          "إدارة حملة إعلانية (أسبوعين)": true,
           "تحليل المنافسين": true,
         },
         support: {
           "فترة الدعم": "3 أشهر",
           "عدد المراجعات": "5 مراجعات",
-          "تسليم خلال": "15 يوم",
+          "تسليم خلال": "20 يوم",
         },
       },
       cta: "اختر الباقة",
@@ -76,25 +79,27 @@ export default function PackagesComparison() {
       id: "enterprise",
       name: "الباقة المتميزة",
       subtitle: "The Enterprise",
-      description: "مخصصة ل: العلامات التجارية الكبيرة والشركات",
-      price: "سعر مخصص",
+      description:
+        "للشركات الكبيرة والعلامات التجارية اللي محتاجة حلول متكاملة وقابلة للتوسع. من براند محترف لموقع ومتجر ضخم وحملات تسويقية قوية بدعم طويل المدى.",
+      price: "ابتداءً من 28,000 ج.م / 3,200 ر.س",
+      priceNote: "سعر مخصص حسب المشروع",
       color: "purple",
       features: {
         branding: {
           "تصميم لوجو (3 مفاهيم)": true,
-          "دليل الهوية البصرية": "مطبوعة + تفاعلية",
-          "تصميم بطاقات العمل": true,
+          "دليل هوية بصرية (مطبوعة + تفاعلية)": true,
+          "تصميم بطاقات عمل وكتيب تعريفي": true,
         },
         web: {
           "عدد الصفحات": "صفحات غير محدودة",
           "متجر إلكتروني (E-commerce)": "منتجات غير محدودة",
-          "لوحة تحكم عربية": true,
-          "استضافة مجانية (لمدة عام)": true,
+          "لوحة تحكم عربية + مميزات متقدمة": true,
+          "استضافة مجانية (عام كامل)": true,
         },
         marketing: {
-          "تصميم 5 منشورات": true,
-          "إدارة حملة إعلانية (لمدة أسبوع)": true,
-          "تحليل المنافسين": true,
+          "تصميم 12 منشور (ثابت + متحرك)": true,
+          "إدارة حملة إعلانية (شهر)": true,
+          "تحليل المنافسين وخطة محتوى": true,
         },
         support: {
           "فترة الدعم": "6 أشهر",
@@ -106,6 +111,15 @@ export default function PackagesComparison() {
       ctaStyle: "primary",
     },
   ];
+
+  // رقم واتساب (استبدله برقمك الحقيقي)
+  const whatsappNumber = "201556840380";
+  const getWhatsAppLink = (packageName) => {
+    const message = encodeURIComponent(
+      `أهلاً، أنا مهتم ب${packageName} وأرغب في طلبها و معرفة المزيد من التفاصيل.`
+    );
+    return `https://wa.me/${whatsappNumber}?text=${message}`;
+  };
 
   return (
     <section className="vp-comparison">
@@ -175,14 +189,20 @@ export default function PackagesComparison() {
                   </div>
                 ))}
               </div>
-              <motion.button
-                className={`vp-btn vp-btn--${pkg.ctaStyle} vp-package-cta`}
-                whileHover={{ scale: 1.1, rotateX: 10 }}
-                whileTap={{ scale: 0.95 }}
-                transition={{ duration: 0.3 }}
+              <a
+                href={getWhatsAppLink(pkg.name)}
+                target="_blank"
+                rel="noopener noreferrer"
               >
-                {pkg.cta}
-              </motion.button>
+                <motion.button
+                  className={`vp-btn vp-btn--${pkg.ctaStyle} vp-package-cta`}
+                  whileHover={{ scale: 1.1, rotateX: 10 }}
+                  whileTap={{ scale: 0.95 }}
+                  transition={{ duration: 0.3 }}
+                >
+                  {pkg.cta}
+                </motion.button>
+              </a>
             </motion.div>
           ))}
         </div>

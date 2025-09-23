@@ -29,28 +29,106 @@
 }
 
 .packages-content {
-  @apply text-light;
+  @apply text-light grid gap-10;
 }
 
 .packages-title {
-  @apply text-2xl md:text-3xl font-bold mb-8 leading-relaxed;
+  @apply text-2xl md:text-3xl font-bold leading-relaxed;
   text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
 }
 
-.packages-preview {
-  @apply grid grid-cols-1 md:grid-cols-2 gap-6 mb-8;
+.vp-packages__grid {
+  @apply grid grid-cols-1 gap-16 md:grid-cols-2 lg:grid-cols-3 md:gap-8;
 }
 
-.packages-package-card {
-  @apply p-6 bg-l-blue/10 rounded-xl backdrop-blur-sm border border-white/20;
+.vp-package-card {
+  @apply relative h-fit rounded-xl shadow-lg border border-l-blue p-4 sm:p-6 transform-gpu;
 }
 
-.packages-package-card h3 {
-  @apply text-xl font-bold mb-2 text-white;
+.vp-package-card--orange,
+.vp-package-card--purple,
+.vp-package-card--blue {
+  @apply border-l-blue;
 }
 
-.packages-package-card p {
-  @apply text-gray-300 mb-4;
+.vp-package-card--popular {
+  @apply border-2 border-e-blue;
+}
+
+.vp-popular-badge {
+  @apply absolute -top-3 right-4 bg-e-blue text-white px-3 sm:px-4 py-1 rounded-full text-xs sm:text-sm font-bold;
+}
+
+.vp-package-header {
+  @apply text-center mb-4 sm:mb-6;
+}
+
+.vp-package-name {
+  @apply text-lg sm:text-xl font-bold text-light mb-2;
+}
+
+.vp-package-subtitle {
+  @apply text-base sm:text-lg font-semibold text-light/60 mb-2;
+}
+
+.vp-package-description {
+  @apply text-sm sm:text-base text-light/60 mb-4;
+}
+
+.vp-package-price {
+  @apply text-lg sm:text-xl font-bold text-l-blue mb-4;
+}
+
+.vp-price-note {
+  @apply block text-xs sm:text-sm text-light/60 font-normal;
+}
+
+.vp-package-features {
+  @apply mb-4 sm:mb-6;
+}
+
+.vp-feature-category {
+  @apply mb-4 pb-4 border-b border-l-blue last:border-b-0;
+}
+
+.vp-feature-category-title {
+  @apply text-base sm:text-lg font-bold text-light mb-3;
+}
+
+.vp-feature-item {
+  @apply flex justify-between items-center py-2;
+}
+
+.vp-feature-name {
+  @apply text-sm sm:text-base text-light/60;
+}
+
+.vp-feature-check {
+  @apply text-l-blue font-bold;
+}
+
+.vp-feature-cross {
+  @apply text-red-500 font-bold;
+}
+
+.vp-feature-value {
+  @apply text-e-blue font-medium;
+}
+
+.vp-package-cta {
+  @apply w-full py-2 sm:py-3 text-base sm:text-lg;
+}
+
+.vp-btn {
+  @apply px-4 sm:px-6 py-2 sm:py-3 rounded-lg font-semibold transition-colors duration-200;
+}
+
+.vp-btn--primary {
+  @apply bg-e-blue text-white hover:bg-l-blue cursor-pointer;
+}
+
+.vp-btn--secondary {
+  @apply border-l-blue border text-light hover:bg-l-blue cursor-pointer;
 }
 
 .packages-btn-brand-sm {

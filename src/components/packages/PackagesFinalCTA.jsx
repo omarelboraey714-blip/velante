@@ -1,10 +1,11 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Link from "next/link";
 
 export default function PackagesFinalCTA() {
   return (
-    <section className="vp-final-cta">
+    <section id="vp-final-cta" className="vp-final-cta">
       <div className="vp-container">
         <motion.div
           className="vp-final-cta__content"
@@ -18,14 +19,19 @@ export default function PackagesFinalCTA() {
             لا توجد مشكلة. تحدث معنا اليوم واحصل على عرض سعر مخصص يناسب فكرة
             مشروعك بالضبط.
           </p>
-          <motion.button
-            className="vp-btn vp-btn--primary vp-final-cta__button"
-            whileHover={{ scale: 1.1, rotateX: 10 }}
-            whileTap={{ scale: 0.95 }}
-            transition={{ duration: 0.3 }}
+          <Link
+            href="https://wa.me/201556840380?text=مرحبا. هل يمكنني الحصول علي سعر مخصص"
+            target="_blank"
           >
-            احصل على عرض سعر مخصص في 24 ساعة
-          </motion.button>
+            <motion.button
+              className="vp-btn vp-btn--primary vp-final-cta__button"
+              whileHover={{ scale: 1.1, rotateX: 10 }}
+              whileTap={{ scale: 0.95 }}
+              transition={{ duration: 0.3 }}
+            >
+              احصل على عرض سعر مخصص في 24 ساعة
+            </motion.button>
+          </Link>
         </motion.div>
       </div>
     </section>

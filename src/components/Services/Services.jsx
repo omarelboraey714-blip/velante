@@ -59,6 +59,15 @@ export default function Services({ bg }) {
     onError: (err) => console.error("Error fetching services:", err),
   });
 
+  // رقم واتساب
+  const whatsappNumber = "201556840380";
+  const getWhatsAppLink = (serviceTitle) => {
+    const message = encodeURIComponent(
+      `أهلاً، أنا مهتم بخدمة ${serviceTitle} وأرغب في طلبها و معرفة المزيد من التفاصيل.`
+    );
+    return `https://wa.me/${whatsappNumber}?text=${message}`;
+  };
+
   // Animation variants
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -125,7 +134,7 @@ export default function Services({ bg }) {
               لا توجد خدمات متاحة حاليًا. تواصل معنا لمعرفة المزيد!
             </p>
             <Link
-              href="/contact"
+              href={getWhatsAppLink("الخدمات")}
               className="vs-btn vs-btn--primary"
               aria-label="تواصل معنا لمعرفة المزيد عن الخدمات"
             >
@@ -157,7 +166,7 @@ export default function Services({ bg }) {
                   </p>
                   <p className="vs-service-price">{service.price}</p>
                   <Link
-                    href="/contact"
+                    href={getWhatsAppLink(service.title)}
                     className="vs-btn vs-btn--primary"
                     aria-label={`تواصل معنا للحصول على ${service.title}`}
                   >

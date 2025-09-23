@@ -15,8 +15,8 @@ export default function WebDevelopmentIntro() {
         >
           <p className="vwd-intro__text">
             في عصر الرقمنة، موقعك الإلكتروني هو موظفك الذي يعمل 24/7. نحن في
-            VELANTE نبني مواقع ليست جميلة فحسب، بل ذكية وسريعة وتحقق أهدافك
-            التجارية.
+            <span>VELANTE</span> نبني مواقع ليست جميلة فحسب، بل ذكية وسريعة
+            وتحقق أهدافك التجارية.
           </p>
         </motion.div>
       </div>

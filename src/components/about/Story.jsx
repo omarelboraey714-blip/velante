@@ -16,12 +16,12 @@ export default function Story() {
           >
             <h2 className="va-section-title">كيف بدأت رحلتنا</h2>
             <p className="va-story-description">
-              تأسست velante في عام 2021، من خلال شغف مشترك لسد الفجوة بين
-              الإبداع البصري والوظائف الرقمية. لاحظنا أن الكثير من الشركات
-              الناشئة والمنشآت الصغيرة تبحث عن حلول متكاملة ولكنها تواجه عروضًا
-              مبعثرة أو مكلفة. ومن هنا، ولدت فكرة velante: أن نكون الوجهة
-              الواحدة التي توفر حلولاً بصرية رقمية متكاملة، بجودة استثنائية
-              وأسعار شفافة.
+              تأسست <span>Velante</span> في عام 2025، من خلال شغف مشترك لسد
+              الفجوة بين الإبداع البصري والوظائف الرقمية. لاحظنا أن الكثير من
+              الشركات الناشئة والمنشآت الصغيرة تبحث عن حلول متكاملة ولكنها تواجه
+              عروضًا مبعثرة أو مكلفة. ومن هنا، ولدت فكرة <span>Velante</span> أن
+              نكون الوجهة الواحدة التي توفر حلولاً بصرية رقمية متكاملة، بجودة
+              استثنائية وأسعار شفافة.
             </p>
           </motion.div>
           <motion.div
@@ -32,10 +32,10 @@ export default function Story() {
             viewport={{ once: true }}
           >
             <img
-              src="/images/founders.jpg"
+              src="/images/fullLogo.webp"
               alt="مؤسسو velante"
               className="va-story-img"
-              onError={(e) => (e.target.src = "/images/placeholder-avatar.png")}
+              onError={(e) => (e.target.src = "/images/logo.webp")}
             />
           </motion.div>
         </div>

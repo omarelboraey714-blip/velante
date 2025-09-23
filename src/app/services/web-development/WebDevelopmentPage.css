@@ -48,6 +48,10 @@
   @apply text-base sm:text-lg text-light leading-relaxed;
 }
 
+.vwd-intro__text span {
+  @apply font-bold text-l-blue;
+}
+
 .vwd-types {
   @apply py-12 sm:py-16 perspective-distant;
 }
@@ -117,9 +121,7 @@
 }
 
 .vwd-tech__logo {
-  @apply bg-gray-900 px-4 sm:px-6 py-2 sm:py-3 rounded-full shadow-md border border-primary text-light/70 font-bold transform-gpu;
-  transform-style: preserve-3d;
-  perspective: 1000px;
+  @apply bg-gray-900 px-4 sm:px-6 hover:shadow-l-blue transition-shadow duration-300 select-none py-2 sm:py-3 rounded-full shadow-md border border-primary text-light/70 font-bold transform-gpu;
 }
 
 .vwd-calculator {
