@@ -137,6 +137,7 @@ export default function Services({ bg }) {
               href={getWhatsAppLink("الخدمات")}
               className="vs-btn vs-btn--primary"
               aria-label="تواصل معنا لمعرفة المزيد عن الخدمات"
+              target="_blank"
             >
               تواصل معنا
             </Link>
@@ -169,6 +170,7 @@ export default function Services({ bg }) {
                     href={getWhatsAppLink(service.title)}
                     className="vs-btn vs-btn--primary"
                     aria-label={`تواصل معنا للحصول على ${service.title}`}
+                    target="_blank"
                   >
                     اطلب الآن
                   </Link>
