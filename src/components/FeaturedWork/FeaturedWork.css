@@ -65,3 +65,11 @@
 .featured-btn-brand {
   @apply inline-block px-6 py-3 text-lg font-medium rounded-full bg-e-blue text-black hover:bg-l-blue transition-colors duration-200 relative;
 }
+
+.featured-empty-cta {
+  @apply py-5 px-10 flex flex-col items-center gap-5 justify-center;
+}
+
+.featured-empty-message {
+  @apply font-bold text-light;
+}

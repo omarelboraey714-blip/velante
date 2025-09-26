@@ -134,27 +134,13 @@
 }
 
 .testimonials-empty-cta {
-  text-align: center;
-  padding: 2rem;
-  background-color: #f8f9fa;
-  border-radius: 8px;
+  @apply bg-primary/30 border border-l-blue flex gap-5 flex-col items-center justify-center py-5 px-10;
 }
 
 .testimonials-empty-message {
-  font-size: 1.5rem;
-  margin-bottom: 1rem;
-  color: #333;
+  @apply text-light text-2xl;
 }
 
 .testimonials-btn {
-  background-color: #2563eb; /* لون مشابه لـ featured-btn-brand */
-  color: white;
-  padding: 0.75rem 1.5rem;
-  border-radius: 0.375rem;
-  font-size: 1rem;
-  transition: background-color 0.3s ease;
-}
-
-.testimonials-btn:hover {
-  background-color: #1e40af;
+  @apply bg-e-blue hover:bg-l-blue text-light font-bold py-3 px-6 rounded-full transition-colors duration-300;
 }
