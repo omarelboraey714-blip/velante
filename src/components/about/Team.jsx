@@ -67,7 +67,7 @@ export default function Team() {
                   <h3 className="va-member-name">{member.name}</h3>
                   <p className="va-member-position">{member.position}</p>
                   <p className="va-member-description">{member.description}</p>
-                  <div className="va-member-social">
+                  {/* <div className="va-member-social">
                     {member.social.linkedin && (
                       <motion.a
                         href={member.social.linkedin}
@@ -108,7 +108,7 @@ export default function Team() {
                         🐦
                       </motion.a>
                     )}
-                  </div>
+                  </div> */}
                 </div>
               </motion.div>
             ))}

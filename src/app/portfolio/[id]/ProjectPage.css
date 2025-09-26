@@ -1,0 +1,329 @@
+@import "tailwindcss";
+
+@layer base {
+  [dir="rtl"] {
+    @apply text-right;
+  }
+}
+
+.vp-page {
+  @apply bg-white;
+}
+
+.vp-progress-bar {
+  @apply fixed top-0 left-0 right-0 h-1 bg-gray-200 z-50;
+}
+
+.vp-progress-fill {
+  @apply h-full bg-gradient-to-r from-[#6dff00] to-[#a4ff00] transition-all duration-150 ease-out transform-gpu;
+}
+
+.vp-header {
+  @apply relative perspective-distant;
+}
+
+.vp-header-image {
+  @apply h-80 sm:h-96 bg-gradient-to-r from-[#1a2421] to-[#2a3a36] relative overflow-hidden;
+}
+
+.vp-header-overlay {
+  @apply absolute inset-0 bg-black/40 flex items-center justify-center;
+}
+
+.vp-header-content {
+  @apply text-center text-white max-w-4xl mx-auto px-4 sm:px-6;
+}
+
+.vp-client-logo {
+  @apply max-w-24 sm:max-w-32 mx-auto mb-6;
+}
+
+.vp-header-title {
+  @apply text-xl sm:text-2xl md:text-3xl font-bold mb-6 leading-tight;
+}
+
+.vp-service-tags {
+  @apply flex flex-wrap justify-center gap-2 mb-6;
+}
+
+.vp-service-tag {
+  @apply bg-white/20 px-3 py-1 rounded-full text-xs sm:text-sm;
+}
+
+.vp-live-btn {
+  @apply px-6 sm:px-8 py-3 text-base sm:text-lg;
+}
+
+.vp-client {
+  @apply py-12 sm:py-16;
+}
+
+.vp-container {
+  @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+}
+
+.vp-section-title {
+  @apply text-2xl sm:text-3xl font-bold text-gray-900 mb-12 text-center;
+}
+
+.vp-client-content {
+  @apply grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 items-center;
+}
+
+.vp-client-text {
+  @apply space-y-4;
+}
+
+.vp-client-name {
+  @apply text-xl sm:text-2xl font-bold text-gray-900;
+}
+
+.vp-client-field,
+.vp-client-vision,
+.vp-client-audience {
+  @apply text-gray-600 leading-relaxed text-sm sm:text-base;
+}
+
+.vp-client-image {
+  @apply rounded-xl overflow-hidden shadow-lg;
+}
+
+.vp-client-img {
+  @apply w-full h-auto;
+}
+
+.vp-challenge {
+  @apply py-12 sm:py-16 bg-gray-50;
+}
+
+.vp-challenge-icon {
+  @apply mr-2 text-2xl;
+}
+
+.vp-challenge-content {
+  @apply max-w-4xl mx-auto;
+}
+
+.vp-challenge-description {
+  @apply text-base sm:text-lg text-gray-700 mb-6 leading-relaxed;
+}
+
+.vp-challenge-list {
+  @apply space-y-3;
+}
+
+.vp-challenge-item {
+  @apply flex items-start space-x-3 space-x-reverse text-gray-600 text-sm sm:text-base;
+}
+
+.vp-challenge-item::before {
+  @apply content-['•'] text-[#6dff00] font-bold mr-2 mt-1;
+}
+
+.vp-solution {
+  @apply py-12 sm:py-16;
+}
+
+.vp-solution-icon {
+  @apply mr-2 text-2xl;
+}
+
+.vp-solution-content {
+  @apply max-w-4xl mx-auto;
+}
+
+.vp-solution-description {
+  @apply text-base sm:text-lg text-gray-700 mb-6 leading-relaxed;
+}
+
+.vp-solution-list {
+  @apply space-y-4 mb-6;
+}
+
+.vp-solution-item {
+  @apply flex items-start space-x-3 space-x-reverse text-gray-600 text-sm sm:text-base;
+}
+
+.vp-solution-item::before {
+  @apply content-['•'] text-[#6dff00] font-bold mr-2 mt-1;
+}
+
+.vp-solution-quote {
+  @apply bg-gray-100 p-6 rounded-lg border-l-4 border-[#6dff00] italic text-gray-700 text-center text-sm sm:text-base;
+}
+
+.vp-gallery {
+  @apply py-12 sm:py-16 perspective-distant;
+}
+
+.vp-gallery-grid {
+  @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6;
+}
+
+.vp-gallery-item {
+  @apply rounded-xl overflow-hidden shadow-lg bg-white border border-gray-100 cursor-pointer transform-gpu;
+}
+
+.vp-gallery-img {
+  @apply w-full h-64 object-cover;
+}
+
+.vp-gallery-overlay {
+  @apply absolute inset-0 bg-black/50 flex items-center justify-center;
+}
+
+.vp-gallery-icon {
+  @apply text-3xl text-white;
+}
+
+.vp-tools {
+  @apply py-12 sm:py-16 bg-gray-50;
+}
+
+.vp-tools-grid {
+  @apply grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-6;
+}
+
+.vp-tool-item {
+  @apply text-center p-4 rounded-lg bg-white shadow-md transform-gpu;
+}
+
+.vp-tool-icon {
+  @apply text-2xl mb-2;
+}
+
+.vp-tool-name {
+  @apply text-xs sm:text-sm text-gray-600;
+}
+
+.vp-results {
+  @apply py-12 sm:py-16;
+}
+
+.vp-results-grid {
+  @apply grid grid-cols-1 md:grid-cols-3 gap-8;
+}
+
+.vp-result-card {
+  @apply bg-gradient-to-r from-[#6dff00] to-[#a4ff00] text-white rounded-xl p-6 text-center shadow-lg transform-gpu;
+}
+
+.vp-result-icon {
+  @apply text-2xl mb-3;
+}
+
+.vp-result-number {
+  @apply text-2xl sm:text-3xl font-bold mb-2;
+}
+
+.vp-result-label {
+  @apply text-xs sm:text-sm;
+}
+
+.vp-final-cta {
+  @apply py-12 sm:py-16 bg-gradient-to-r from-[#1a2421] to-[#2a3a36];
+}
+
+.vp-cta-content {
+  @apply text-center text-white max-w-3xl mx-auto px-4;
+}
+
+.vp-cta-title {
+  @apply text-xl sm:text-2xl md:text-3xl font-bold mb-8;
+}
+
+.vp-cta-buttons {
+  @apply flex flex-col sm:flex-row gap-4 justify-center;
+}
+
+.vp-cta-btn {
+  @apply px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg;
+}
+
+.vp-navigation {
+  @apply py-8 bg-gray-50;
+}
+
+.vp-nav-buttons {
+  @apply flex justify-between items-center;
+}
+
+.vp-nav-btn {
+  @apply text-[#6dff00] hover:text-[#5ac400] transition-colors duration-200 font-medium text-sm sm:text-base;
+}
+
+.vp-nav-btn--prev {
+  @apply text-right;
+}
+
+.vp-nav-btn--next {
+  @apply text-left;
+}
+
+.vp-share-container {
+  @apply fixed bottom-6 right-6 z-40;
+}
+
+.vp-share-btn {
+  @apply w-12 h-12 rounded-full bg-[#6dff00] text-white shadow-lg flex items-center justify-center text-xl hover:bg-[#5ac400] transition-colors duration-200;
+}
+
+.vp-share-options {
+  @apply absolute bottom-14 right-0 bg-white rounded-lg shadow-xl p-2 space-y-2;
+}
+
+.vp-share-option {
+  @apply flex items-center space-x-2 space-x-reverse px-4 py-2 rounded hover:bg-gray-100 transition-colors duration-200 text-sm sm:text-base;
+}
+
+.vp-lightbox {
+  @apply fixed inset-0 bg-black/90 z-50 flex items-center justify-center p-4;
+}
+
+.vp-lightbox-content {
+  @apply relative max-w-4xl w-full max-h-[90vh];
+}
+
+.vp-lightbox-close {
+  @apply absolute top-4 right-4 text-3xl text-white hover:text-gray-300 cursor-pointer z-10;
+}
+
+.vp-lightbox-nav {
+  @apply absolute top-1/2 transform -translate-y-1/2 w-12 h-12 rounded-full bg-black/50 text-white flex items-center justify-center text-2xl hover:opacity-70 transition-all duration-200 z-10;
+}
+
+.vp-lightbox-nav--prev {
+  @apply left-4;
+}
+
+.vp-lightbox-nav--next {
+  @apply right-4;
+}
+
+.vp-lightbox-image {
+  @apply w-full h-auto rounded-lg;
+}
+
+.vp-lightbox-info {
+  @apply absolute bottom-4 left-0 right-0 text-white text-center;
+}
+
+.vp-lightbox-counter {
+  @apply block text-sm mb-2;
+}
+
+.vp-lightbox-caption {
+  @apply block text-base sm:text-lg;
+}
+
+.vp-btn {
+  @apply px-4 sm:px-6 py-2 sm:py-3 rounded-lg font-semibold transition-colors duration-200;
+}
+
+.vp-btn--primary {
+  @apply bg-[#6dff00] text-white hover:bg-[#5ac400];
+}
+
+.vp-btn--secondary {
+  @apply bg-white text-gray-800 hover:bg-gray-100;
+}

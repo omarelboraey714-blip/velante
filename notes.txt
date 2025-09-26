@@ -173,6 +173,6 @@ tree -I "node_modules|.git|.next|dist|build|coverage" -L 4
 
 
 git add .
-git commit -m "message"
+git commit -m "update some triks"
 git push origin main
 
