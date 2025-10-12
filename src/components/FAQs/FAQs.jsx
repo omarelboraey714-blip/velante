@@ -1,10 +1,17 @@
 "use client";
 
-import { useMemo, useState, useCallback, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { useMemo } from "react";
+import { motion } from "framer-motion";
 import useSWR from "swr";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
+import {
+  Accordion,
+  AccordionItem,
+  AccordionTrigger,
+  AccordionContent,
+} from '@/components/core/accordion';
+import { ChevronRight } from 'lucide-react';
 import "./FAQs.css";
 
 // Fallback data
@@ -27,7 +34,6 @@ const fetcher = async (url) => {
 };
 
 export default function FAQ() {
-  const [openFaq, setOpenFaq] = useState(null);
   const pathname = usePathname();
 
   const category = useMemo(() => {
@@ -52,69 +58,6 @@ export default function FAQ() {
     ),
     onError: (err) => console.error("Error fetching FAQs:", err),
   });
-
-  const toggleFaq = useCallback((index) => {
-    setOpenFaq((prev) => (prev === index ? null : index));
-  }, []);
-
-  // إغلاق عند النقر خارج السؤال
-  useEffect(() => {
-    const handleClickOutside = (e) => {
-      const target = e.target;
-      const buttons = document.querySelectorAll(".vp-faq__question");
-      const isClickInsideButton = Array.from(buttons).some((btn) =>
-        btn.contains(target)
-      );
-
-      if (!isClickInsideButton && openFaq !== null) {
-        setOpenFaq(null);
-      }
-    };
-
-    document.addEventListener("click", handleClickOutside);
-    return () => document.removeEventListener("click", handleClickOutside);
-  }, [openFaq]);
-
-  // Animation variants
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.05, // أنعم وأخف لو العناصر كتيرة
-      },
-    },
-  };
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        type: "spring",
-        stiffness: 100,
-        damping: 20,
-        duration: 0.4,
-      },
-    },
-  };
-
-  const answerVariants = {
-    hidden: { opacity: 0, scaleY: 0, transformOrigin: "top center" },
-    visible: {
-      scaleY: 1,
-      transition: {
-        duration: 0.35,
-      },
-    },
-    exit: {
-      scaleY: 0,
-      transition: {
-        duration: 0.3,
-      },
-    },
-  };
 
   return (
     <section id="faq-section" className="vp-faq" aria-label="الأسئلة الشائعة">
@@ -167,65 +110,46 @@ export default function FAQ() {
             </Link>
           </motion.div>
         ) : (
-          <motion.div
-            className="vp-faq__list"
-            variants={containerVariants}
-            initial="hidden"
-            animate="visible"
+          <Accordion
+            className="flex w-full flex-col max-w-4xl mx-auto"
+            transition={{ type: 'spring', stiffness: 120, damping: 20 }}
+            variants={{
+              expanded: {
+                opacity: 1,
+                scale: 1,
+              },
+              collapsed: {
+                opacity: 0,
+                scale: 0.95,
+              },
+            }}
           >
             {faqs.map((faq, index) => (
-              <motion.div
-                key={faq.id}
-                className="vp-faq__item"
-                variants={itemVariants}
-                initial="hidden"
-                animate="visible"
-                viewport={{ once: true }}
-                layout
+              <AccordionItem 
+                key={faq.id} 
+                value={`faq-${faq.id}`} 
+                className="py-2"
               >
-                <button
-                  type="button"
-                  className="vp-faq__question"
-                  onClick={() => toggleFaq(index)}
-                  aria-expanded={openFaq === index}
-                  aria-controls={`faq-answer-${faq.id}`}
-                >
-                  <span>{faq.question}</span>
-                  <motion.span
-                    className={`vp-faq__toggle ${
-                      openFaq === index ? "vp-faq__toggle--open" : ""
-                    }`}
-                    animate={{ rotate: openFaq === index ? 180 : 0 }}
-                    transition={{ duration: 0.35 }}
-                  >
-                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-                      <path
-                        d="M4 6L8 10L12 6"
-                        stroke="currentColor"
-                        strokeWidth="2"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      />
-                    </svg>
-                  </motion.span>
-                </button>
-
-                <AnimatePresence>
-                  {openFaq === index && (
-                    <motion.div
-                      id={`faq-answer-${faq.id}`}
-                      variants={answerVariants}
-                      animate="visible"
-                      exit="exit"
-                      className="vp-faq__answer"
-                    >
-                      <p>{faq.answer}</p>
-                    </motion.div>
-                  )}
-                </AnimatePresence>
-              </motion.div>
+                <AccordionTrigger className="w-full py-4 text-left text-light hover:text-l-blue transition-colors duration-200">
+                  <div className="flex items-center w-full">
+                    <ChevronRight className="h-5 w-5 text-l-blue transition-transform duration-200 group-data-expanded:rotate-90 ml-3" />
+                    <div className="flex-1 text-right">
+                      <span className="text-lg font-medium">
+                        {faq.question}
+                      </span>
+                    </div>
+                  </div>
+                </AccordionTrigger>
+                <AccordionContent className="origin-top">
+                  <div className="pl-8 pr-4 py-4">
+                    <p className="text-light text-base leading-relaxed">
+                      {faq.answer}
+                    </p>
+                  </div>
+                </AccordionContent>
+              </AccordionItem>
             ))}
-          </motion.div>
+          </Accordion>
         )}
       </div>
     </section>

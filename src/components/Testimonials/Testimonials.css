@@ -1,6 +1,6 @@
-@import "tailwindcss";
+@import 'tailwindcss';
 
-@import "../../styles/theme.css";
+@import '../../styles/theme.css';
 
 .testimonials {
   @apply relative py-20;
@@ -138,9 +138,9 @@
 }
 
 .testimonials-empty-message {
-  @apply text-light text-2xl;
+  @apply text-light my-10 text-2xl;
 }
 
 .testimonials-btn {
-  @apply bg-e-blue hover:bg-l-blue text-light font-bold py-3 px-6 rounded-full transition-colors duration-300;
+  @apply bg-e-blue my-10 hover:bg-l-blue text-light font-bold py-3 px-6 rounded-full transition-colors duration-300;
 }

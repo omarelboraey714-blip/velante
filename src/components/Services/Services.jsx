@@ -1,34 +1,16 @@
-"use client";
+'use client';
 
-import { useMemo } from "react";
-import { motion, AnimatePresence } from "framer-motion"; // v12.23.12
-import useSWR from "swr"; // v2.3.6
-import { usePathname } from "next/navigation";
-import Link from "next/link";
-import "./Services.css";
+import { useMemo } from 'react';
+import { motion, AnimatePresence } from 'framer-motion'; // v12.23.12
+import useSWR from 'swr'; // v2.3.6
+import { usePathname } from 'next/navigation';
+import Link from 'next/link';
+import './Services.css';
 
-// Fallback data (للحالات الطارئة)
-const fallbackServices = [
-  {
-    id: 1,
-    title: "تصميم شعار نصي (Wordmark)",
-    description: "شعار بسيط وأنيق يعكس اسم مشروعك بلمسة عصرية...",
-    price: "1,500 ج.م",
-    category: "branding",
-  },
-  {
-    id: 2,
-    title: "تصميم موقع شركة (Corporate Website)",
-    description: "موقع يعكس احترافية شركتك ويخلي العميل يثق فيك أكتر...",
-    price: "10,000 – 15,000 ج.م",
-    category: "web-development",
-  },
-];
-
-const fetcher = async (url) => {
+const fetcher = async url => {
   const response = await fetch(url);
   if (!response.ok) {
-    throw new Error("Failed to fetch services");
+    throw new Error('Failed to fetch services');
   }
   return response.json();
 };
@@ -38,12 +20,12 @@ export default function Services({ bg }) {
 
   // تحديد الفلتر بناءً على المسار
   const category = useMemo(() => {
-    if (pathname.includes("/services/branding")) return "branding";
-    if (pathname.includes("/services/web-development"))
-      return "web-development";
-    if (pathname.includes("/services/ads")) return "ads";
-    if (pathname.includes("/services/social-media")) return "social-media";
-    return "all";
+    if (pathname.includes('/services/branding')) return 'branding';
+    if (pathname.includes('/services/web-development'))
+      return 'web-development';
+    if (pathname.includes('/services/ads')) return 'ads';
+    if (pathname.includes('/services/social-media')) return 'social-media';
+    return 'all';
   }, [pathname]);
 
   const {
@@ -53,15 +35,19 @@ export default function Services({ bg }) {
   } = useSWR(`/api/services?category=${category}`, fetcher, {
     revalidateOnFocus: false,
     dedupingInterval: 10000,
-    fallbackData: fallbackServices.filter(
-      (s) => category === "all" || s.category === category
-    ),
-    onError: (err) => console.error("Error fetching services:", err),
+    onError: err => console.error('Error fetching services:', err),
   });
 
-  // رقم واتساب
-  const whatsappNumber = "201556840380";
-  const getWhatsAppLink = (serviceTitle) => {
+  if (error) {
+    return (
+      <section className={`vs-services ${bg || 'bg-gray-900'}`}>
+        <div className="vs-container">
+          <div className="vs-loading">فشل في تحميل الخدمات.</div>
+        </div>
+      </section>
+    );
+  }
+  const getWhatsAppLink = serviceTitle => {
     const message = encodeURIComponent(
       `أهلاً، أنا مهتم بخدمة ${serviceTitle} وأرغب في طلبها و معرفة المزيد من التفاصيل.`
     );
@@ -82,13 +68,13 @@ export default function Services({ bg }) {
     visible: {
       opacity: 1,
       y: 0,
-      transition: { type: "spring", stiffness: 100, damping: 20 },
+      transition: { type: 'spring', stiffness: 100, damping: 20 },
     },
   };
 
   return (
     <section
-      className={`vs-services ${bg || "bg-gray-900"}`}
+      className={`vs-services ${bg || 'bg-gray-900'}`}
       aria-label="الخدمات"
     >
       <div className="vs-container">
@@ -97,7 +83,7 @@ export default function Services({ bg }) {
           className="vs-section-title"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, type: "spring", stiffness: 100 }}
+          transition={{ duration: 0.6, type: 'spring', stiffness: 100 }}
           viewport={{ once: true }}
         >
           خدمات اخرى
@@ -115,7 +101,7 @@ export default function Services({ bg }) {
           >
             <motion.div
               animate={{ rotate: 360 }}
-              transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
+              transition={{ duration: 1, repeat: Infinity, ease: 'linear' }}
               className="vs-spinner"
             ></motion.div>
           </motion.div>
@@ -134,7 +120,7 @@ export default function Services({ bg }) {
               لا توجد خدمات متاحة حاليًا. تواصل معنا لمعرفة المزيد!
             </p>
             <Link
-              href={getWhatsAppLink("الخدمات")}
+              href={getWhatsAppLink('الخدمات')}
               className="vs-btn vs-btn--primary"
               aria-label="تواصل معنا لمعرفة المزيد عن الخدمات"
               target="_blank"
@@ -151,7 +137,7 @@ export default function Services({ bg }) {
             viewport={{ once: true }}
           >
             <AnimatePresence>
-              {services.map((service) => (
+              {services.map(service => (
                 <motion.div
                   key={service.id}
                   className="vs-service-card"

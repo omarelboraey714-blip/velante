@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { supabase } from "@/lib/supabaseClient";
+import { prisma } from "@/lib/prisma";
 
 // إضافة باقة جديدة (للاستخدام من لوحة التحكم)
 export async function POST(request) {
@@ -26,30 +26,22 @@ export async function POST(request) {
     }
 
     // إدخال الباقة
-    const { data, error } = await supabase
-      .from("packages")
-      .insert([
-        {
-          category,
-          title,
-          price_min,
-          price_max,
-          currency,
-          is_monthly,
-          description,
-          features,
-          popular,
-        },
-      ])
-      .select();
-
-    if (error) {
-      console.error("Supabase error:", error);
-      throw new Error(error.message);
-    }
+    const package = await prisma.package.create({
+      data: {
+        category,
+        title,
+        priceMin: price_min,
+        priceMax: price_max,
+        currency,
+        isMonthly: is_monthly,
+        description,
+        features,
+        popular,
+      },
+    });
 
     return NextResponse.json(
-      { message: "تمت إضافة الباقة بنجاح!", data },
+      { message: "تمت إضافة الباقة بنجاح!", data: package },
       { status: 201 }
     );
   } catch (error) {
@@ -67,26 +59,34 @@ export async function GET(request) {
     const { searchParams } = new URL(request.url);
     const category = searchParams.get("category") || "all";
 
-    let query = supabase
-      .from("packages")
-      .select(
-        "id, category, title, price_min, price_max, currency, is_monthly, description, features, popular, created_at"
-      )
-      .order("created_at", { ascending: true });
-
+    let whereClause = {};
+    
     if (category !== "all") {
-      query = query.eq("category", category);
+      whereClause.category = category;
     }
 
-    const { data, error } = await query;
-
-    if (error) {
-      console.error("Supabase error:", error);
-      throw new Error(error.message);
-    }
+    const packages = await prisma.package.findMany({
+      where: whereClause,
+      select: {
+        id: true,
+        category: true,
+        title: true,
+        priceMin: true,
+        priceMax: true,
+        currency: true,
+        isMonthly: true,
+        description: true,
+        features: true,
+        popular: true,
+        createdAt: true,
+      },
+      orderBy: {
+        createdAt: "asc",
+      },
+    });
 
     return NextResponse.json(
-      { count: data.length, data },
+      { count: packages.length, data: packages },
       {
         status: 200,
         headers: {

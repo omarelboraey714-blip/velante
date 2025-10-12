@@ -1,21 +1,21 @@
-"use client";
+'use client';
 
-import Link from "next/link";
-import Image from "next/image";
-import { HiArrowLeft } from "react-icons/hi";
+import Link from 'next/link';
+import Image from 'next/image';
+import { HiArrowLeft } from 'react-icons/hi';
 
-import { motion } from "framer-motion";
-import { Palette, Code, Megaphone } from "lucide-react";
+import { motion } from 'framer-motion';
+import { Palette, Code, Megaphone } from 'lucide-react';
 
 // مكون زر موحد
-const CTAButton = ({ href, children, variant = "primary" }) => (
+const CTAButton = ({ href, children, variant = 'primary' }) => (
   <motion.div
     whileHover={{ scale: 1.05 }}
     whileTap={{ scale: 0.95 }}
     className={`inline-block px-6 py-3 rounded-full font-medium text-base cursor-pointer transition-all duration-200 ${
-      variant === "primary"
-        ? "bg-e-blue text-white hover:bg-l-blue hover:shadow-md"
-        : "border-2 border-e-blue text-e-blue hover:bg-e-blue hover:text-white"
+      variant === 'primary'
+        ? 'bg-e-blue text-white hover:bg-l-blue hover:shadow-md'
+        : 'border-2 border-e-blue text-e-blue hover:bg-e-blue hover:text-white'
     }`}
   >
     <Link href={href}>{children}</Link>
@@ -27,34 +27,34 @@ export default function ServicesOverview() {
     {
       id: 1,
       icon: <Palette size={48} className="text-l-blue" />,
-      image: "/images/branding-icon.jpg",
-      title: "تصميم الهوية البصرية",
+      image: '/images/branding-icon.jpg',
+      title: 'تصميم الهوية البصرية',
       description:
-        "لوغو يعبّر عنك، ألوان تُعبّر عن شعورك، وخطوط تحكي قصتك. نصنع لك وجهًا تتعرّف عليه العيون في لمح البصر.",
-      link: "/services/branding",
+        'لوغو يعبّر عنك، ألوان تُعبّر عن شعورك، وخطوط تحكي قصتك. نصنع لك وجهًا تتعرّف عليه العيون في لمح البصر.',
+      link: '/services/branding',
     },
     {
       id: 2,
       icon: <Code size={48} className="text-l-blue" />,
-      image: "/images/web-icon.jpg",
-      title: "تصميم و تطوير المواقع",
+      image: '/images/web-icon.jpg',
+      title: 'تصميم و تطوير المواقع',
       description:
-        "مواقع سريعة، آمنة، وسهلة الإدارة. متوافقة مع محركات البحث وجاهزة لتحقق أهدافك، سواء البيع أو العرض.",
-      link: "/services/web-development",
+        'مواقع سريعة، آمنة، وسهلة الإدارة. متوافقة مع محركات البحث وجاهزة لتحقق أهدافك، سواء البيع أو العرض.',
+      link: '/services/web-development',
     },
     {
       id: 3,
       icon: <Megaphone size={48} className="text-l-blue" />,
-      image: "/images/ads-icon.jpg",
-      title: "إعلانات مُمولة فعّالة",
+      image: '/images/ads-icon.jpg',
+      title: 'إعلانات مُمولة فعّالة',
       description:
-        "نضع إعلاناتك أمام الأنظار المستهدفة بدقة. حملات على فيسبوك، إنستغرام، وجوجل تحقق أعلى عائد ممكن.",
-      link: "/services/ads",
+        'نضع إعلاناتك أمام الأنظار المستهدفة بدقة. حملات على فيسبوك، إنستغرام، وجوجل تحقق أعلى عائد ممكن.',
+      link: '/services/ads',
     },
   ];
 
   return (
-    <section className="relative py-16 sm:py-20  overflow-hidden">
+    <section className="relative py-16 sm:py-20  my-40 overflow-hidden">
       {/* Subtle SVG Pattern للخلفية */}
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 z-10">

@@ -1,60 +1,21 @@
-"use client";
+'use client';
 
-import { useState, useEffect, useRef, useCallback } from "react";
-import useSWR from "swr"; // v2.3.6
-import { motion } from "framer-motion"; // v12.23.12
-import Image from "next/image";
-import Link from "next/link";
-import { supabase } from "@/lib/supabaseClient";
-import "./Testimonials.css";
-
-// Fallback data in case of error
-const fallbackTestimonials = [
-  {
-    id: 1,
-    name: "أحمد محمد",
-    country: "مصر",
-    flag: "🇪🇬",
-    rating: 5,
-    text: "“شركة محترفة جدًا. كانت رحلة تصميم الهوية البصرية سلسة من البداية حتى النهاية وأنصح الجميع بالتعامل معهم.”",
-    project: "هوية بصرية لشركة تقنية",
-    avatar: "/images/avatar1.png",
-  },
-];
+import { useState, useEffect, useRef, useCallback } from 'react';
+import useSWR from 'swr'; // v2.3.6
+import { motion } from 'framer-motion'; // v12.23.12
+import Image from 'next/image';
+import Link from 'next/link';
+// Removed supabase import - now using API routes
+import './Testimonials.css';
 
 const fetcher = async () => {
-  const { data, error } = await supabase
-    .from("testimonials")
-    .select(
-      `
-      id,
-      rating,
-      text,
-      project,
-      created_at,
-      client:clients (
-        id,
-        name,
-        country,
-        flag,
-        avatar
-      )
-    `
-    )
-    .order("created_at", { ascending: false });
+  const response = await fetch('/api/testimonials');
 
-  if (error) throw new Error(error.message);
+  if (!response.ok) {
+    throw new Error('Failed to fetch testimonials');
+  }
 
-  return data.map((t) => ({
-    id: t.id,
-    rating: t.rating,
-    text: t.text,
-    project: t.project,
-    name: t.client.name,
-    country: t.client.country,
-    flag: t.client.flag,
-    avatar: t.client.avatar,
-  }));
+  return await response.json();
 };
 
 export default function Testimonials({ bg }) {
@@ -66,13 +27,21 @@ export default function Testimonials({ bg }) {
     data: testimonials,
     error,
     isLoading,
-  } = useSWR("testimonials", fetcher, {
+  } = useSWR('testimonials', fetcher, {
     revalidateOnFocus: true,
     refreshInterval: 60000,
     dedupingInterval: 2000,
-    fallbackData: fallbackTestimonials,
-    onError: (err) => console.error("Error fetching testimonials:", err),
+    onError: err => console.error('Error fetching testimonials:', err),
   });
+  if (error) {
+    return (
+      <section className={`testimonials ${bg || 'bg-primary'}`}>
+        <div className="testimonials-container">
+          <div className="testimonials-loading">فشل في تحميل آراء العملاء.</div>
+        </div>
+      </section>
+    );
+  }
 
   const isEmpty = testimonials?.length === 0;
 
@@ -81,11 +50,11 @@ export default function Testimonials({ bg }) {
       clearInterval(intervalRef.current);
     }
     intervalRef.current = setInterval(() => {
-      setCurrentIndex((prevIndex) =>
+      setCurrentIndex(prevIndex =>
         prevIndex === testimonials.length - 1 ? 0 : prevIndex + 1
       );
     }, 5000);
-  }, [testimonials.length]);
+  }, [testimonials]);
 
   const stopAutoPlay = useCallback(() => {
     if (intervalRef.current) {
@@ -109,21 +78,21 @@ export default function Testimonials({ bg }) {
   }, [isHovered, startAutoPlay, stopAutoPlay]);
 
   const nextTestimonial = useCallback(() => {
-    setCurrentIndex((prevIndex) =>
+    setCurrentIndex(prevIndex =>
       prevIndex === testimonials.length - 1 ? 0 : prevIndex + 1
     );
     resetAutoPlay();
-  }, [testimonials.length, resetAutoPlay]);
+  }, [testimonials, resetAutoPlay]);
 
   const prevTestimonial = useCallback(() => {
-    setCurrentIndex((prevIndex) =>
+    setCurrentIndex(prevIndex =>
       prevIndex === 0 ? testimonials.length - 1 : prevIndex - 1
     );
     resetAutoPlay();
-  }, [testimonials.length, resetAutoPlay]);
+  }, [testimonials, resetAutoPlay]);
 
   const goToTestimonial = useCallback(
-    (index) => {
+    index => {
       setCurrentIndex(index);
       resetAutoPlay();
     },
@@ -133,14 +102,14 @@ export default function Testimonials({ bg }) {
   const handleMouseEnter = useCallback(() => setIsHovered(true), []);
   const handleMouseLeave = useCallback(() => setIsHovered(false), []);
 
-  const renderStars = useCallback((rating) => {
+  const renderStars = useCallback(rating => {
     return Array.from({ length: 5 }, (_, i) => (
       <motion.svg
         key={i}
         width="20"
         height="20"
         viewBox="0 0 24 24"
-        fill={i < rating ? "#FFD700" : "none"}
+        fill={i < rating ? '#FFD700' : 'none'}
         stroke="#FFD700"
         strokeWidth="2"
         className="testimonials-star"
@@ -154,7 +123,7 @@ export default function Testimonials({ bg }) {
   }, []);
 
   return (
-    <section className={`testimonials ${bg || "bg-primary"}`} dir="rtl">
+    <section className={`testimonials ${bg || 'bg-primary'}`} dir="rtl">
       <div className="testimonials-container">
         <motion.div
           className="testimonials-header"
@@ -162,7 +131,7 @@ export default function Testimonials({ bg }) {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{
             duration: 0.6,
-            type: "spring",
+            type: 'spring',
             stiffness: 100,
           }}
           viewport={{ once: true, amount: 0.3 }}
@@ -175,7 +144,7 @@ export default function Testimonials({ bg }) {
           <div className="testimonials-loading">
             <motion.div
               animate={{ rotate: 360 }}
-              transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
+              transition={{ duration: 1, repeat: Infinity, ease: 'linear' }}
               className="testimonials-spinner"
             >
               جاري التحميل...
@@ -213,7 +182,7 @@ export default function Testimonials({ bg }) {
               className="testimonials-nav-button-prev"
               onClick={prevTestimonial}
               aria-label="الرأي السابق"
-              onMouseDown={(e) => e.preventDefault()}
+              onMouseDown={e => e.preventDefault()}
             >
               →
             </button>
@@ -226,7 +195,7 @@ export default function Testimonials({ bg }) {
                 exit={{ opacity: 0, x: -50 }}
                 transition={{
                   duration: 0.5,
-                  type: "spring",
+                  type: 'spring',
                   stiffness: 100,
                   damping: 20,
                 }}
@@ -237,7 +206,7 @@ export default function Testimonials({ bg }) {
                     <Image
                       src={
                         testimonials[currentIndex].avatar ||
-                        "/images/placeholder-avatar.png"
+                        '/images/placeholder-avatar.png'
                       }
                       alt={`صورة ${testimonials[currentIndex].name}`}
                       width={48}
@@ -245,8 +214,8 @@ export default function Testimonials({ bg }) {
                       className="testimonials-avatar"
                       loading="lazy"
                       quality={85}
-                      onError={(e) => {
-                        e.target.src = "/images/placeholder-avatar.png";
+                      onError={e => {
+                        e.target.src = '/images/placeholder-avatar.png';
                       }}
                     />
                     <div className="testimonials-info">
@@ -283,7 +252,7 @@ export default function Testimonials({ bg }) {
               className="testimonials-nav-button-next"
               onClick={nextTestimonial}
               aria-label="الرأي التالي"
-              onMouseDown={(e) => e.preventDefault()}
+              onMouseDown={e => e.preventDefault()}
             >
               ←
             </button>
@@ -296,7 +265,7 @@ export default function Testimonials({ bg }) {
               <motion.button
                 key={index}
                 className={`testimonials-indicator ${
-                  index === currentIndex ? "active" : ""
+                  index === currentIndex ? 'active' : ''
                 }`}
                 onClick={() => goToTestimonial(index)}
                 aria-label={`الذهاب إلى الرأي ${index + 1}`}

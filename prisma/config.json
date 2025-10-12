@@ -1,0 +1,13 @@
+{
+  "database": {
+    "provider": "postgresql",
+    "url": "env:DATABASE_URL"
+  },
+  "generator": {
+    "provider": "prisma-client-js",
+    "output": "../node_modules/.prisma/client"
+  },
+  "seed": {
+    "script": "node seed.js"
+  }
+}

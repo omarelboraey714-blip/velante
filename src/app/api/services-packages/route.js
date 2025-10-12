@@ -1,27 +1,26 @@
-import { createClient } from "@supabase/supabase-js";
-
-const supabase = createClient(
-  process.env.NEXT_PUBLIC_SUPABASE_URL,
-  process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
-);
+import { prisma } from "@/lib/prisma";
 
 export async function GET() {
   try {
     // جلب الخدمات
-    const { data: services, error: servicesError } = await supabase
-      .from("services")
-      .select("title")
-      .order("title", { ascending: true });
-
-    if (servicesError) throw servicesError;
+    const services = await prisma.service.findMany({
+      select: {
+        title: true,
+      },
+      orderBy: {
+        title: "asc",
+      },
+    });
 
     // جلب الباقات
-    const { data: packages, error: packagesError } = await supabase
-      .from("packages")
-      .select("title")
-      .order("title", { ascending: true });
-
-    if (packagesError) throw packagesError;
+    const packages = await prisma.package.findMany({
+      select: {
+        title: true,
+      },
+      orderBy: {
+        title: "asc",
+      },
+    });
 
     // دمج الخدمات والباقات في قائمة واحدة
     const options = [

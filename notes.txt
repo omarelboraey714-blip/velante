@@ -168,6 +168,10 @@ export const programs = [
 supabase fitflow password= $2b$10$wVz6hKwiXsDLvmyGimsEOuQCsyJ9tVF5wEEfdRIfN7U6LabMWeoTq
 
 
+postgres://704a0589fdcd7ee24772578c2fa75d85f26286e92e628db6c05614ccf85fd8e3:sk_14gFAHQYXCwwMuZlVHo7p@db.prisma.io:5432/postgres?sslmode=require
+
+prisma+postgres://accelerate.prisma-data.net/?api_key=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqd3RfaWQiOjEsInNlY3VyZV9rZXkiOiJza18xNGdGQUhRWVhDd3dNdVpsVkhvN3AiLCJhcGlfa2V5IjoiMDFLN0NCRlEyR1I3R1BCWEI1UDQyVk1RWEoiLCJ0ZW5hbnRfaWQiOiI3MDRhMDU4OWZkY2Q3ZWUyNDc3MjU3OGMyZmE3NWQ4NWYyNjI4NmU5MmU2MjhkYjZjMDU2MTRjY2Y4NWZkOGUzIiwiaW50ZXJuYWxfc2VjcmV0IjoiZGUzZTlmNjAtYTZjNC00MzIxLWJjNmQtMDJlNjRhNTllNDIyIn0.fT6bSEL361fI3Cfe-lG4D0Q8-M9X9VmFDV1H4hzqZog
+
 
 tree -I "node_modules|.git|.next|dist|build|coverage" -L 4
 

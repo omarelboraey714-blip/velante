@@ -1,29 +1,38 @@
 import { NextResponse } from "next/server";
-import { supabase } from "../../../lib/supabaseClient";
+import { prisma } from "@/lib/prisma";
 
 export async function GET(request) {
   const { searchParams } = new URL(request.url);
   const tag = searchParams.get("tag") || "all";
 
   try {
-    let query = supabase
-      .from("projects")
-      .select(
-        "id, title, category, image, featured, tag, thumbnail, badge, type, liveUrl"
-      )
-      .order("created_at", { ascending: false });
-
+    let whereClause = {};
+    
     if (tag !== "all") {
-      query = query.eq("tag", tag);
+      whereClause.tag = tag;
     }
 
-    const { data, error } = await query;
+    const projects = await prisma.project.findMany({
+      where: whereClause,
+      select: {
+        id: true,
+        title: true,
+        category: true,
+        image: true,
+        featured: true,
+        tag: true,
+        thumbnail: true,
+        badge: true,
+        type: true,
+        liveUrl: true,
+        createdAt: true,
+      },
+      orderBy: {
+        createdAt: "desc",
+      },
+    });
 
-    if (error) {
-      throw new Error(error.message);
-    }
-
-    return NextResponse.json(data, {
+    return NextResponse.json(projects, {
       status: 200,
       headers: {
         "Cache-Control": "public, s-maxage=3600, stale-while-revalidate=7200",

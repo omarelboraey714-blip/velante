@@ -1,20 +1,20 @@
-import { createClient } from "@supabase/supabase-js";
-
-const supabase = createClient(
-  process.env.NEXT_PUBLIC_SUPABASE_URL,
-  process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
-);
+import { prisma } from "@/lib/prisma";
 
 export async function GET() {
   try {
-    const { data, error } = await supabase
-      .from("values")
-      .select("id, icon, title, description")
-      .order("title", { ascending: true });
+    const values = await prisma.value.findMany({
+      select: {
+        id: true,
+        icon: true,
+        title: true,
+        description: true,
+      },
+      orderBy: {
+        title: "asc",
+      },
+    });
 
-    if (error) throw error;
-
-    return new Response(JSON.stringify({ success: true, data }), {
+    return new Response(JSON.stringify({ success: true, data: values }), {
       status: 200,
       headers: { "Content-Type": "application/json" },
     });

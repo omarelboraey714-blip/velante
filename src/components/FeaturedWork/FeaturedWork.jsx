@@ -1,66 +1,18 @@
-"use client";
+'use client';
 
-import Link from "next/link";
-import Image from "next/image";
-import { usePathname } from "next/navigation";
-import { useMemo } from "react";
-import useSWR from "swr"; // v2.3.6
-import { motion } from "framer-motion"; // v12.23.12
-import { ExternalLink } from "lucide-react";
-import "./FeaturedWork.css";
+import Link from 'next/link';
+import Image from 'next/image';
+import { usePathname } from 'next/navigation';
+import { useMemo } from 'react';
+import useSWR from 'swr'; // v2.3.6
+import { motion } from 'framer-motion'; // v12.23.12
+import { ExternalLink } from 'lucide-react';
+import './FeaturedWork.css';
 
-// Fallback data
-const fallbackProjects = [
-  {
-    id: 1,
-    title: "هوية علامة تجارية لشركة تقنية",
-    category: "هوية بصرية",
-    image: "/images/project1.jpg",
-    featured: true,
-    tag: "branding",
-  },
-  {
-    id: 2,
-    title: "موقع إلكتروني لشركة استشارات",
-    category: "تطوير المواقع",
-    image: "/images/project2.jpg",
-    tag: "web-development",
-  },
-  {
-    id: 3,
-    title: "حملة إعلانية لمنتج جديد",
-    category: "إعلانات ممولة",
-    image: "/images/project3.jpg",
-    tag: "ads",
-  },
-  {
-    id: 4,
-    title: "هوية علامة تجارية لمطعم",
-    category: "هوية بصرية",
-    image: "/images/project4.jpg",
-    featured: true,
-    tag: "branding",
-  },
-  {
-    id: 5,
-    title: "تطبيق لشركة توصيل",
-    category: "تطوير المواقع",
-    image: "/images/project5.jpg",
-    tag: "web-development",
-  },
-  {
-    id: 6,
-    title: "حملة تسويقية لمنتج تجميلي",
-    category: "إعلانات ممولة",
-    image: "/images/project6.jpg",
-    tag: "ads",
-  },
-];
-
-const fetcher = async (url) => {
+const fetcher = async url => {
   const response = await fetch(url);
   if (!response.ok) {
-    throw new Error("Failed to fetch projects");
+    throw new Error('Failed to fetch projects');
   }
   return response.json();
 };
@@ -70,11 +22,11 @@ export default function FeaturedWork() {
 
   // تحديد الفلتر بناءً على المسار
   const filterTag = useMemo(() => {
-    if (pathname.includes("/services/ads")) return "ads";
-    if (pathname.includes("/services/web-development"))
-      return "web-development";
-    if (pathname.includes("/services/branding")) return "branding";
-    return "all";
+    if (pathname.includes('/services/ads')) return 'ads';
+    if (pathname.includes('/services/web-development'))
+      return 'web-development';
+    if (pathname.includes('/services/branding')) return 'branding';
+    return 'all';
   }, [pathname]);
 
   const {
@@ -84,9 +36,6 @@ export default function FeaturedWork() {
   } = useSWR(`/api/projects?tag=${filterTag}`, fetcher, {
     revalidateOnFocus: false, // منع إعادة الطلب عند التركيز
     dedupingInterval: 10000, // 10 ثواني لتجنب الطلبات المتكررة
-    fallbackData: fallbackProjects.filter(
-      (p) => filterTag === "all" || p.tag === filterTag
-    ),
     revalidateOnMount: true, // التأكد من الجلب عند التحميل الأولي
   });
 
@@ -104,7 +53,8 @@ export default function FeaturedWork() {
   }
 
   if (error) {
-    console.error("Error fetching projects:", error);
+    console.error('Error fetching projects:', error);
+    return <div>فشل تحميل المشاريع.</div>;
     // Fallback يظهر بدون إزعاج المستخدم
   }
 
@@ -121,7 +71,9 @@ export default function FeaturedWork() {
           <h2 className="featured-title">إبداعنا يتحدث عنا</h2>
         </motion.div>
 
-        {projects.length === 0 ? (
+        {isLoading ? (
+          <div className="loading-state">جاري تحميل المشاريع...</div>
+        ) : projects && projects.length === 0 ? (
           <motion.div
             className="featured-empty-cta"
             initial={{ opacity: 0, y: 20 }}
@@ -144,11 +96,11 @@ export default function FeaturedWork() {
         ) : (
           <>
             <div className="featured-masonry-grid">
-              {projects.map((project) => (
+              {projects.map(project => (
                 <motion.div
                   key={project.id}
                   className={`featured-project-card ${
-                    project.featured ? "featured" : ""
+                    project.featured ? 'featured' : ''
                   }`}
                   initial={{ opacity: 0, y: 50 }}
                   whileInView={{ opacity: 1, y: 0 }}
@@ -158,13 +110,13 @@ export default function FeaturedWork() {
                 >
                   <div className="featured-image-wrapper">
                     <Image
-                      src={project.image || "/images/placeholder.webp"}
+                      src={project.image || '/images/placeholder.webp'}
                       alt={project.title}
                       fill
                       className="featured-project-image"
                       sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                      onError={(e) => {
-                        e.target.src = "/images/placeholder.webp";
+                      onError={e => {
+                        e.target.src = '/images/placeholder.webp';
                       }}
                     />
                     <motion.div
@@ -185,7 +137,7 @@ export default function FeaturedWork() {
                           className="featured-btn-brand-sm"
                           aria-label={`عرض تفاصيل ${project.title}`}
                         >
-                          عرض التفاصيل{" "}
+                          عرض التفاصيل{' '}
                           <ExternalLink size={20} className="ml-1" />
                         </Link>
                       </div>

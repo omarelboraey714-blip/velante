@@ -1,4 +1,4 @@
-import { createClient } from "@supabase/supabase-js";
+import { prisma } from "@/lib/prisma";
 import { z } from "zod";
 
 // Define Zod schema for validation (server-side)
@@ -12,12 +12,6 @@ const contactSchema = z.object({
   message: z.string().optional(),
 });
 
-// Supabase client (use env vars in production)
-const supabase = createClient(
-  process.env.NEXT_PUBLIC_SUPABASE_URL,
-  process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
-);
-
 export async function POST(request) {
   try {
     const formData = await request.json();
@@ -25,27 +19,25 @@ export async function POST(request) {
     // Validate with Zod
     const validatedData = contactSchema.parse(formData);
 
-    // Insert into Supabase
-    const { data, error } = await supabase.from("contacts").insert([
-      {
-        full_name: validatedData.fullName,
+    // Insert into database using Prisma
+    const contact = await prisma.contact.create({
+      data: {
+        fullName: validatedData.fullName,
         email: validatedData.email,
         phone: validatedData.phone,
-        country_code: validatedData.countryCode,
+        countryCode: validatedData.countryCode,
         service: validatedData.service,
         budget: validatedData.budget,
         message: validatedData.message,
       },
-    ]);
+    });
 
-    if (error) throw error;
-
-    return new Response(JSON.stringify({ success: true, data }), {
+    return new Response(JSON.stringify({ success: true, data: contact }), {
       status: 200,
       headers: { "Content-Type": "application/json" },
     });
   } catch (error) {
-    // Handle Zod errors or Supabase errors
+    // Handle Zod errors or Prisma errors
     const errorMessage =
       error instanceof z.ZodError
         ? error.errors.map((e) => e.message).join(", ")
@@ -55,6 +47,44 @@ export async function POST(request) {
       JSON.stringify({ success: false, error: errorMessage }),
       {
         status: 400,
+        headers: { "Content-Type": "application/json" },
+      }
+    );
+  }
+}
+
+// GET method to retrieve contacts (for admin panel)
+export async function GET() {
+  try {
+    const contacts = await prisma.contact.findMany({
+      orderBy: {
+        createdAt: "desc",
+      },
+      select: {
+        id: true,
+        fullName: true,
+        email: true,
+        phone: true,
+        countryCode: true,
+        service: true,
+        budget: true,
+        message: true,
+        createdAt: true,
+      },
+    });
+
+    return new Response(JSON.stringify({ success: true, data: contacts }), {
+      status: 200,
+      headers: { "Content-Type": "application/json" },
+    });
+  } catch (error) {
+    return new Response(
+      JSON.stringify({
+        success: false,
+        error: error.message || "حدث خطأ أثناء جلب جهات الاتصال",
+      }),
+      {
+        status: 500,
         headers: { "Content-Type": "application/json" },
       }
     );

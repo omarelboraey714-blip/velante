@@ -1,6 +1,6 @@
-@import "tailwindcss";
+@import 'tailwindcss';
 
-@import "../../../styles/theme.css";
+@import '../../../styles/theme.css';
 
 .why-us {
   @apply relative bg-gradient-to-b from-gray-900 to-primary py-20;

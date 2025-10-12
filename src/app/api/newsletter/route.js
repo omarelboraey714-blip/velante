@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { supabase } from "@/lib/supabaseClient";
+import { prisma } from "@/lib/prisma";
 
 export async function POST(request) {
   try {
@@ -13,12 +13,10 @@ export async function POST(request) {
       );
     }
 
-    // التحقق من تكرار البريد في newsletter_subscriptions
-    const { data: existing } = await supabase
-      .from("newsletter_subscriptions")
-      .select("email")
-      .eq("email", email)
-      .single();
+    // التحقق من تكرار البريد
+    const existing = await prisma.newsletterSubscription.findUnique({
+      where: { email },
+    });
 
     if (existing) {
       return NextResponse.json(
@@ -28,18 +26,12 @@ export async function POST(request) {
     }
 
     // إدخال البريد
-    const { data, error } = await supabase
-      .from("newsletter_subscriptions")
-      .insert([{ email }])
-      .select();
-
-    if (error) {
-      console.error("Supabase error:", error);
-      throw new Error(error.message);
-    }
+    const subscription = await prisma.newsletterSubscription.create({
+      data: { email },
+    });
 
     return NextResponse.json(
-      { message: "تم الاشتراك بنجاح!", data },
+      { message: "تم الاشتراك بنجاح!", data: subscription },
       { status: 201 }
     );
   } catch (error) {
@@ -58,17 +50,18 @@ export async function POST(request) {
 // (اختياري) جلب الاشتراكات للوحة التحكم
 export async function GET() {
   try {
-    const { data, error } = await supabase
-      .from("newsletter_subscriptions")
-      .select("id, email, created_at")
-      .order("created_at", { ascending: false });
+    const subscriptions = await prisma.newsletterSubscription.findMany({
+      select: {
+        id: true,
+        email: true,
+        createdAt: true,
+      },
+      orderBy: {
+        createdAt: "desc",
+      },
+    });
 
-    if (error) {
-      console.error("Supabase error:", error);
-      throw new Error(error.message);
-    }
-
-    return NextResponse.json(data, {
+    return NextResponse.json(subscriptions, {
       status: 200,
       headers: {
         "Cache-Control": "public, s-maxage=3600, stale-while-revalidate=7200",

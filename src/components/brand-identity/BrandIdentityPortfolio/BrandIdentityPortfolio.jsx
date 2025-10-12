@@ -1,33 +1,30 @@
-"use client";
+'use client';
 
-import { motion } from "framer-motion"; // v12.23.12
-import Image from "next/image";
-import Link from "next/link";
-import useSWR from "swr"; // v2.3.6
-import { supabase } from "../../../lib/supabaseClient";
-
-// Fallback data in case of error
-const fallbackProjects = [
-  {
-    id: 1,
-    before_image: "/images/brand-before.jpg",
-    after_image: "/images/brand-after.jpg",
-    case_study_title: "Case Study مصغر",
-    case_study_text:
-      "كيف ساعدنا مطعم كذا في زيادة مبيعاته بنسبة 40% عبر هويته الجديدة",
-  },
-];
+import { motion } from 'framer-motion'; // v12.23.12
+import Image from 'next/image';
+import Link from 'next/link';
+import useSWR from 'swr'; // v2.3.6
+// Removed supabase import - now using API routes
 
 const fetcher = async () => {
-  const { data, error } = await supabase
-    .from("projects")
-    .select("id, before_image, after_image, case_study_title, case_study_text")
-    .eq("category", "هوية بصرية")
-    .order("created_at", { ascending: false });
+  const response = await fetch('/api/projects?tag=branding');
 
-  if (error) throw new Error(error.message);
+  if (!response.ok) {
+    throw new Error('Failed to fetch projects');
+  }
 
-  return data;
+  const projects = await response.json();
+
+  // Filter for branding projects and map to expected format
+  return projects
+    .filter(project => project.category === 'branding')
+    .map(project => ({
+      id: project.id,
+      before_image: project.thumbnail,
+      after_image: project.image,
+      case_study_title: project.title,
+      case_study_text: project.description,
+    }));
 };
 
 export default function BrandIdentityPortfolio() {
@@ -35,13 +32,12 @@ export default function BrandIdentityPortfolio() {
     data: projects,
     error,
     isLoading,
-  } = useSWR("brand-identity-projects", fetcher, {
+  } = useSWR('brand-identity-projects', fetcher, {
     revalidateOnFocus: true,
     refreshInterval: 60000,
     dedupingInterval: 2000,
-    fallbackData: fallbackProjects,
-    onError: (err) =>
-      console.error("Error fetching brand identity projects:", err),
+    onError: err =>
+      console.error('Error fetching brand identity projects:', err),
   });
 
   const isEmpty = projects?.length === 0;
@@ -68,7 +64,7 @@ export default function BrandIdentityPortfolio() {
           >
             <motion.div
               animate={{ rotate: 360 }}
-              transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
+              transition={{ duration: 1, repeat: Infinity, ease: 'linear' }}
               className="vbi-spinner"
             >
               جاري التحميل...
@@ -120,13 +116,13 @@ export default function BrandIdentityPortfolio() {
                 >
                   <div className="vbi-portfolio__image">
                     <Image
-                      src={project.before_image || "/images/placeholder.jpg"}
+                      src={project.before_image || '/images/placeholder.jpg'}
                       alt="قبل التصميم"
                       fill
                       className="vbi-project-image"
                       sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                      onError={(e) => {
-                        e.target.src = "/images/placeholder.jpg";
+                      onError={e => {
+                        e.target.src = '/images/placeholder.jpg';
                       }}
                     />
                     <motion.div
@@ -140,13 +136,13 @@ export default function BrandIdentityPortfolio() {
                   </div>
                   <div className="vbi-portfolio__image">
                     <Image
-                      src={project.after_image || "/images/placeholder.jpg"}
+                      src={project.after_image || '/images/placeholder.jpg'}
                       alt="بعد التصميم"
                       fill
                       className="vbi-project-image"
                       sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                      onError={(e) => {
-                        e.target.src = "/images/placeholder.jpg";
+                      onError={e => {
+                        e.target.src = '/images/placeholder.jpg';
                       }}
                     />
                     <motion.div
@@ -161,7 +157,7 @@ export default function BrandIdentityPortfolio() {
                 </motion.div>
               ))}
             </div>
-            {projects.map((project) => (
+            {projects.map(project => (
               <motion.div
                 key={project.id}
                 className="vbi-case-study"
