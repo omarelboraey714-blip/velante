@@ -1,9 +1,9 @@
-@import "tailwindcss";
+@import 'tailwindcss';
 
-@import "../../styles/theme.css";
+@import '../../styles/theme.css';
 
 @layer base {
-  [dir="rtl"] {
+  [dir='rtl'] {
     @apply text-right;
   }
 }
@@ -13,7 +13,7 @@
 }
 
 .vw-header {
-  @apply relative h-80 sm:h-96 bg-gray-900 perspective-distant;
+  @apply relative h-80 sm:h-96 bg-gray-900;
 }
 
 .vw-header-overlay {
@@ -57,7 +57,7 @@
 }
 
 .vw-gallery {
-  @apply py-12 sm:py-16 perspective-distant;
+  @apply py-12 sm:py-16;
 }
 
 .vw-masonry-grid {
@@ -65,7 +65,7 @@
 }
 
 .vw-project-card {
-  @apply rounded-xl overflow-hidden shadow-lg grid content-between border border-l-blue cursor-pointer transform-gpu;
+  @apply rounded-xl overflow-hidden shadow-lg grid content-between border border-l-blue cursor-pointer;
 }
 
 .vw-project-image {
@@ -117,7 +117,7 @@
 }
 
 .vw-case-studies {
-  @apply py-12 sm:py-16 bg-gray-50 perspective-distant;
+  @apply py-12 sm:py-16 bg-gray-50;
 }
 
 .vw-section-title {
@@ -129,7 +129,7 @@
 }
 
 .vw-case-study {
-  @apply bg-white rounded-xl shadow-lg overflow-hidden border border-gray-100 transform-gpu;
+  @apply bg-white rounded-xl shadow-lg overflow-hidden border border-gray-100;
 }
 
 .vw-case-study-content {

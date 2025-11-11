@@ -1,6 +1,6 @@
-@import "tailwindcss";
+@import 'tailwindcss';
 
-@import "../../styles/theme.css";
+@import '../../styles/theme.css';
 
 .vs-services {
   @apply p-8 text-center;
@@ -11,15 +11,15 @@
 }
 
 .vs-section-title {
-  @apply text-4xl font-bold text-light m-8 relative;
+  @apply text-4xl font-bold text-light m-10 md:m-16 relative;
 }
 
 .vs-services-grid {
-  @apply grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6;
+  @apply grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10;
 }
 
 .vs-service-card {
-  @apply grid content-between rounded-2xl p-6 text-right shadow-md relative shadow-primary hover:shadow-l-blue border border-l-blue hover:shadow-xl transition-shadow duration-200;
+  @apply grid content-between rounded-2xl p-6 text-right shadow-md relative shadow-primary hover:shadow-l-blue border border-l-blue/20 hover:shadow-md transition-shadow duration-300;
 }
 
 .vs-service-title {
@@ -35,7 +35,7 @@
 }
 
 .vs-btn {
-  @apply w-fit px-6 py-3 bg-e-blue text-white rounded-lg hover:bg-l-blue transition;
+  @apply w-fit px-6 py-3 font-semibold transition-colors bg-gradient-to-r from-l-blue to-e-blue text-white rounded-lg;
 }
 
 .vs-loading {
@@ -43,7 +43,7 @@
 }
 
 .vs-spinner {
-  @apply border-4 border-lime-400 border-t-transparent rounded-full w-12 h-12 animate-spin;
+  @apply border-4 border-e-blue border-t-transparent rounded-full w-12 h-12 animate-spin;
 }
 
 .vs-empty-cta {

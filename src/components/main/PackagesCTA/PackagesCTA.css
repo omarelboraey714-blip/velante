@@ -1,6 +1,6 @@
-@import "tailwindcss";
+@import 'tailwindcss';
 
-@import "../../../styles/theme.css";
+@import '../../../styles/theme.css';
 
 .packages-cta {
   @apply relative py-24 px-4 sm:px-6 lg:px-8 overflow-hidden bg-gradient-to-b from-primary to-gray-900;
@@ -42,7 +42,7 @@
 }
 
 .vp-package-card {
-  @apply relative h-fit rounded-xl shadow-lg border border-l-blue p-4 sm:p-6 transform-gpu;
+  @apply relative h-fit rounded-xl shadow-lg border border-l-blue p-4 sm:p-6;
 }
 
 .vp-package-card--orange,
@@ -140,7 +140,7 @@
 }
 
 .packages-btn-brand {
-  @apply inline-flex items-center px-6 py-3 text-base font-medium rounded-full bg-e-blue text-black hover:bg-l-blue transition-colors duration-200;
+  @apply inline-flex items-center px-6 py-3 text-base font-semibold rounded-full bg-e-blue text-light hover:bg-l-blue transition-colors duration-200;
 }
 
 .packages-cta:hover .packages-stars-background {

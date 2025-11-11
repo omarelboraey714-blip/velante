@@ -48,6 +48,7 @@ export default function Services({ bg }) {
     );
   }
   const getWhatsAppLink = serviceTitle => {
+    const whatsappNumber = '201556840380';
     const message = encodeURIComponent(
       `أهلاً، أنا مهتم بخدمة ${serviceTitle} وأرغب في طلبها و معرفة المزيد من التفاصيل.`
     );
@@ -145,7 +146,6 @@ export default function Services({ bg }) {
                   initial="hidden"
                   whileInView="visible"
                   viewport={{ once: true }}
-                  whileHover={{ scale: 1.03, translateY: -5 }}
                 >
                   <h3 className="vs-service-title">{service.title}</h3>
                   <p className="vs-service-description">

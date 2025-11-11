@@ -1,38 +1,38 @@
 // src/components/WhyUs/WhyUs.jsx
 
-"use client";
+'use client';
 
-import { motion } from "framer-motion";
-import Image from "next/image";
-import { Zap, Shield, Clock, Headphones } from "lucide-react";
-import Link from "next/link";
-import "./WhyUs.css";
+import { motion } from 'framer-motion';
+import Image from 'next/image';
+import { Zap, Shield, Clock, Headphones } from 'lucide-react';
+import Link from 'next/link';
+import './WhyUs.css';
 
 export default function WhyUs() {
   const reasons = [
     {
       id: 1,
       icon: <Zap size={32} />,
-      title: "إبداع بلا حدود",
-      description: "نقدم حلولاً مبتكرة تتجاوز التوقعات العادية",
+      title: 'إبداع بلا حدود',
+      description: 'نقدم حلولاً مبتكرة تتجاوز التوقعات العادية',
     },
     {
       id: 2,
       icon: <Shield size={32} />,
-      title: "جودة لا تُقبل بالتسوية",
-      description: "نلتزم بأعلى معايير الجودة في كل تفاصيل العمل",
+      title: 'جودة لا تُقبل بالتسوية',
+      description: 'نلتزم بأعلى معايير الجودة في كل تفاصيل العمل',
     },
     {
       id: 3,
       icon: <Clock size={32} />,
-      title: "تسليم في الوقت المتفق عليه",
-      description: "نحترم المواعيد ونلتزم بالجدول الزمني المتفق عليه",
+      title: 'تسليم في الوقت المتفق عليه',
+      description: 'نحترم المواعيد ونلتزم بالجدول الزمني المتفق عليه',
     },
     {
       id: 4,
       icon: <Headphones size={32} />,
-      title: "دعم فني بعد التسليم",
-      description: "نقدم دعماً فنياً مستمراً بعد تسليم المشروع",
+      title: 'دعم فني بعد التسليم',
+      description: 'نقدم دعماً فنياً مستمراً بعد تسليم المشروع',
     },
   ];
 
@@ -58,8 +58,8 @@ export default function WhyUs() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.2 }}
               viewport={{ once: true }}
-              whileHover={{ y: -10, rotate: 5 }}
-              style={{ perspective: "1000px" }}
+              whileHover={{ y: -10 }}
+              style={{ perspective: '1000px' }}
             >
               <div className="whyus-reason-content">
                 <motion.div

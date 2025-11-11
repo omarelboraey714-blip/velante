@@ -1,18 +1,18 @@
-"use client";
+'use client';
 
-import { motion } from "framer-motion";
-import { FaLinkedin, FaInstagram, FaBehance, FaFacebook } from "react-icons/fa";
+import { motion } from 'framer-motion';
+import { FaLinkedin, FaInstagram, FaBehance, FaFacebook } from 'react-icons/fa';
 
 export default function Social() {
   const socialMedia = [
-    { name: "LinkedIn", icon: <FaLinkedin />, url: "#" },
+    { name: 'LinkedIn', icon: <FaLinkedin />, url: '#' },
     {
-      name: "Instagram",
+      name: 'Instagram',
       icon: <FaInstagram />,
-      url: "https://www.instagram.com/velante_official?igsh=ZmI1ZW1maGFrbDRu",
+      url: 'https://www.instagram.com/velante_official?igsh=ZmI1ZW1maGFrbDRu',
     },
-    { name: "Behance", icon: <FaBehance />, url: "#" },
-    { name: "Facebook", icon: <FaFacebook />, url: "#" },
+    { name: 'Behance', icon: <FaBehance />, url: '#' },
+    { name: 'Facebook', icon: <FaFacebook />, url: '#' },
   ];
 
   return (
@@ -35,7 +35,6 @@ export default function Social() {
             initial={{ opacity: 0, scale: 0.8, rotateY: 90 }}
             whileInView={{ opacity: 1, scale: 1, rotateY: 0 }}
             transition={{ duration: 0.2 }}
-            whileHover={{ scale: 1.1, rotateY: 10 }}
             viewport={{ once: true }}
           >
             {social.icon}

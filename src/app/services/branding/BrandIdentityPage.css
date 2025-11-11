@@ -1,6 +1,6 @@
-@import "tailwindcss";
+@import 'tailwindcss';
 
-@import "../../../styles/theme.css";
+@import '../../../styles/theme.css';
 
 .vbi-page {
   @apply bg-gray-900 pt-12;
@@ -23,7 +23,7 @@
 }
 
 .vbi-header__title {
-  @apply text-2xl sm:text-3xl md:text-4xl text-shadow-black font-bold mb-4 leading-tight;
+  @apply text-2xl sm:text-3xl md:text-4xl text-shadow-black font-bold mb-4 leading-snug;
 }
 
 .vbi-header__subtitle {
@@ -55,11 +55,11 @@
 }
 
 .vbi-section-title {
-  @apply text-2xl sm:text-3xl font-bold text-center text-light mb-8 sm:mb-12;
+  @apply text-2xl sm:text-3xl font-bold text-center text-light mb-10 sm:mb-16;
 }
 
 .vbi-features__grid {
-  @apply grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8;
+  @apply grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 sm:gap-12;
 }
 
 .vbi-feature-item {
@@ -67,7 +67,7 @@
 }
 
 .vbi-feature-icon {
-  @apply w-8 h-8 rounded-full bg-e-blue flex items-center justify-center text-light font-bold flex-shrink-0 mt-1;
+  @apply w-6 h-6 rounded-full border flex items-center justify-center text-light font-bold flex-shrink-0;
 }
 
 .vbi-feature-content {
@@ -95,7 +95,7 @@
 }
 
 .vbi-process__content {
-  @apply bg-gray-900 p-4 sm:p-6 rounded-lg shadow-sm shadow-e-blue;
+  @apply p-4 sm:p-6 rounded-lg shadow-sm shadow-e-blue border border-e-blue;
 }
 
 .vbi-process__title {
@@ -138,9 +138,7 @@
 }
 
 .vbi-empty-message {
-  font-size: 1.5rem;
-  margin-bottom: 1rem;
-  color: #333;
+  @apply text-2xl mb-6 text-light;
 }
 
 .vbi-btn {

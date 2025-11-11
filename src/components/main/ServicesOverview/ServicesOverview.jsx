@@ -1,7 +1,6 @@
 'use client';
 
 import Link from 'next/link';
-import Image from 'next/image';
 import { HiArrowLeft } from 'react-icons/hi';
 
 import { motion } from 'framer-motion';
@@ -10,7 +9,6 @@ import { Palette, Code, Megaphone } from 'lucide-react';
 // مكون زر موحد
 const CTAButton = ({ href, children, variant = 'primary' }) => (
   <motion.div
-    whileHover={{ scale: 1.05 }}
     whileTap={{ scale: 0.95 }}
     className={`inline-block px-6 py-3 rounded-full font-medium text-base cursor-pointer transition-all duration-200 ${
       variant === 'primary'
@@ -70,16 +68,16 @@ export default function ServicesOverview() {
           </h2>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 sm:gap-10 md:gap-12">
           {services.map((service, index) => (
             <motion.div
               key={service.id}
-              className="bg-gray-900 justify-items-center rounded-xl shadow-sm hover:shadow-lg hover:shadow-primary transition-shadow duration-200 p-6 grid justify-center"
+              className="bg-gray-900 justify-items-center rounded-xl shadow-sm hover:shadow-lg hover:shadow-primary transition-shadow duration-200 p-6 gap-4 border border-e-blue/20 grid justify-center"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.2 }}
               viewport={{ once: true }}
-              whileHover={{ rotate: 1.2 }}
+              whileHover={{ translateY: -10 }}
             >
               <div className="flex justify-center mb-4 text-2xl">
                 {service.icon}

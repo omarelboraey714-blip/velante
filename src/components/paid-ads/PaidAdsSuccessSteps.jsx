@@ -1,24 +1,24 @@
-"use client";
+'use client';
 
-import { motion } from "framer-motion";
+import { motion } from 'framer-motion';
 
 export default function PaidAdsSuccessSteps() {
   const steps = [
     {
-      title: "التحليل والاستهداف",
-      description: "دراسة جمهورك بدقة",
+      title: 'التحليل والاستهداف',
+      description: 'دراسة جمهورك بدقة',
     },
     {
-      title: "تصميم إبداعي",
-      description: "صنع إعلانات تجذب الانتباه",
+      title: 'تصميم إبداعي',
+      description: 'صنع إعلانات تجذب الانتباه',
     },
     {
-      title: "الاختبار والتحسين",
-      description: "A/B Testing مستمر",
+      title: 'الاختبار والتحسين',
+      description: 'A/B Testing مستمر',
     },
     {
-      title: "التقارير الشفافة",
-      description: "تقارير أسبوعية عن الأداء",
+      title: 'التقارير الشفافة',
+      description: 'تقارير أسبوعية عن الأداء',
     },
   ];
 
@@ -44,7 +44,6 @@ export default function PaidAdsSuccessSteps() {
               transition={{ duration: 0.5, delay: index * 0.2 }}
               viewport={{ once: true }}
             >
-              <div className="vpa-step-number">{index + 1}</div>
               <h3 className="vpa-step-title">{step.title}</h3>
               <p className="vpa-step-description">{step.description}</p>
             </motion.div>

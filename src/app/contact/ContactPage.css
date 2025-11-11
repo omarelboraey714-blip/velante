@@ -1,9 +1,9 @@
-@import "tailwindcss";
+@import 'tailwindcss';
 
-@import "../../styles/theme.css";
+@import '../../styles/theme.css';
 
 @layer base {
-  [dir="rtl"] {
+  [dir='rtl'] {
     @apply text-right;
   }
 }
@@ -13,7 +13,7 @@
 }
 
 .vc-header {
-  @apply relative perspective-distant;
+  @apply relative;
 }
 
 .vc-header__background {
@@ -53,11 +53,11 @@
 }
 
 .vc-info__grid {
-  @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 perspective-distant;
+  @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8;
 }
 
 .vc-info__card {
-  @apply grid content-between bg-l-blue/20 rounded-xl shadow-l-blue shadow-lg p-4 sm:p-6 hover:shadow-e-blue text-center border border-l-blue transition-shadow duration-300 transform-gpu;
+  @apply grid content-between bg-l-blue/20 rounded-xl shadow-l-blue shadow-lg p-4 sm:p-6 hover:shadow-e-blue text-center border border-l-blue transition-shadow duration-300;
 }
 
 .vc-info__icon {
@@ -97,7 +97,7 @@
 }
 
 .vc-form-section {
-  @apply py-12 sm:py-16 perspective-distant;
+  @apply py-12 sm:py-16;
 }
 
 .vc-form-container {
@@ -168,7 +168,7 @@
 }
 
 .vc-map {
-  @apply py-12 sm:py-16 perspective-distant;
+  @apply py-12 sm:py-16;
 }
 
 .vc-map__container {
@@ -192,11 +192,11 @@
 }
 
 .vc-social__grid {
-  @apply grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto perspective-distant;
+  @apply grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto;
 }
 
 .vc-social__card {
-  @apply grid justify-center bg-l-blue/10 shadow-lg hover:shadow-l-blue rounded-xl p-4 sm:p-6 text-center text-e-blue transform-gpu;
+  @apply grid justify-center bg-l-blue/10 shadow-lg hover:shadow-l-blue rounded-xl p-4 sm:p-6 text-center text-e-blue;
 }
 
 .vc-social__icon {

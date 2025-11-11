@@ -1,9 +1,9 @@
-@import "tailwindcss";
+@import 'tailwindcss';
 
-@import "../../../styles/theme.css";
+@import '../../../styles/theme.css';
 
 @layer base {
-  [dir="rtl"] {
+  [dir='rtl'] {
     @apply text-right;
   }
 }
@@ -13,7 +13,7 @@
 }
 
 .vwd-header {
-  @apply relative perspective-distant;
+  @apply relative;
 }
 
 .vwd-header__background {
@@ -29,11 +29,11 @@
 }
 
 .vwd-header__title {
-  @apply text-2xl sm:text-3xl md:text-4xl text-shadow-black font-bold leading-tight;
+  @apply text-2xl sm:text-3xl md:text-4xl text-shadow-black font-bold leading-snug;
 }
 
 .vwd-intro {
-  @apply py-12 sm:py-16 bg-gray-900 perspective-distant;
+  @apply py-12 sm:py-16 bg-gray-900;
 }
 
 .vwd-container {
@@ -53,7 +53,7 @@
 }
 
 .vwd-types {
-  @apply py-12 sm:py-16 perspective-distant;
+  @apply py-12 sm:py-16;
 }
 
 .vwd-section-title {
@@ -65,7 +65,7 @@
 }
 
 .vwd-type-card {
-  @apply text-center p-6 sm:p-8 rounded-xl shadow-lg  border border-l-blue transform-gpu;
+  @apply text-center p-6 sm:p-8 rounded-xl shadow-sm shadow-e-blue border border-e-blue/20;
 }
 
 .vwd-type-icon {
@@ -81,7 +81,7 @@
 }
 
 .vwd-features {
-  @apply py-12 sm:py-16 bg-gray-900 perspective-distant;
+  @apply py-12 sm:py-16 bg-gray-900;
 }
 
 .vwd-features__table {
@@ -97,7 +97,7 @@
 }
 
 .vwd-features__row {
-  @apply grid grid-cols-3 text-light border-b border-l-blue last:border-b-0 hover:bg-l-blue/20 transform-gpu;
+  @apply grid grid-cols-3 text-light border-b border-l-blue last:border-b-0 hover:bg-l-blue/20;
 }
 
 .vwd-features__cell {
@@ -113,19 +113,20 @@
 }
 
 .vwd-technologies {
-  @apply py-12 sm:py-16 perspective-distant bg-gradient-to-b from-gray-900 to-primary;
+  @apply py-12 sm:py-16  bg-gradient-to-b from-gray-900 to-primary;
 }
 
 .vwd-tech__logos {
   @apply flex flex-wrap justify-center items-center gap-4 sm:gap-8;
+  direction: ltr;
 }
 
 .vwd-tech__logo {
-  @apply bg-gray-900 px-4 sm:px-6 hover:shadow-l-blue transition-shadow duration-300 select-none py-2 sm:py-3 rounded-full shadow-md border border-primary text-light/70 font-bold transform-gpu;
+  @apply px-4 sm:px-6  select-none py-2 sm:py-3  text-light font-bold;
 }
 
 .vwd-calculator {
-  @apply py-12 sm:py-16 bg-gray-900 perspective-distant;
+  @apply py-12 sm:py-16 bg-gray-900;
 }
 
 .vwd-calculator__card {
@@ -177,7 +178,7 @@
 }
 
 .vwd-portfolio {
-  @apply py-12 sm:py-16 perspective-distant;
+  @apply py-12 sm:py-16;
 }
 
 .vwd-portfolio__grid {
@@ -185,7 +186,7 @@
 }
 
 .vwd-portfolio__item {
-  @apply rounded-xl overflow-hidden shadow-lg bg-white border border-gray-100 transform-gpu;
+  @apply rounded-xl overflow-hidden shadow-lg bg-white border border-gray-100;
 }
 
 .vwd-portfolio__image {

@@ -1,9 +1,9 @@
-@import "tailwindcss";
+@import 'tailwindcss';
 
-@import "../../styles/theme.css";
+@import '../../styles/theme.css';
 
 @layer base {
-  [dir="rtl"] {
+  [dir='rtl'] {
     @apply text-right;
   }
 }
@@ -13,7 +13,7 @@
 }
 
 .va-header {
-  @apply relative perspective-distant;
+  @apply relative;
 }
 
 .va-header-image {
@@ -86,7 +86,7 @@
 
 .va-mission-card,
 .va-vision-card {
-  @apply rounded-xl shadow-lg p-6 sm:p-8 border border-l-blue transform-gpu;
+  @apply rounded-xl shadow-lg p-6 sm:p-8 border border-l-blue;
 }
 
 .va-mission-icon,
@@ -109,11 +109,11 @@
 }
 
 .va-values-grid {
-  @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 perspective-distant gap-8;
+  @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4  gap-8;
 }
 
 .va-value-card {
-  @apply text-center p-6 rounded-xl bg-l-blue/20 shadow-lg hover:shadow-l-blue border border-l-blue transform-gpu;
+  @apply text-center p-6 rounded-xl bg-l-blue/20 shadow-lg hover:shadow-l-blue border border-l-blue;
 }
 
 .va-value-icon {
@@ -129,7 +129,7 @@
 }
 
 .va-team {
-  @apply py-12 sm:py-16 bg-primary perspective-distant;
+  @apply py-12 sm:py-16 bg-primary;
 }
 
 .va-team .va-section-title span {
@@ -137,11 +137,11 @@
 }
 
 .va-team-grid {
-  @apply grid grid-cols-1 px-10 perspective-distant md:grid-cols-2 xl:grid-cols-4 gap-8;
+  @apply grid grid-cols-1 px-10  md:grid-cols-2 xl:grid-cols-4 gap-8;
 }
 
 .va-team-member {
-  @apply rounded-xl shadow-lg overflow-hidden hover:scale-110 hover:shadow-l-blue transition-transform duration-300 border border-l-blue transform-gpu;
+  @apply rounded-xl shadow-lg overflow-hidden hover:scale-110 hover:shadow-l-blue transition-transform duration-300 border border-l-blue;
 }
 
 .va-member-image {
@@ -181,7 +181,7 @@
 }
 
 .va-stats {
-  @apply py-12 sm:py-16 bg-primary relative overflow-hidden perspective-distant;
+  @apply py-12 sm:py-16 bg-primary relative overflow-hidden;
 }
 
 .va-stats-grid {

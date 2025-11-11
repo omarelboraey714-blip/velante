@@ -1,12 +1,12 @@
-"use client";
+'use client';
 
-import { motion } from "framer-motion";
-import Link from "next/link";
-import dynamic from "next/dynamic";
+import { motion } from 'framer-motion';
+import Link from 'next/link';
+import dynamic from 'next/dynamic';
 
 // تحميل react-tsparticles ديناميكيًا بطريقة مختلفة
 const Particles = dynamic(
-  () => import("react-tsparticles").then((mod) => mod.default),
+  () => import('react-tsparticles').then(mod => mod.default),
   {
     ssr: false,
     loading: () => <div className="absolute inset-0 bg-gray-900" />,
@@ -14,7 +14,7 @@ const Particles = dynamic(
 );
 
 // مكون زر موحد مع تحسينات
-const CTAButton = ({ href, children, variant = "primary", onClick }) => (
+const CTAButton = ({ href, children, variant = 'primary', onClick }) => (
   <Link
     href={href}
     onClick={onClick}
@@ -22,10 +22,10 @@ const CTAButton = ({ href, children, variant = "primary", onClick }) => (
   >
     <motion.div
       whileTap={{ scale: 0.95 }}
-      className={`inline-block px-6 py-3 rounded-full font-medium text-base transition-all cursor-pointer duration-200 ${
-        variant === "primary"
-          ? "bg-e-blue text-white hover:bg-l-blue hover:shadow-lg"
-          : "border-2 border-white text-white hover:bg-white hover:text-gray-800"
+      className={`inline-block px-6 py-3 rounded-full font-semibold text-base transition-all cursor-pointer duration-200 ${
+        variant === 'primary'
+          ? 'bg-e-blue text-white hover:bg-l-blue hover:shadow-lg'
+          : 'border-2 border-white text-white hover:bg-white hover:text-gray-800'
       }`}
     >
       {children}
@@ -35,7 +35,7 @@ const CTAButton = ({ href, children, variant = "primary", onClick }) => (
 
 export default function HeroSection() {
   // تهيئة particles بطريقة مختلفة
-  const particlesInit = async (engine) => {
+  const particlesInit = async engine => {
     // يمكن إضافة presets أو shapes إضافية هنا إذا لازم
     return Promise.resolve();
   };
@@ -43,7 +43,7 @@ export default function HeroSection() {
   const scrollToNextSection = () => {
     window.scrollTo({
       top: window.innerHeight,
-      behavior: "smooth",
+      behavior: 'smooth',
     });
   };
 
@@ -57,9 +57,9 @@ export default function HeroSection() {
           fpsLimit: 60,
           particles: {
             number: { value: 30, density: { enable: true, value_area: 800 } },
-            color: { value: "#84CC16" },
+            color: { value: '#84CC16' },
             shape: {
-              type: ["circle", "triangle", "square", "polygon"],
+              type: ['circle', 'triangle', 'square', 'polygon'],
               polygon: { nb_sides: 6 },
             },
             opacity: {
@@ -75,30 +75,30 @@ export default function HeroSection() {
             links: {
               enable: true,
               distance: 120,
-              color: "#84CC16",
+              color: '#84CC16',
               opacity: 0.3,
               width: 1,
             },
             move: {
               enable: true,
               speed: { min: 0.5, max: 2 },
-              direction: "none",
+              direction: 'none',
               random: true,
               straight: false,
-              out_mode: "out",
+              out_mode: 'out',
               bounce: false,
               attract: { enable: true, rotateX: 600, rotateY: 1200 },
             },
             rotate: {
               value: { min: 0, max: 360 },
-              direction: "random",
+              direction: 'random',
               animation: { enable: true, speed: 5, sync: false },
             },
           },
           interactivity: {
             events: {
-              onHover: { enable: true, mode: "repulse" },
-              onClick: { enable: true, mode: ["push", "repulse"] },
+              onHover: { enable: true, mode: 'repulse' },
+              onClick: { enable: true, mode: ['push', 'repulse'] },
             },
             modes: {
               repulse: { distance: 80, duration: 0.4 },
@@ -108,7 +108,7 @@ export default function HeroSection() {
           },
           detectRetina: true,
           background: {
-            color: "#111827",
+            color: '#111827',
           },
         }}
         className="absolute inset-0 z-0"
@@ -188,8 +188,8 @@ export default function HeroSection() {
 
 // تصدير Metadata لـ SEO
 export const metadata = {
-  title: "VELANTE | تحويل مشاريعك إلى عالم رقمي احترافي",
+  title: 'VELANTE | تحويل مشاريعك إلى عالم رقمي احترافي',
   description:
-    "VELANTE تقدم خدمات تصميم هوية بصرية، مواقع إلكترونية، وإعلانات ممولة لنقل مشروعك إلى العالم الرقمي.",
-  keywords: "تطوير المواقع, هوية بصرية, إعلانات, تحويل رقمي, VELANTE",
+    'VELANTE تقدم خدمات تصميم هوية بصرية، مواقع إلكترونية، وإعلانات ممولة لنقل مشروعك إلى العالم الرقمي.',
+  keywords: 'تطوير المواقع, هوية بصرية, إعلانات, تحويل رقمي, VELANTE',
 };

@@ -1,24 +1,24 @@
-"use client";
+'use client';
 
-import { motion } from "framer-motion";
+import { motion } from 'framer-motion';
 
 export default function BrandIdentityProcess() {
   const steps = [
     {
-      title: "الاستماع وتحليل المنافسين",
-      description: "جلسة اكتشاف شاملة",
+      title: 'الاستماع وتحليل المنافسين',
+      description: 'جلسة اكتشاف شاملة',
     },
     {
-      title: "التصور الأولي والعصف الذهني",
-      description: "تطوير الأفكار المبدئية",
+      title: 'التصور الأولي والعصف الذهني',
+      description: 'تطوير الأفكار المبدئية',
     },
     {
-      title: "التصميم والتطوير",
-      description: "(3 مراجعات)",
+      title: 'التصميم والتطوير',
+      description: '(3 مراجعات)',
     },
     {
-      title: "التسليم النهائي والاحتفال!",
-      description: "حزمة الهوية البصرية كاملة",
+      title: 'التسليم النهائي والاحتفال!',
+      description: 'حزمة الهوية البصرية كاملة',
     },
   ];
 
@@ -40,13 +40,16 @@ export default function BrandIdentityProcess() {
               key={index}
               className="vbi-process__step"
               initial={{ opacity: 0, y: 50, rotateX: 15 }}
-              whileInView={{ opacity: 1, y: 0, rotateX: 0 }}
+              whileInView={{
+                opacity: 1,
+                y: 0,
+                rotateX: 0,
+              }}
               transition={{ duration: 0.2 }}
               viewport={{ once: true }}
             >
               <motion.div
                 className="vbi-process__content"
-                whileHover={{ scale: 1.03 }}
                 transition={{ duration: 0.3 }}
               >
                 <h3 className="vbi-process__title">{step.title}</h3>

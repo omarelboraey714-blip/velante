@@ -1,9 +1,9 @@
-@import "tailwindcss";
+@import 'tailwindcss';
 
-@import "../../styles/theme.css";
+@import '../../styles/theme.css';
 
 @layer base {
-  [dir="rtl"] {
+  [dir='rtl'] {
     @apply text-right;
   }
 }
@@ -13,7 +13,7 @@
 }
 
 .vp-header {
-  @apply relative perspective-distant;
+  @apply relative;
 }
 
 .vp-header__background {
@@ -45,7 +45,7 @@
 }
 
 .vp-selector {
-  @apply py-12 sm:py-16 bg-gray-900 perspective-distant;
+  @apply py-12 sm:py-16 bg-gray-900;
 }
 
 .vp-container {
@@ -61,7 +61,7 @@
 }
 
 .vp-business-type {
-  @apply p-4 sm:p-6 cursor-pointer rounded-xl shadow-md border border-l-blue text-center transform-gpu;
+  @apply p-4 sm:p-6 cursor-pointer rounded-xl shadow-md border border-l-blue text-center;
 }
 
 .vp-business-type--selected {
@@ -85,7 +85,7 @@
 }
 
 .vp-comparison {
-  @apply py-12 px-2 md:px-12 sm:py-16 perspective-distant;
+  @apply py-12 px-2 md:px-12 sm:py-16;
 }
 
 .vp-packages__grid {
@@ -93,7 +93,7 @@
 }
 
 .vp-package-card {
-  @apply relative  rounded-xl shadow-lg border border-l-blue p-4 sm:p-6 transform-gpu;
+  @apply relative h-fit rounded-xl shadow-lg border border-l-blue p-4 sm:p-6;
 }
 
 .vp-package-card--orange,
@@ -183,7 +183,7 @@
 }
 
 .vp-addons {
-  @apply py-12 sm:py-16 bg-gray-50 perspective-distant;
+  @apply py-12 sm:py-16 bg-gray-50;
 }
 
 .vp-addons__grid {

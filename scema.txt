@@ -1,0 +1,200 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// --- Main Application Models ---
+
+model Client {
+  id           String        @id @default(uuid())
+  name         String
+  country      String
+  flag         String
+  avatar       String?
+  testimonials Testimonial[]
+  createdAt    DateTime      @default(now()) @map("created_at")
+  updatedAt    DateTime      @updatedAt @map("updated_at")
+
+  @@map("clients")
+}
+
+model Project {
+  id           String        @id @default(uuid())
+  title        String
+  category     String
+  tag          String?
+  image        String?
+  thumbnail    String?
+  badge        String?
+  type         String?
+  liveUrl      String?
+  description  String        @db.Text
+  featured     Boolean       @default(false)
+  images       String[]
+  challenge    Json?
+  solution     Json?
+  results      Json?
+  tools        Json?
+  clientInfo   Json?
+  testimonials Testimonial[]
+  createdAt    DateTime      @default(now()) @map("created_at")
+  updatedAt    DateTime      @updatedAt @map("updated_at")
+
+  @@map("projects")
+}
+
+model Testimonial {
+  id        String   @id @default(uuid())
+  rating    Int
+  text      String   @db.Text
+  category  String
+  client    Client   @relation(fields: [clientId], references: [id], onDelete: Cascade)
+  clientId  String   @map("client_id")
+  project   Project? @relation(fields: [projectId], references: [id], onDelete: SetNull)
+  projectId String?  @map("project_id")
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  @@map("testimonials")
+}
+
+model FAQ {
+  id        String   @id @default(uuid())
+  question  String
+  answer    String   @db.Text
+  category  String
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  @@map("faqs")
+}
+
+model NewsletterSubscription {
+  id        String   @id @default(uuid())
+  email     String   @unique
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  @@map("newsletter_subscriptions")
+}
+
+model Package {
+  id          String   @id @default(uuid())
+  category    String
+  title       String
+  priceMin    Int      @map("price_min")
+  priceMax    Int      @map("price_max")
+  currency    String
+  isMonthly   Boolean  @default(false) @map("is_monthly")
+  description String   @db.Text
+  features    String[]
+  popular     Boolean  @default(false)
+  createdAt   DateTime @default(now()) @map("created_at")
+
+  @@map("packages")
+}
+
+model Service {
+  id          String   @id @default(uuid())
+  title       String
+  description String   @db.Text
+  price       String
+  category    String
+  createdAt   DateTime @default(now()) @map("created_at")
+  updatedAt   DateTime @updatedAt @map("updated_at")
+
+  @@map("services")
+}
+
+model Stat {
+  id        String   @id @default(uuid())
+  number    Int
+  label     String
+  suffix    String?
+  createdAt DateTime @default(now()) @map("created_at")
+
+  @@map("stats")
+}
+
+model TeamMember {
+  id          String   @id @default(uuid())
+  name        String
+  position    String
+  description String
+  image       String?
+  social      Json?
+  createdAt   DateTime @default(now()) @map("created_at")
+
+  @@map("team_members")
+}
+
+model Value {
+  id          String   @id @default(uuid())
+  icon        String
+  title       String
+  description String
+  createdAt   DateTime @default(now()) @map("created_at")
+
+  @@map("values")
+}
+
+model Contact {
+  id          String   @id @default(uuid())
+  fullName    String
+  email       String
+  phone       String
+  countryCode String   @default("+20")
+  service     String
+  budget      String
+  message     String?  @db.Text
+  createdAt   DateTime @default(now()) @map("created_at")
+
+  @@map("contacts")
+}
+
+// --- Admin & Auth Models (for future use) ---
+
+model User {
+  id            String        @id @default(uuid())
+  name          String?
+  email         String        @unique
+  emailVerified DateTime?     @map("email_verified")
+  password      String
+  role          String        @default("USER") // e.g., USER, ADMIN
+  createdAt     DateTime      @default(now()) @map("created_at")
+  updatedAt     DateTime      @updatedAt @map("updated_at")
+  sessions      Session[]
+  activityLogs  ActivityLog[]
+
+  @@map("users")
+}
+
+model Session {
+  id           String   @id @default(uuid())
+  sessionToken String   @unique @map("session_token")
+  userId       String   @map("user_id")
+  expires      DateTime
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("sessions")
+}
+
+model ActivityLog {
+  id        String   @id @default(uuid())
+  userId    String   @map("user_id")
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  action    String // e.g., "CREATE_PROJECT", "DELETE_CONTACT"
+  table     String // e.g., "Project", "Contact"
+  recordId  String   @map("record_id")
+  details   Json?
+  createdAt DateTime @default(now()) @map("created_at")
+
+  @@map("activity_logs")
+}

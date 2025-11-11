@@ -1,33 +1,33 @@
-"use client";
+'use client';
 
-import { motion } from "framer-motion";
-import { useMemo } from "react";
+import { motion } from 'framer-motion';
+import { useMemo } from 'react';
 
 export default function WebDevelopmentTechnologies() {
   const techs = useMemo(
     () => [
-      "HTML5",
-      "CSS3",
-      "SASS",
-      "Tailwind CSS",
-      "JavaScript",
-      "React",
-      "Next.js",
-      "PHP",
-      "Python",
-      "Django",
-      "MySQL",
-      "PostgreSQL",
-      "MongoDB",
-      "Git",
-      "GitHub",
-      "Netlify",
-      "Vercel",
-      "Heroku",
-      "Firebase",
-      "Shopify",
-      "WooCommerce",
-      "WordPress",
+      'HTML5',
+      'CSS3',
+      'SASS',
+      'Tailwind CSS',
+      'JavaScript',
+      'React',
+      'Next.js',
+      'PHP',
+      'Python',
+      'Django',
+      'MySQL',
+      'PostgreSQL',
+      'MongoDB',
+      'Git',
+      'GitHub',
+      'Netlify',
+      'Vercel',
+      'Heroku',
+      'Firebase',
+      'Shopify',
+      'WooCommerce',
+      'WordPress',
     ],
     []
   );
@@ -69,12 +69,11 @@ export default function WebDevelopmentTechnologies() {
           whileInView="show"
           viewport={{ once: true }}
         >
-          {techs.map((tech) => (
+          {techs.map(tech => (
             <motion.div
               key={tech}
               className="vwd-tech__logo"
               variants={itemVariants}
-              whileHover="hover"
               transition={{ duration: 0.3 }}
               aria-label={`Technology: ${tech}`}
               title={tech}

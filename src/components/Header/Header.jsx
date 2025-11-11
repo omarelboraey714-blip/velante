@@ -1,8 +1,8 @@
-"use client";
+'use client';
 
-import { useState, useRef, useEffect, useCallback, memo } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import Link from "next/link";
+import { useState, useRef, useEffect, useCallback, memo } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import Link from 'next/link';
 import {
   ChevronDown,
   X,
@@ -10,7 +10,7 @@ import {
   ChevronRight,
   ArrowLeft,
   ChevronLeft,
-} from "lucide-react";
+} from 'lucide-react';
 
 const NavItem = memo(({ href, children, onClick }) => (
   <li>
@@ -25,14 +25,14 @@ const NavItem = memo(({ href, children, onClick }) => (
   </li>
 ));
 
-NavItem.displayName = "NavItem";
+NavItem.displayName = 'NavItem';
 
 // Dropdown للشاشات الكبيرة فقط
 const DesktopDropdown = memo(({ isOpen, setIsOpen }) => {
   const dropdownItems = [
-    { href: "/services/branding", label: "هوية بصرية" },
-    { href: "/services/web-development", label: "تطوير المواقع" },
-    { href: "/services/ads", label: "إعلانات" },
+    { href: '/services/branding', label: 'هوية بصرية' },
+    { href: '/services/web-development', label: 'تطوير المواقع' },
+    { href: '/services/ads', label: 'إعلانات' },
   ];
 
   return (
@@ -47,7 +47,7 @@ const DesktopDropdown = memo(({ isOpen, setIsOpen }) => {
         <motion.div
           animate={{ rotate: isOpen ? 180 : 0 }}
           transition={{
-            type: "spring",
+            type: 'spring',
             stiffness: 300,
             damping: 20,
             duration: 0.2,
@@ -65,13 +65,13 @@ const DesktopDropdown = memo(({ isOpen, setIsOpen }) => {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
             transition={{
-              type: "spring",
+              type: 'spring',
               stiffness: 300,
               damping: 30,
               duration: 0.2,
             }}
           >
-            {dropdownItems.map((item) => (
+            {dropdownItems.map(item => (
               <li key={item.href}>
                 <Link
                   href={item.href}
@@ -89,24 +89,24 @@ const DesktopDropdown = memo(({ isOpen, setIsOpen }) => {
   );
 });
 
-DesktopDropdown.displayName = "DesktopDropdown";
+DesktopDropdown.displayName = 'DesktopDropdown';
 
 // Mobile Services Menu - صفحة منفصلة في الموبايل
 const MobileServicesMenu = memo(({ onBack, onClose }) => {
   const servicesItems = [
-    { href: "/services/branding", label: "هوية بصرية" },
-    { href: "/services/web-development", label: "تطوير المواقع" },
-    { href: "/services/ads", label: "إعلانات" },
+    { href: '/services/branding', label: 'هوية بصرية' },
+    { href: '/services/web-development', label: 'تطوير المواقع' },
+    { href: '/services/ads', label: 'إعلانات' },
   ];
 
   return (
     <motion.div
       className="fixed top-0 right-0 h-[100vh] w-80 max-w-[90vw] bg-gradient-to-b from-gray-900 to-primary shadow-xl z-50 flex flex-col"
-      initial={{ x: "100%" }}
+      initial={{ x: '100%' }}
       animate={{ x: 0 }}
-      exit={{ x: "100%" }}
+      exit={{ x: '100%' }}
       transition={{
-        type: "spring",
+        type: 'spring',
         stiffness: 300,
         damping: 30,
         duration: 0.3,
@@ -140,7 +140,7 @@ const MobileServicesMenu = memo(({ onBack, onClose }) => {
             animate={{ opacity: 1, x: 0 }}
             transition={{
               delay: index * 0.05,
-              type: "spring",
+              type: 'spring',
               stiffness: 300,
               damping: 25,
             }}
@@ -160,7 +160,7 @@ const MobileServicesMenu = memo(({ onBack, onClose }) => {
   );
 });
 
-MobileServicesMenu.displayName = "MobileServicesMenu";
+MobileServicesMenu.displayName = 'MobileServicesMenu';
 
 export default function Header() {
   const [isServicesOpen, setIsServicesOpen] = useState(false);
@@ -168,15 +168,15 @@ export default function Header() {
   const [showMobileServices, setShowMobileServices] = useState(false);
   const dropdownRef = useRef(null);
 
-  const handleClickOutside = useCallback((event) => {
+  const handleClickOutside = useCallback(event => {
     if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
       setIsServicesOpen(false);
     }
   }, []);
 
   useEffect(() => {
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => document.removeEventListener("mousedown", handleClickOutside);
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
   }, [handleClickOutside]);
 
   const handleResize = useCallback(() => {
@@ -188,8 +188,8 @@ export default function Header() {
   }, []);
 
   useEffect(() => {
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
   }, [handleResize]);
 
   const handleMobileLinkClick = useCallback(() => {
@@ -220,7 +220,7 @@ export default function Header() {
           className="flex-shrink-0 order-3 h-10 w-25"
           whileHover={{
             scale: 1.05,
-            transition: { type: "spring", stiffness: 400, damping: 10 },
+            transition: { type: 'spring', stiffness: 400, damping: 10 },
           }}
           whileTap={{ scale: 0.95 }}
         >
@@ -246,17 +246,10 @@ export default function Header() {
           </ul>
         </nav>
 
-        <motion.div
-          className="hidden md:block"
-          whileHover={{
-            scale: 1.05,
-            transition: { type: "spring", stiffness: 400, damping: 10 },
-          }}
-          whileTap={{ scale: 0.95 }}
-        >
-          <Link href={"/contact"}>
+        <motion.div className="hidden md:block" whileTap={{ scale: 0.95 }}>
+          <Link href={'/contact'}>
             <button
-              className="px-6 py-2 bg-e-blue cursor-pointer text-white font-medium rounded-full hover:bg-l-blue hover:shadow-lg transition-all duration-200 transform hover:-translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-l-blue focus:ring-opacity-50"
+              className="px-6 py-2 bg-e-blue cursor-pointer text-white font-medium rounded-full hover:bg-l-blue hover:shadow-lg transition-all duration-200 transform hover:-translate-y-0.5"
               aria-label="اتصل الآن"
             >
               اتصل الآن
@@ -267,8 +260,8 @@ export default function Header() {
         {/* Mobile Menu Button */}
         <motion.button
           className="md:hidden cursor-pointer p-2 text-light hover:text-e-blue transition-colors duration-200 focus:outline-none cursor-pointer focus:ring-2 focus:ring-e-blue focus:ring-opacity-50 rounded-lg"
-          onClick={() => setIsMobileMenuOpen((prev) => !prev)}
-          aria-label={isMobileMenuOpen ? "إغلاق القائمة" : "فتح القائمة"}
+          onClick={() => setIsMobileMenuOpen(prev => !prev)}
+          aria-label={isMobileMenuOpen ? 'إغلاق القائمة' : 'فتح القائمة'}
           whileTap={{ scale: 0.9 }}
         >
           {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
@@ -290,11 +283,11 @@ export default function Header() {
               {/* Mobile Main Menu */}
               <motion.div
                 className="fixed top-0 grid gap-6 right-0 w-80 min-h-[100vh] max-w-[90vw] bg-gradient-to-b from-gray-900 to-primary  shadow-xl z-50"
-                initial={{ x: "100%" }}
+                initial={{ x: '100%' }}
                 animate={{ x: 0 }}
-                exit={{ x: "100%" }}
+                exit={{ x: '100%' }}
                 transition={{
-                  type: "spring",
+                  type: 'spring',
                   stiffness: 300,
                   damping: 30,
                   duration: 0.3,
@@ -347,7 +340,7 @@ export default function Header() {
                 </ul>
 
                 <div className="px-6 mt-4 pb-6">
-                  <Link href={"/contact"}>
+                  <Link href={'/contact'}>
                     <motion.button
                       className="w-full px-6 py-3 cursor-pointer bg-e-blue text-white font-medium rounded-full hover:bg-l-blue hover:shadow-lg transition-all duration-200"
                       aria-label="اتصل الآن"

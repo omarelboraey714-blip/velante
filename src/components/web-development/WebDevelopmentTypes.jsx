@@ -1,12 +1,12 @@
-"use client";
+'use client';
 
-import { motion } from "framer-motion";
+import { motion } from 'framer-motion';
 
 export default function WebDevelopmentTypes() {
   const types = [
     {
-      title: "المواقع الترويجية",
-      description: "لعرض خدماتك",
+      title: 'المواقع الترويجية',
+      description: 'لعرض خدماتك',
       icon: (
         <svg width="36" height="36" viewBox="0 0 24 24" fill="none">
           <path
@@ -18,8 +18,8 @@ export default function WebDevelopmentTypes() {
       ),
     },
     {
-      title: "المتاجر الإلكترونية",
-      description: "للبيع أونلاين",
+      title: 'المتاجر الإلكترونية',
+      description: 'للبيع أونلاين',
       icon: (
         <svg width="36" height="36" viewBox="0 0 24 24" fill="none">
           <path
@@ -31,8 +31,8 @@ export default function WebDevelopmentTypes() {
       ),
     },
     {
-      title: "المنصات التعليمية",
-      description: "للدورات والتدريبات",
+      title: 'المنصات التعليمية',
+      description: 'للدورات والتدريبات',
       icon: (
         <svg width="36" height="36" viewBox="0 0 24 24" fill="none">
           <path
@@ -44,8 +44,8 @@ export default function WebDevelopmentTypes() {
       ),
     },
     {
-      title: "تطبيقات الويب",
-      description: "لحلول الأعمال المتقدمة",
+      title: 'تطبيقات الويب',
+      description: 'لحلول الأعمال المتقدمة',
       icon: (
         <svg width="36" height="36" viewBox="0 0 24 24" fill="none">
           <path
@@ -78,7 +78,6 @@ export default function WebDevelopmentTypes() {
               initial={{ opacity: 0, rotateY: 90 }}
               whileInView={{ opacity: 1, rotateY: 0 }}
               transition={{ duration: 0.2 }}
-              whileHover={{ rotateY: 10, scale: 1.05 }}
               viewport={{ once: true }}
             >
               <div className="vwd-type-icon">{type.icon}</div>

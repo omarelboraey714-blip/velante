@@ -142,5 +142,5 @@
 }
 
 .testimonials-btn {
-  @apply bg-e-blue my-10 hover:bg-l-blue text-light font-bold py-3 px-6 rounded-full transition-colors duration-300;
+  @apply bg-e-blue my-5 hover:bg-l-blue text-light font-bold py-3 px-6 rounded-full transition-colors duration-300;
 }

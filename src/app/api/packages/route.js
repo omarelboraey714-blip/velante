@@ -1,5 +1,5 @@
-import { NextResponse } from "next/server";
-import { prisma } from "@/lib/prisma";
+import { NextResponse } from 'next/server';
+import { prisma } from '@/lib/prisma';
 
 // إضافة باقة جديدة (للاستخدام من لوحة التحكم)
 export async function POST(request) {
@@ -20,13 +20,13 @@ export async function POST(request) {
     // تحقق من البيانات الأساسية
     if (!category || !title) {
       return NextResponse.json(
-        { error: "الرجاء إدخال الفئة والعنوان" },
+        { error: 'الرجاء إدخال الفئة والعنوان' },
         { status: 400 }
       );
     }
 
     // إدخال الباقة
-    const package = await prisma.package.create({
+    const Package = await prisma.package.create({
       data: {
         category,
         title,
@@ -41,14 +41,14 @@ export async function POST(request) {
     });
 
     return NextResponse.json(
-      { message: "تمت إضافة الباقة بنجاح!", data: package },
+      { message: 'تمت إضافة الباقة بنجاح!', data: Package },
       { status: 201 }
     );
   } catch (error) {
-    console.error("Error adding package:", error);
+    console.error('Error adding package:', error);
     return NextResponse.json(
-      { error: "فشل في إضافة الباقة، حاول مرة أخرى" },
-      { status: error.message.includes("permission") ? 403 : 500 }
+      { error: 'فشل في إضافة الباقة، حاول مرة أخرى' },
+      { status: error.message.includes('permission') ? 403 : 500 }
     );
   }
 }
@@ -57,11 +57,11 @@ export async function POST(request) {
 export async function GET(request) {
   try {
     const { searchParams } = new URL(request.url);
-    const category = searchParams.get("category") || "all";
+    const category = searchParams.get('category') || 'all';
 
     let whereClause = {};
-    
-    if (category !== "all") {
+
+    if (category !== 'all') {
       whereClause.category = category;
     }
 
@@ -81,7 +81,7 @@ export async function GET(request) {
         createdAt: true,
       },
       orderBy: {
-        createdAt: "asc",
+        createdAt: 'asc',
       },
     });
 
@@ -90,15 +90,15 @@ export async function GET(request) {
       {
         status: 200,
         headers: {
-          "Cache-Control": "public, s-maxage=3600, stale-while-revalidate=7200",
+          'Cache-Control': 'public, s-maxage=3600, stale-while-revalidate=7200',
         },
       }
     );
   } catch (error) {
-    console.error("Error fetching packages:", error);
+    console.error('Error fetching packages:', error);
     return NextResponse.json(
-      { error: "فشل في جلب الباقات" },
-      { status: error.message.includes("permission") ? 403 : 500 }
+      { error: 'فشل في جلب الباقات' },
+      { status: error.message.includes('permission') ? 403 : 500 }
     );
   }
 }

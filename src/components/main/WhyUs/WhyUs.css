@@ -23,11 +23,11 @@
 }
 
 .whyus-reason {
-  @apply text-center;
+  @apply text-center border border-e-blue/20 rounded;
 }
 
 .whyus-reason-content {
-  @apply p-6 rounded-xl transition-all duration-300 shadow-sm hover:shadow-xl shadow-primary grid content-between h-full backdrop-blur-sm;
+  @apply p-6 rounded-xl transition-all flex flex-col duration-300 shadow-sm hover:shadow-xl shadow-primary h-full backdrop-blur-sm;
 }
 
 .whyus-icon {

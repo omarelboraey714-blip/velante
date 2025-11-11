@@ -1,7 +1,7 @@
-@import "tailwindcss";
+@import 'tailwindcss';
 
 @layer base {
-  [dir="rtl"] {
+  [dir='rtl'] {
     @apply text-right;
   }
 }
@@ -15,11 +15,11 @@
 }
 
 .vp-progress-fill {
-  @apply h-full bg-gradient-to-r from-[#6dff00] to-[#a4ff00] transition-all duration-150 ease-out transform-gpu;
+  @apply h-full bg-gradient-to-r from-[#6dff00] to-[#a4ff00] transition-all duration-150 ease-out;
 }
 
 .vp-header {
-  @apply relative perspective-distant;
+  @apply relative;
 }
 
 .vp-header-image {
@@ -153,7 +153,7 @@
 }
 
 .vp-gallery {
-  @apply py-12 sm:py-16 perspective-distant;
+  @apply py-12 sm:py-16;
 }
 
 .vp-gallery-grid {
@@ -161,7 +161,7 @@
 }
 
 .vp-gallery-item {
-  @apply rounded-xl overflow-hidden shadow-lg bg-white border border-gray-100 cursor-pointer transform-gpu;
+  @apply rounded-xl overflow-hidden shadow-lg bg-white border border-gray-100 cursor-pointer;
 }
 
 .vp-gallery-img {
@@ -185,7 +185,7 @@
 }
 
 .vp-tool-item {
-  @apply text-center p-4 rounded-lg bg-white shadow-md transform-gpu;
+  @apply text-center p-4 rounded-lg bg-white shadow-md;
 }
 
 .vp-tool-icon {
@@ -205,7 +205,7 @@
 }
 
 .vp-result-card {
-  @apply bg-gradient-to-r from-[#6dff00] to-[#a4ff00] text-white rounded-xl p-6 text-center shadow-lg transform-gpu;
+  @apply bg-gradient-to-r from-[#6dff00] to-[#a4ff00] text-white rounded-xl p-6 text-center shadow-lg;
 }
 
 .vp-result-icon {
