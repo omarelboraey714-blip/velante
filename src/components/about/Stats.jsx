@@ -1,9 +1,9 @@
-"use client";
+'use client';
 
-import { useState, useEffect, useRef } from "react";
-import { motion, useAnimation } from "framer-motion";
-import { useInView } from "framer-motion";
-import { toast } from "sonner";
+import { useState, useEffect, useRef } from 'react';
+import { motion, useAnimation } from 'framer-motion';
+import { useInView } from 'framer-motion';
+import { toast } from 'sonner';
 
 export default function Stats() {
   const [stats, setStats] = useState([]);
@@ -15,14 +15,14 @@ export default function Stats() {
   useEffect(() => {
     async function fetchStats() {
       try {
-        const response = await fetch("/api/stats");
+        const response = await fetch('/api/stats');
         const result = await response.json();
 
         if (!result.success) throw new Error(result.error);
 
         setStats(result.data || []);
       } catch (error) {
-        toast.error("حدث خطأ أثناء جلب الإحصائيات");
+        toast.error('حدث خطأ أثناء جلب الإحصائيات');
       } finally {
         setIsLoading(false);
       }
@@ -33,7 +33,7 @@ export default function Stats() {
 
   useEffect(() => {
     if (inView && !isLoading) {
-      controls.start((i) => ({
+      controls.start(i => ({
         opacity: 1,
         y: 0,
         rotateX: 0,
@@ -61,8 +61,8 @@ export default function Stats() {
                   className="va-stat-number"
                   initial={{ text: 0 }}
                   animate={{ text: stat.number }}
-                  transition={{ duration: 2, ease: "easeOut" }}
-                  onUpdate={(latest) =>
+                  transition={{ duration: 2, ease: 'easeOut' }}
+                  onUpdate={latest =>
                     (document.getElementById(
                       `stat-${stat.id}`
                     ).textContent = `${Math.floor(latest.text)}${stat.suffix}`)

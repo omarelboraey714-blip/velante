@@ -3,14 +3,7 @@
 import { useState, useRef, useEffect, useCallback, memo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Link from 'next/link';
-import {
-  ChevronDown,
-  X,
-  Menu,
-  ChevronRight,
-  ArrowLeft,
-  ChevronLeft,
-} from 'lucide-react';
+import { ChevronDown, X, Menu, ArrowLeft, ChevronLeft } from 'lucide-react';
 
 const NavItem = memo(({ href, children, onClick }) => (
   <li>
@@ -113,7 +106,7 @@ const MobileServicesMenu = memo(({ onBack, onClose }) => {
       }}
     >
       {/* Header مع زر الرجوع */}
-      <div className="flex items-center justify-between p-4 border-b border-gray-900">
+      <div className="flex items-center justify-between p-4 border-b border-l-blue/20">
         <button
           className="p-2 text-light hover:text-e-blue hover:bg-gray-950 cursor-pointer rounded-full transition-colors duration-200"
           onClick={onBack}
@@ -132,7 +125,7 @@ const MobileServicesMenu = memo(({ onBack, onClose }) => {
       </div>
 
       {/* قائمة الخدمات */}
-      <ul className="grid gap-4">
+      <ul className="grid gap-4 py-6">
         {servicesItems.map((item, index) => (
           <motion.li
             key={item.href}
@@ -147,11 +140,11 @@ const MobileServicesMenu = memo(({ onBack, onClose }) => {
           >
             <Link
               href={item.href}
-              className="flex items-center justify-between px-6 py-4 text-light hover:bg-gray-950 hover:text-e-blue transition-colors duration-200 "
+              className="flex group relative items-center justify-between mx-6 py-4 text-light hover:text-e-blue transition-colors duration-200 "
               onClick={onClose}
             >
-              <span className="font-medium">{item.label}</span>
-              <ChevronRight size={20} className="text-light" />
+              <span className="font-bold">{item.label}</span>
+              <span className="absolute bottom-0 right-0 w-0 h-0.5 bg-e-blue transition-all duration-300 group-hover:w-full"></span>
             </Link>
           </motion.li>
         ))}
@@ -230,8 +223,9 @@ export default function Header() {
         </motion.div>
 
         {/* Desktop Navigation */}
-        <nav className="hidden md:block">
-          <ul className="flex items-center space-x-6 lg:space-x-8">
+
+        <nav className="hidden sm:flex w-full items-center md:justify-center ">
+          <ul className="flex  items-center gap-6 md:gap-8 lg:gap-16">
             <NavItem href="/">الرئيسية</NavItem>
             <div ref={dropdownRef}>
               <DesktopDropdown
@@ -246,20 +240,9 @@ export default function Header() {
           </ul>
         </nav>
 
-        <motion.div className="hidden md:block" whileTap={{ scale: 0.95 }}>
-          <Link href={'/contact'}>
-            <button
-              className="px-6 py-2 bg-e-blue cursor-pointer text-white font-medium rounded-full hover:bg-l-blue hover:shadow-lg transition-all duration-200 transform hover:-translate-y-0.5"
-              aria-label="اتصل الآن"
-            >
-              اتصل الآن
-            </button>
-          </Link>
-        </motion.div>
-
         {/* Mobile Menu Button */}
         <motion.button
-          className="md:hidden cursor-pointer p-2 text-light hover:text-e-blue transition-colors duration-200 focus:outline-none cursor-pointer focus:ring-2 focus:ring-e-blue focus:ring-opacity-50 rounded-lg"
+          className="sm:hidden p-2 text-light hover:text-e-blue transition-colors duration-200 focus:outline-none cursor-pointer focus:ring-2 focus:ring-e-blue focus:ring-opacity-50 rounded-lg"
           onClick={() => setIsMobileMenuOpen(prev => !prev)}
           aria-label={isMobileMenuOpen ? 'إغلاق القائمة' : 'فتح القائمة'}
           whileTap={{ scale: 0.9 }}
@@ -272,7 +255,7 @@ export default function Header() {
           {isMobileMenuOpen && !showMobileServices && (
             <>
               <motion.div
-                className="fixed inset-0 bg-black/50 z-40"
+                className="fixed inset-0 w-[100vw] h-[100vh] bg-black/50 z-[41]"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
@@ -293,7 +276,7 @@ export default function Header() {
                   duration: 0.3,
                 }}
               >
-                <div className="flex items-center justify-between p-4 border-b border-gray-950">
+                <div className="flex items-center justify-between p-4 border-b border-l-blue/20">
                   <Link href="/" onClick={handleMobileLinkClick}>
                     <img src="/images/logo.webp" className="w-24 h-auto" />
                   </Link>

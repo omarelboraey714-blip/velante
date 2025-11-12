@@ -1,8 +1,8 @@
-"use client";
+'use client';
 
-import { useState, useEffect } from "react";
-import { motion } from "framer-motion";
-import { toast } from "sonner";
+import { useState, useEffect } from 'react';
+import { motion } from 'framer-motion';
+import { toast } from 'sonner';
 
 export default function Values() {
   const [values, setValues] = useState([]);
@@ -11,14 +11,14 @@ export default function Values() {
   useEffect(() => {
     async function fetchValues() {
       try {
-        const response = await fetch("/api/values");
+        const response = await fetch('/api/values');
         const result = await response.json();
 
         if (!result.success) throw new Error(result.error);
 
         setValues(result.data || []);
       } catch (error) {
-        toast.error("حدث خطأ أثناء جلب القيم");
+        toast.error('حدث خطأ أثناء جلب القيم');
       } finally {
         setIsLoading(false);
       }
@@ -43,13 +43,12 @@ export default function Values() {
           <p>جاري تحميل القيم...</p>
         ) : (
           <div className="va-values-grid">
-            {values.map((value) => (
+            {values.map(value => (
               <motion.div
                 key={value.id}
                 className="va-value-card"
                 initial={{ opacity: 0, scale: 0.9 }}
                 whileInView={{ opacity: 1, scale: 1 }}
-                whileHover={{ rotateY: -10, translateY: -5 }}
                 transition={{ duration: 0.2 }}
                 viewport={{ once: true }}
               >

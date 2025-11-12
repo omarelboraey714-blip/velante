@@ -1,8 +1,8 @@
-"use client";
+'use client';
 
-import { useState, useEffect } from "react";
-import { motion } from "framer-motion";
-import { toast } from "sonner";
+import { useState, useEffect } from 'react';
+import { motion } from 'framer-motion';
+import { toast } from 'sonner';
 
 export default function Team() {
   const [teamMembers, setTeamMembers] = useState([]);
@@ -11,14 +11,14 @@ export default function Team() {
   useEffect(() => {
     async function fetchTeamMembers() {
       try {
-        const response = await fetch("/api/team-members");
+        const response = await fetch('/api/team-members');
         const result = await response.json();
 
         if (!result.success) throw new Error(result.error);
 
         setTeamMembers(result.data || []);
       } catch (error) {
-        toast.error("حدث خطأ أثناء جلب أعضاء الفريق");
+        toast.error('حدث خطأ أثناء جلب أعضاء الفريق');
       } finally {
         setIsLoading(false);
       }
@@ -43,13 +43,12 @@ export default function Team() {
           <p>جاري تحميل أعضاء الفريق...</p>
         ) : (
           <div className="va-team-grid">
-            {teamMembers.map((member) => (
+            {teamMembers.map(member => (
               <motion.div
                 key={member.id}
                 className="va-team-member"
                 initial={{ opacity: 0, y: 50 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                whileHover={{ rotateY: 10, rotateX: 5, translateY: -5 }}
                 transition={{ duration: 0.3 }}
                 viewport={{ once: true }}
               >
@@ -58,8 +57,8 @@ export default function Team() {
                     src={member.image}
                     alt={member.name}
                     className="va-member-img"
-                    onError={(e) =>
-                      (e.target.src = "/images/placeholder-avatar.png")
+                    onError={e =>
+                      (e.target.src = '/images/placeholder-avatar.png')
                     }
                   />
                 </div>

@@ -7,7 +7,7 @@
 }
 
 .vp-faq {
-  @apply py-12 sm:py-16;
+  @apply py-12 sm:py-16 px-4 sm:px-6 md:px-8;
 }
 
 /* Accordion Styles for FAQs */

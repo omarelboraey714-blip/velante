@@ -1,6 +1,6 @@
-"use client";
+'use client';
 
-import { motion } from "framer-motion";
+import { motion } from 'framer-motion';
 
 export default function PackagesHeader() {
   return (
@@ -13,7 +13,7 @@ export default function PackagesHeader() {
           className="vp-header__content"
           initial={{ opacity: 0, rotateX: 20 }}
           animate={{ opacity: 1, rotateX: 0 }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
+          transition={{ duration: 0.8, ease: 'easeOut' }}
         >
           <motion.h1
             className="vp-header__title"
@@ -40,17 +40,6 @@ export default function PackagesHeader() {
             لأن كل مشروع فريد، جمعنا أفضل الخدمات في باقات مخصصة بجودة عالية
             وأسعار واضحة بدون مفاجآت.
           </motion.p>
-          <motion.button
-            className="vp-btn vp-btn--primary vp-header__faq-trigger"
-            onClick={() =>
-              document
-                .getElementById("vp-final-cta")
-                .scrollIntoView({ behavior: "smooth" })
-            }
-            whileTap={{ scale: 0.95 }}
-          >
-            كيفية الاختيار؟
-          </motion.button>
         </motion.div>
       </div>
     </header>

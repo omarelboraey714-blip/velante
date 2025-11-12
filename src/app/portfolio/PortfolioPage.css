@@ -45,7 +45,15 @@
 }
 
 .vw-container {
-  @apply max-w-7xl mx-auto px-1.5 sm:px-6 lg:px-8;
+  @apply max-w-7xl mx-auto px-6 sm:px-6 lg:px-8 flex flex-col gap-12;
+}
+
+.vw-empty-cta {
+  @apply flex flex-col gap-12 items-center justify-center;
+}
+
+.vw-empty-message {
+  @apply font-semibold text-light text-lg sm:text-xl md:text-2xl text-center;
 }
 
 .vw-filters-bar {

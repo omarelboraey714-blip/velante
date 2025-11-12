@@ -93,7 +93,7 @@
 }
 
 .vc-btn--primary {
-  @apply bg-e-blue cursor-pointer text-white hover:bg-l-blue;
+  @apply bg-gradient-to-r from-l-blue to-e-blue cursor-pointer text-white hover:bg-l-blue;
 }
 
 .vc-form-section {

@@ -1,6 +1,6 @@
-"use client";
+'use client';
 
-import { motion } from "framer-motion";
+import { motion } from 'framer-motion';
 export default function CTA() {
   return (
     <section className="va-final-cta">
@@ -23,7 +23,6 @@ export default function CTA() {
             <motion.a
               href="/contact"
               className="va-cta-btn va-btn va-btn--primary"
-              whileHover={{ scale: 1.1, rotateX: 10 }}
               whileTap={{ scale: 0.95 }}
               transition={{ duration: 0.3 }}
             >
@@ -32,7 +31,6 @@ export default function CTA() {
             <motion.a
               href="/services"
               className="va-cta-btn va-btn va-btn--secondary"
-              whileHover={{ scale: 1.1, rotateX: 10 }}
               whileTap={{ scale: 0.95 }}
               transition={{ duration: 0.3 }}
             >

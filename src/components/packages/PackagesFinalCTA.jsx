@@ -1,7 +1,7 @@
-"use client";
+'use client';
 
-import { motion } from "framer-motion";
-import Link from "next/link";
+import { motion } from 'framer-motion';
+import Link from 'next/link';
 
 export default function PackagesFinalCTA() {
   return (
@@ -25,7 +25,6 @@ export default function PackagesFinalCTA() {
           >
             <motion.button
               className="vp-btn vp-btn--primary vp-final-cta__button"
-              whileHover={{ scale: 1.1, rotateX: 10 }}
               whileTap={{ scale: 0.95 }}
               transition={{ duration: 0.3 }}
             >

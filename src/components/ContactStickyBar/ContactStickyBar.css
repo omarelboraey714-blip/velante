@@ -1,8 +1,8 @@
-@import "tailwindcss";
-@import "../../styles/theme.css";
+@import 'tailwindcss';
+@import '../../styles/theme.css';
 
 .vc-sticky-bar {
-  @apply fixed bottom-5 right-5  flex items-center justify-center z-50;
+  @apply fixed bottom-5 right-5  flex items-center justify-center z-40;
 }
 
 .vc-sticky-bar__whatsapp {

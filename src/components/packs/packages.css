@@ -15,7 +15,7 @@
 }
 
 .vpa-packages__grid {
-  @apply grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8;
+  @apply grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 sm:gap-12;
 }
 
 .vpa-package-card {
@@ -23,7 +23,7 @@
 }
 
 .vpa-package-card--popular {
-  @apply border-2 border-e-blue scale-105;
+  @apply border-2 border-e-blue;
 }
 
 .vpa-package-popular-badge {

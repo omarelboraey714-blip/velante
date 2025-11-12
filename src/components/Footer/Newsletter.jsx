@@ -1,56 +1,56 @@
-"use client";
+'use client';
 
-import { useState, useCallback } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { useState, useCallback } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 
 export default function Newsletter() {
-  const [email, setEmail] = useState("");
-  const [error, setError] = useState("");
-  const [success, setSuccess] = useState("");
+  const [email, setEmail] = useState('');
+  const [error, setError] = useState('');
+  const [success, setSuccess] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleSubmit = useCallback(
-    async (e) => {
+    async e => {
       e.preventDefault();
-      setError("");
-      setSuccess("");
+      setError('');
+      setSuccess('');
       setIsSubmitting(true);
 
       if (!email.trim()) {
-        setError("البريد الإلكتروني مطلوب");
+        setError('البريد الإلكتروني مطلوب');
         setIsSubmitting(false);
         return;
       }
 
       try {
         // إرسال طلب الاشتراك إلى /api/newsletter
-        const newsletterResponse = await fetch("/api/newsletter", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
+        const newsletterResponse = await fetch('/api/newsletter', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ email }),
         });
 
         const newsletterResult = await newsletterResponse.json();
 
         if (!newsletterResponse.ok) {
-          throw new Error(newsletterResult.error || "فشل في الاشتراك");
+          throw new Error(newsletterResult.error || 'فشل في الاشتراك');
         }
 
         // إرسال إيميل ترحيبي
-        const emailResponse = await fetch("/api/send-email", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ type: "newsletter", email }),
+        const emailResponse = await fetch('/api/send-email', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ type: 'newsletter', email }),
         });
 
         const emailResult = await emailResponse.json();
 
         if (!emailResponse.ok)
-          throw new Error(emailResult.error || "فشل في إرسال إيميل الترحيب");
+          throw new Error(emailResult.error || 'فشل في إرسال إيميل الترحيب');
 
-        setSuccess("تم الاشتراك بنجاح! تحقق من بريدك الإلكتروني للتأكيد.");
-        setEmail("");
-        setTimeout(() => setSuccess(""), 5000);
+        setSuccess('تم الاشتراك بنجاح! تحقق من بريدك الإلكتروني للتأكيد.');
+        setEmail('');
+        setTimeout(() => setSuccess(''), 5000);
       } catch (err) {
         setError(err.message);
       } finally {
@@ -66,7 +66,7 @@ export default function Newsletter() {
     visible: {
       opacity: 1,
       y: 0,
-      transition: { duration: 0.6, type: "spring", stiffness: 100 },
+      transition: { duration: 0.6, type: 'spring', stiffness: 100 },
     },
   };
 
@@ -104,12 +104,12 @@ export default function Newsletter() {
           <input
             type="email"
             placeholder="بريدك الإلكتروني"
-            className={`vf-email-input ${error ? "vf-input--error" : ""}`}
+            className={`vf-email-input ${error ? 'vf-input--error' : ''}`}
             value={email}
-            onChange={(e) => {
+            onChange={e => {
               setEmail(e.target.value);
-              setError("");
-              setSuccess("");
+              setError('');
+              setSuccess('');
             }}
             disabled={isSubmitting}
             aria-label="أدخل بريدك الإلكتروني"
@@ -117,7 +117,6 @@ export default function Newsletter() {
           <motion.button
             type="submit"
             className="vf-subscribe-btn"
-            whileHover={{ scale: 1.1, rotateX: 10 }}
             whileTap={{ scale: 0.95 }}
             transition={{ duration: 0.3 }}
             disabled={isSubmitting}
@@ -126,12 +125,12 @@ export default function Newsletter() {
             {isSubmitting ? (
               <motion.span
                 animate={{ rotate: 360 }}
-                transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
+                transition={{ duration: 1, repeat: Infinity, ease: 'linear' }}
               >
                 جاري...
               </motion.span>
             ) : (
-              "اشترك الآن"
+              'اشترك الآن'
             )}
           </motion.button>
         </motion.div>

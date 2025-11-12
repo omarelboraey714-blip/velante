@@ -7,97 +7,224 @@ generator client {
 
 datasource db {
   provider = "postgresql"
-  url      = "postgres://704a0589fdcd7ee24772578c2fa75d85f26286e92e628db6c05614ccf85fd8e3:sk_o5h83Du23Gj2Wb5LhD-gz@db.prisma.io:5432/postgres?sslmode=require"
+  url      = env("DATABASE_URL") // Use environment variable for security; avoid hardcoding credentials
+}
+
+// Enums for better type safety and constraints
+enum ProjectCategory {
+  WEB_DEVELOPMENT
+  BRANDING
+  ADS
+  OTHER
+}
+
+enum TestimonialCategory {
+  BRANDING
+  WEB_DEVELOPMENT
+  ADS
+  OTHER
+}
+
+enum UserRole {
+  ADMIN
+  EDITOR
+  VIEWER
+}
+
+enum ServiceCategory {
+  WEB_DEVELOPMENT
+  BRANDING
+  ADS
+  MARKETING
+  OTHER
+}
+
+enum PackageCategory {
+  BASIC
+  STANDARD
+  PREMIUM
+  CUSTOM
+}
+
+enum FAQCategory {
+  GENERAL
+  SERVICES
+  PRICING
+  PROJECTS
+  OTHER
+}
+
+enum Currency {
+  SAR // ريال سعودي
+  USD
+  EUR
+  OTHER
 }
 
 // جدول جهات الاتصال
 model Contact {
-  id           String   @id @default(cuid())
-  fullName     String   @map("full_name")
-  email        String   @unique
+  id           String     @id @default(cuid())
+  fullName     String     @map("full_name")
+  email        String     @unique
   phone        String
-  countryCode  String   @default("+20") @map("country_code")
-  service      String
-  budget       String
+  countryCode  String     @default("+20") @map("country_code")
+  service      String?    // Could be enum if services are limited, but kept as String for flexibility
+  budget       String?
   message      String?
-  createdAt    DateTime @default(now()) @map("created_at")
-  updatedAt    DateTime @updatedAt @map("updated_at")
+  createdAt    DateTime   @default(now()) @map("created_at")
+  updatedAt    DateTime   @updatedAt @map("updated_at")
 
+  @@index([email]) // Index for faster lookups
   @@map("contacts")
 }
 
-// جدول المشاريع
+// جدول المشاريع - Improved relations and normalized some JSON fields
 model Project {
-  id          String   @id @default(cuid())
+  id          String       @id @default(cuid())
   title       String
-  category    String
+  category    ProjectCategory
   type        String?
   image       String?
   thumbnail   String?
   badge       String?
-  liveUrl     String?  @map("live_url")
+  liveUrl     String?      @map("live_url")
   description String?
-  featured    Boolean  @default(false)
+  featured    Boolean      @default(false)
   tag         String?
-  images      String[] // JSON array of image URLs
   challenge   String?
   solution    String?
-  results     String[] // JSON array of results
-  tools       String[] // JSON array of tools
-  clientInfo  Json?    @map("client_info") // JSON object for client information
-  gallery     Json?    // JSON array for gallery items
-  relatedProjects Json? @map("related_projects") // JSON array for related projects
-  createdAt   DateTime @default(now()) @map("created_at")
-  updatedAt   DateTime @updatedAt @map("updated_at")
+  clientId    String?      @map("client_id") // Link to Client instead of JSON clientInfo
+  createdAt   DateTime     @default(now()) @map("created_at")
+  updatedAt   DateTime     @updatedAt @map("updated_at")
 
-  // العلاقات
-  testimonials Testimonial[]
+  // العلاقات - Normalized
+  client          Client?        @relation(fields: [clientId], references: [id], onDelete: SetNull)
+  testimonials    Testimonial[]
+  images          ProjectImage[]
+  results         ProjectResult[]
+  tools           ProjectTool[]
+  galleryItems    GalleryItem[]
+  relatedProjects RelatedProject[] @relation("ProjectToRelatedProjects")
 
+  @@index([category, featured]) // Index for common queries
   @@map("projects")
+}
+
+// New model for Project Images (normalized from String[])
+model ProjectImage {
+  id        String   @id @default(cuid())
+  projectId String   @map("project_id")
+  url       String
+  alt       String?
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  project Project @relation(fields: [projectId], references: [id], onDelete: Cascade)
+
+  @@map("project_images")
+}
+
+// New model for Project Results (normalized from String[])
+model ProjectResult {
+  id        String   @id @default(cuid())
+  projectId String   @map("project_id")
+  result    String
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  project Project @relation(fields: [projectId], references: [id], onDelete: Cascade)
+
+  @@map("project_results")
+}
+
+// New model for Project Tools (normalized from String[])
+model ProjectTool {
+  id        String   @id @default(cuid())
+  projectId String   @map("project_id")
+  tool      String
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  project Project @relation(fields: [projectId], references: [id], onDelete: Cascade)
+
+  @@map("project_tools")
+}
+
+// New model for Gallery Items (normalized from Json?)
+model GalleryItem {
+  id        String   @id @default(cuid())
+  projectId String   @map("project_id")
+  url       String
+  type      String?  // e.g., image, video
+  caption   String?
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  project Project @relation(fields: [projectId], references: [id], onDelete: Cascade)
+
+  @@map("gallery_items")
+}
+
+// New model for Many-to-Many related projects (normalized from Json?)
+model RelatedProject {
+  id              String @id @default(cuid())
+  projectId       String @map("project_id")
+  relatedProjectId String @map("related_project_id")
+  createdAt       DateTime @default(now()) @map("created_at")
+  updatedAt       DateTime @updatedAt @map("updated_at")
+
+  project         Project @relation("ProjectToRelatedProjects", fields: [projectId], references: [id], onDelete: Cascade)
+  relatedProject  Project @relation("RelatedProjectsToProject", fields: [relatedProjectId], references: [id], onDelete: Cascade)
+
+  @@unique([projectId, relatedProjectId]) // Prevent duplicates
+  @@map("related_projects")
 }
 
 // جدول العملاء
 model Client {
-  id       String  @id @default(cuid())
-  name     String
-  country  String?
-  flag     String? @default("🌍")
-  avatar   String? @default("/images/placeholder-avatar.png")
+  id        String   @id @default(cuid())
+  name      String   @unique // Unique names for clients
+  country   String?
+  flag      String?  @default("🌍")
+  avatar    String?  @default("/images/placeholder-avatar.png")
   createdAt DateTime @default(now()) @map("created_at")
   updatedAt DateTime @updatedAt @map("updated_at")
 
   // العلاقات
   testimonials Testimonial[]
+  projects     Project[]
 
+  @@index([name]) // Index for lookups
   @@map("clients")
 }
 
 // جدول التقييمات
 model Testimonial {
-  id        String   @id @default(cuid())
-  rating    Int      @default(5)
+  id        String               @id @default(cuid())
+  rating    Int                  @default(5)
   text      String
-  projectId String?
-  category  String?  // branding, web-development, ads
-  clientId  String   @map("client_id")
-  createdAt DateTime @default(now()) @map("created_at")
-  updatedAt DateTime @updatedAt @map("updated_at")
+  projectId String?              @map("project_id")
+  category  TestimonialCategory?
+  clientId  String               @map("client_id")
+  createdAt DateTime             @default(now()) @map("created_at")
+  updatedAt DateTime             @updatedAt @map("updated_at")
 
   // العلاقات
   client   Client   @relation(fields: [clientId], references: [id], onDelete: Cascade)
-  project  Project? @relation(fields: [projectId], references: [id])
+  project  Project? @relation(fields: [projectId], references: [id], onDelete: SetNull)
 
+  @@index([category, rating]) // Index for filtering
   @@map("testimonials")
 }
 
-// جدول أعضاء الفريق
+// جدول أعضاء الفريق - Kept social as Json, but could normalize if needed
 model TeamMember {
   id          String   @id @default(cuid())
   name        String
   position    String
   description String
   image       String
-  social      Json     // JSON object for social links
+  social      Json?    // { "twitter": "...", "linkedin": "..." }
   createdAt   DateTime @default(now()) @map("created_at")
   updatedAt   DateTime @updatedAt @map("updated_at")
 
@@ -118,10 +245,10 @@ model Value {
 
 // جدول الإحصائيات
 model Stat {
-  id     String @id @default(cuid())
-  number Int
-  label  String
-  suffix String @default("")
+  id        String   @id @default(cuid())
+  number    Int
+  label     String
+  suffix    String   @default("")
   createdAt DateTime @default(now()) @map("created_at")
   updatedAt DateTime @updatedAt @map("updated_at")
 
@@ -130,44 +257,47 @@ model Stat {
 
 // جدول الخدمات
 model Service {
-  id          String   @id @default(cuid())
+  id          String          @id @default(cuid())
   title       String
   description String
   price       String?
-  category    String
-  createdAt   DateTime @default(now()) @map("created_at")
-  updatedAt   DateTime @updatedAt @map("updated_at")
+  category    ServiceCategory
+  createdAt   DateTime        @default(now()) @map("created_at")
+  updatedAt   DateTime        @updatedAt @map("updated_at")
 
+  @@index([category]) // Index for category-based queries
   @@map("services")
 }
 
-// جدول الباقات
+// جدول الباقات - Normalized features if needed, but kept as array for simplicity
 model Package {
-  id          String   @id @default(cuid())
-  category    String
+  id          String          @id @default(cuid())
+  category    PackageCategory
   title       String
-  priceMin    Float?   @map("price_min")
-  priceMax    Float?   @map("price_max")
-  currency    String   @default("ريال")
-  isMonthly   Boolean  @default(false) @map("is_monthly")
+  priceMin    Float?          @map("price_min")
+  priceMax    Float?          @map("price_max")
+  currency    Currency        @default(SAR)
+  isMonthly   Boolean         @default(false) @map("is_monthly")
   description String?
-  features    String[] // JSON array of features
-  popular     Boolean  @default(false)
-  createdAt   DateTime @default(now()) @map("created_at")
-  updatedAt   DateTime @updatedAt @map("updated_at")
+  features    String[]        // Array of features
+  popular     Boolean         @default(false)
+  createdAt   DateTime        @default(now()) @map("created_at")
+  updatedAt   DateTime        @updatedAt @map("updated_at")
 
+  @@index([category, popular]) // Index for filtering
   @@map("packages")
 }
 
 // جدول الأسئلة الشائعة
 model FAQ {
-  id          String   @id @default(cuid())
+  id          String      @id @default(cuid())
   question    String
   answer      String
-  category    String
-  createdAt   DateTime @default(now()) @map("created_at")
-  updatedAt   DateTime @updatedAt @map("updated_at")
+  category    FAQCategory
+  createdAt   DateTime    @default(now()) @map("created_at")
+  updatedAt   DateTime    @updatedAt @map("updated_at")
 
+  @@index([category]) // Index for category queries
   @@map("faqs")
 }
 
@@ -178,6 +308,7 @@ model NewsletterSubscription {
   createdAt DateTime @default(now()) @map("created_at")
   updatedAt DateTime @updatedAt @map("updated_at")
 
+  @@index([email]) // Index for uniqueness checks
   @@map("newsletter_subscriptions")
 }
 
@@ -186,8 +317,8 @@ model User {
   id        String   @id @default(cuid())
   email     String   @unique
   name      String?
-  password  String
-  role      String   @default("admin") // admin, editor, viewer
+  password  String   // Remember to hash passwords in your application code
+  role      UserRole @default(ADMIN)
   isActive  Boolean  @default(true) @map("is_active")
   createdAt DateTime @default(now()) @map("created_at")
   updatedAt DateTime @updatedAt @map("updated_at")
@@ -196,6 +327,7 @@ model User {
   sessions     Session[]
   activityLogs ActivityLog[]
 
+  @@index([email, role]) // Index for auth and role-based queries
   @@map("users")
 }
 
@@ -210,6 +342,7 @@ model Session {
   // العلاقات
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
 
+  @@index([token, expiresAt]) // Index for session validation
   @@map("sessions")
 }
 
@@ -226,7 +359,8 @@ model ActivityLog {
   userAgent String?  @map("user_agent")
   createdAt DateTime @default(now()) @map("created_at")
 
-  user   User? @relation(fields: [userId], references: [id])
+  user   User? @relation(fields: [userId], references: [id], onDelete: SetNull)
 
+  @@index([userId, createdAt(sort: Desc)]) // Index for recent logs per user
   @@map("activity_logs")
 }

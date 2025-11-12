@@ -1,18 +1,18 @@
-"use client";
+'use client';
 
-import { useState, useEffect } from "react";
-import { motion } from "framer-motion";
-import { toast } from "sonner";
+import { useState, useEffect } from 'react';
+import { motion } from 'framer-motion';
+import { toast } from 'sonner';
 
 export default function ContactForm() {
   const [formData, setFormData] = useState({
-    fullName: "",
-    email: "",
-    phone: "",
-    countryCode: "+20",
-    service: "",
-    budget: "",
-    message: "",
+    fullName: '',
+    email: '',
+    phone: '',
+    countryCode: '+20',
+    service: '',
+    budget: '',
+    message: '',
   });
 
   const [errors, setErrors] = useState({});
@@ -21,23 +21,23 @@ export default function ContactForm() {
   const [isLoading, setIsLoading] = useState(true);
 
   const budgets = [
-    "أقل من 5,000 ج.م",
-    "5,000 إلى 10,000 ج.م",
-    "أكثر من 10,000 ج.م",
-    "أريد مناقشة السعر",
+    'أقل من 5,000 ج.م',
+    '5,000 إلى 10,000 ج.م',
+    'أكثر من 10,000 ج.م',
+    'أريد مناقشة السعر',
   ];
 
   useEffect(() => {
     async function fetchServicesAndPackages() {
       try {
-        const response = await fetch("/api/services-packages");
+        const response = await fetch('/api/services-packages');
         const result = await response.json();
 
         if (!result.success) throw new Error(result.error);
 
         setServices(result.options || []);
       } catch (error) {
-        toast.error("حدث خطأ أثناء جلب الخدمات والباقات");
+        toast.error('حدث خطأ أثناء جلب الخدمات والباقات');
       } finally {
         setIsLoading(false);
       }
@@ -49,27 +49,27 @@ export default function ContactForm() {
   const validateForm = () => {
     const newErrors = {};
 
-    if (!formData.fullName.trim()) newErrors.fullName = "الاسم مطلوب";
-    if (!formData.email.trim()) newErrors.email = "البريد الإلكتروني مطلوب";
+    if (!formData.fullName.trim()) newErrors.fullName = 'الاسم مطلوب';
+    if (!formData.email.trim()) newErrors.email = 'البريد الإلكتروني مطلوب';
     else if (!/\S+@\S+\.\S+/.test(formData.email))
-      newErrors.email = "البريد الإلكتروني غير صحيح";
-    if (!formData.phone.trim()) newErrors.phone = "رقم الهاتف مطلوب";
+      newErrors.email = 'البريد الإلكتروني غير صحيح';
+    if (!formData.phone.trim()) newErrors.phone = 'رقم الهاتف مطلوب';
     else if (!/^\d{10,15}$/.test(formData.phone))
-      newErrors.phone = "رقم الهاتف غير صحيح";
-    if (!formData.service) newErrors.service = "الخدمة مطلوبة";
-    if (!formData.budget) newErrors.budget = "الميزانية مطلوبة";
+      newErrors.phone = 'رقم الهاتف غير صحيح';
+    if (!formData.service) newErrors.service = 'الخدمة مطلوبة';
+    if (!formData.budget) newErrors.budget = 'الميزانية مطلوبة';
 
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
 
-  const handleInputChange = (e) => {
+  const handleInputChange = e => {
     const { name, value } = e.target;
-    setFormData((prev) => ({ ...prev, [name]: value }));
-    if (errors[name]) setErrors((prev) => ({ ...prev, [name]: "" }));
+    setFormData(prev => ({ ...prev, [name]: value }));
+    if (errors[name]) setErrors(prev => ({ ...prev, [name]: '' }));
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async e => {
     e.preventDefault();
     if (!validateForm()) return;
 
@@ -77,9 +77,9 @@ export default function ContactForm() {
 
     try {
       // إرسال النموذج إلى /api/contact
-      const contactResponse = await fetch("/api/contact", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
+      const contactResponse = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData),
       });
 
@@ -88,11 +88,11 @@ export default function ContactForm() {
       if (!contactResult.success) throw new Error(contactResult.error);
 
       // إرسال إيميل تأكيد
-      const emailResponse = await fetch("/api/send-email", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
+      const emailResponse = await fetch('/api/send-email', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          type: "confirmation",
+          type: 'confirmation',
           email: formData.email,
           name: formData.fullName,
         }),
@@ -101,22 +101,22 @@ export default function ContactForm() {
       const emailResult = await emailResponse.json();
 
       if (!emailResponse.ok)
-        throw new Error(emailResult.error || "فشل في إرسال إيميل التأكيد");
+        throw new Error(emailResult.error || 'فشل في إرسال إيميل التأكيد');
 
       toast.success(
-        "تم استلام رسالتك بنجاح! تحقق من بريدك الإلكتروني للتأكيد."
+        'تم استلام رسالتك بنجاح! تحقق من بريدك الإلكتروني للتأكيد.'
       );
       setFormData({
-        fullName: "",
-        email: "",
-        phone: "",
-        countryCode: "+20",
-        service: "",
-        budget: "",
-        message: "",
+        fullName: '',
+        email: '',
+        phone: '',
+        countryCode: '+20',
+        service: '',
+        budget: '',
+        message: '',
       });
     } catch (error) {
-      toast.error(error.message || "حدث خطأ أثناء الإرسال. حاول مرة أخرى.");
+      toast.error(error.message || 'حدث خطأ أثناء الإرسال. حاول مرة أخرى.');
     } finally {
       setIsSubmitting(false);
     }
@@ -163,7 +163,7 @@ export default function ContactForm() {
                     value={formData.fullName}
                     onChange={handleInputChange}
                     className={`vc-form__input ${
-                      errors.fullName ? "vc-form__input--error" : ""
+                      errors.fullName ? 'vc-form__input--error' : ''
                     }`}
                     placeholder="أدخل اسمك الكامل"
                   />
@@ -188,7 +188,7 @@ export default function ContactForm() {
                     value={formData.email}
                     onChange={handleInputChange}
                     className={`vc-form__input ${
-                      errors.email ? "vc-form__input--error" : ""
+                      errors.email ? 'vc-form__input--error' : ''
                     }`}
                     placeholder="example@email.com"
                   />
@@ -225,7 +225,7 @@ export default function ContactForm() {
                       value={formData.phone}
                       onChange={handleInputChange}
                       className={`vc-form__input ${
-                        errors.phone ? "vc-form__input--error" : ""
+                        errors.phone ? 'vc-form__input--error' : ''
                       }`}
                       placeholder="100 000 0000"
                     />
@@ -250,11 +250,11 @@ export default function ContactForm() {
                     value={formData.service}
                     onChange={handleInputChange}
                     className={`vc-form__select ${
-                      errors.service ? "vc-form__select--error" : ""
+                      errors.service ? 'vc-form__select--error' : ''
                     }`}
                   >
                     <option value="">اختر الخدمة</option>
-                    {services.map((service) => (
+                    {services.map(service => (
                       <option key={service} value={service}>
                         {service}
                       </option>
@@ -282,11 +282,11 @@ export default function ContactForm() {
                     value={formData.budget}
                     onChange={handleInputChange}
                     className={`vc-form__select ${
-                      errors.budget ? "vc-form__select--error" : ""
+                      errors.budget ? 'vc-form__select--error' : ''
                     }`}
                   >
                     <option value="">اختر الميزانية</option>
-                    {budgets.map((budget) => (
+                    {budgets.map(budget => (
                       <option key={budget} value={budget}>
                         {budget}
                       </option>
@@ -321,7 +321,6 @@ export default function ContactForm() {
                 type="submit"
                 className="vc-btn vc-btn--primary vc-form__submit"
                 disabled={isSubmitting || isLoading}
-                whileHover={{ scale: 1.1, rotateX: 10 }}
                 whileTap={{ scale: 0.95 }}
                 transition={{ duration: 0.3 }}
               >
@@ -331,7 +330,7 @@ export default function ContactForm() {
                     الإرسال...
                   </>
                 ) : (
-                  "أرسل رسالتك"
+                  'أرسل رسالتك'
                 )}
               </motion.button>
             </form>

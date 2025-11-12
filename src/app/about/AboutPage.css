@@ -49,7 +49,7 @@
 }
 
 .va-container {
-  @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  @apply flex flex-col gap-8 sm:gap-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
 }
 
 .va-story-content {
@@ -57,7 +57,7 @@
 }
 
 .va-section-title {
-  @apply text-2xl sm:text-3xl font-bold text-light mb-8;
+  @apply text-2xl sm:text-3xl font-bold text-center text-light mb-8;
 }
 
 .va-story-description {
@@ -81,12 +81,12 @@
 }
 
 .va-mission-vision-grid {
-  @apply grid grid-cols-1 md:grid-cols-2 gap-8;
+  @apply grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12;
 }
 
 .va-mission-card,
 .va-vision-card {
-  @apply rounded-xl shadow-lg p-6 sm:p-8 border border-l-blue;
+  @apply rounded-xl shadow-lg p-6 sm:p-8 border border-l-blue/20;
 }
 
 .va-mission-icon,
@@ -109,11 +109,11 @@
 }
 
 .va-values-grid {
-  @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4  gap-8;
+  @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4  gap-8 sm:gap-12;
 }
 
 .va-value-card {
-  @apply text-center p-6 rounded-xl bg-l-blue/20 shadow-lg hover:shadow-l-blue border border-l-blue;
+  @apply text-center p-6 rounded-xl transition-shadow shadow-sm shadow-l-blue hover:shadow-md border border-l-blue/20;
 }
 
 .va-value-icon {
@@ -141,7 +141,7 @@
 }
 
 .va-team-member {
-  @apply rounded-xl shadow-lg overflow-hidden hover:scale-110 hover:shadow-l-blue transition-transform duration-300 border border-l-blue;
+  @apply rounded-xl shadow-lg overflow-hidden hover:shadow-l-blue transition-shadow duration-300 border border-l-blue;
 }
 
 .va-member-image {
@@ -185,7 +185,7 @@
 }
 
 .va-stats-grid {
-  @apply grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8;
+  @apply flex flex-col sm:flex-row justify-center gap-8 md:gap-16;
 }
 
 .va-stat-card {
@@ -193,7 +193,7 @@
 }
 
 .va-stat-number {
-  @apply text-4xl sm:text-5xl font-bold mb-2;
+  @apply text-2xl sm:text-3xl md:text-4xl font-bold mb-2;
 }
 
 .va-stat-label {
@@ -201,7 +201,7 @@
 }
 
 .va-final-cta {
-  @apply py-12 sm:py-16 bg-gradient-to-r from-l-blue to-e-blue;
+  @apply py-12 sm:py-16;
 }
 
 .va-cta-content {
